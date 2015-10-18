@@ -9,15 +9,12 @@ namespace ProjectPlannerASP5.Controllers.Web
     public class IssuesController : Controller
     {
         private readonly IIssueService _issueService;
-        private readonly IMailService _mailService;
-        private readonly AppContext _appContext;
+        private readonly ProjectPlannerContext _ProjectPlannerContext;
 
-        public IssuesController(IIssueService issueService, AppContext appContext)//, IMailService mailService)
+        public IssuesController(IIssueService issueService, ProjectPlannerContext ProjectPlannerContext)
         {
             _issueService = issueService;
-            _appContext = appContext;
-            //_mailService = mailService;
-            //var a = _appContext.Issues.ToList();
+            _ProjectPlannerContext = ProjectPlannerContext;
         }
 
         public IActionResult Index()

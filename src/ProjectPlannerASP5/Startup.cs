@@ -1,19 +1,21 @@
-﻿using Microsoft.AspNet.Builder;
-using Microsoft.Framework.DependencyInjection;
+﻿using Microsoft.Framework.DependencyInjection;
 using ProjectPlannerASP5.Services;
 using Microsoft.Framework.Configuration;
-using Microsoft.Framework.Runtime;
 using ProjectPlannerASP5.Models;
+using Microsoft.Dnx.Runtime;
+using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Builder;
 
 namespace ProjectPlannerASP5
 {
     public class Startup
     {
-        public static IConfiguration Configuration;
+        public static IConfigurationRoot Configuration;
 
         public Startup(IApplicationEnvironment appEnv)
         {
-            var builder = new ConfigurationBuilder(appEnv.ApplicationBasePath)
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(appEnv.ApplicationBasePath)
                 .AddJsonFile("config.json")
                 .AddEnvironmentVariables();
 
@@ -26,7 +28,9 @@ namespace ProjectPlannerASP5
 
             services.AddEntityFramework()
                 .AddSqlServer()
-                .AddDbContext<AppContext>();
+                .AddDbContext<ProjectPlannerContext>();
+
+            services.AddTransient<ProjectPlannerContextSeedData>();
 
             //if (env.IsDevelopment())
             //{
@@ -40,7 +44,7 @@ namespace ProjectPlannerASP5
             services.AddScoped<IIssueService, IssueService>();
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, ProjectPlannerContextSeedData seeder)
         {
             app.UseStaticFiles();
 
@@ -52,6 +56,8 @@ namespace ProjectPlannerASP5
                     defaults: new { controller = "App", action = "Index" }
                     );
             });
+
+            app.UseIISPlatformHandler();
 
             //app.Run(async (context) =>
             //{
