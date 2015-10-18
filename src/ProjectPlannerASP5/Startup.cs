@@ -5,6 +5,8 @@ using ProjectPlannerASP5.Models;
 using Microsoft.Dnx.Runtime;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Builder;
+using ProjectPlannerASP5.Configs;
+using Microsoft.Framework.Logging;
 
 namespace ProjectPlannerASP5
 {
@@ -25,6 +27,7 @@ namespace ProjectPlannerASP5
         public void ConfigureServices(IServiceCollection services)//, IHostingEnvironment env)
         {
             services.AddMvc();
+            services.AddLogging();
 
             services.AddEntityFramework()
                 .AddSqlServer()
@@ -44,8 +47,10 @@ namespace ProjectPlannerASP5
             services.AddScoped<IIssueService, IssueService>();
         }
 
-        public void Configure(IApplicationBuilder app, ProjectPlannerContextSeedData seeder)
+        public void Configure(IApplicationBuilder app, ProjectPlannerContextSeedData seeder, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddDebug(LogLevel.Warning);
+
             app.UseStaticFiles();
 
             app.UseMvc(config =>
@@ -58,6 +63,10 @@ namespace ProjectPlannerASP5
             });
 
             app.UseIISPlatformHandler();
+
+            seeder.EnsureSeedData();
+
+            MappingConfig.RegisterMaps();
 
             //app.Run(async (context) =>
             //{

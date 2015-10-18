@@ -16,7 +16,7 @@ namespace ProjectPlannerASP5.Models
 
         public void EnsureSeedData()
         {
-            if (_context.Projects.Any())
+            if (!_context.Projects.Any())
             {
                 // Add new data
                 var project = new Project
