@@ -1,0 +1,8 @@
+{
+  "AppSettings": {
+    "SiteEmailAddress": "pawel.p.maga@gmail.com"
+  },
+  "Data": {
+    "AppContextConnection" : "Server=MSSQL;Database=ProjectPlannerDb;Trusted_Connection=True;MultipleActiveResultSets=True;"
+  }
+}

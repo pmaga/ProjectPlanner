@@ -1,0 +1,70 @@
+﻿@model EditIssueViewModel
+
+@section Styles {
+    <link rel="stylesheet" href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" />
+}
+
+@section Scripts {
+    <script type="text/javascript" src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#save-btn').click(function () {
+                $('#modal-container').modal('hide');
+            });
+        });
+    </script>
+}
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">@ViewBag.Title</h4>
+        <small class="font-bold">@ViewBag.AdditionalInfo</small>
+    </div>
+
+
+    <form method="post" asp-controller="Issues" asp-action="Edit">
+        @Html.HiddenFor(n => n.Id)
+
+        <div asp-validation-summary="ValidationSummary.ModelOnly"></div>
+
+        <div class="modal-body">
+            <div class="form-group">
+                <label asp-for="Summary" class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="Summary" class="form-control" />
+                    <span class="help-block m-b-none">Summary here</span>
+                </div>
+                <span asp-validation-for="Summary"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DueDate" class="col-sm-2 control-label"></label>
+                <div class="input-group date">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input asp-for="DueDate" id="dueDatePickup" class="form-control" data-provide="datepicker" />
+                    @* @Html.TextBoxWithFormatFor(n => n.DueDate, new { @class = "form-control", id = "dueDatePickup", data_provide = "datepicker" })*@
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreateDate" class="col-sm-2 control-label"></label>
+                <div class="input-group date">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input asp-for="CreateDate" class="form-control" readonly="readonly" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <textarea asp-for="Description" class="form-control" rows="6"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+            <button type="submit" id="save-btn" class="btn btn-primary">Save changes</button>
+        </div>
+    </form>
+</div>

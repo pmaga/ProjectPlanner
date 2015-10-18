@@ -1,0 +1,124 @@
+﻿@model IEnumerable<IssueView>
+
+@{
+    ViewBag.Title = "Issues";
+}
+
+@section Scripts {
+    <script type="text/javascript" src="~/lib/pace/pace.min.js"></script>
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Issues</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a asp-controller="App" asp-action="Index">Home</a>
+            </li>
+            <li class="active">
+                <strong>Issues</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Issue list</h5>
+                    <div class="ibox-tools">
+                        <a asp-controller="Issues" asp-action="Create" class="btn btn-primary btn-xs modal-link">Add new issue</a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="m-b-lg">
+                        <div class="input-group">
+                            <input type="text" placeholder="Search issue by name..." class=" form-control">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-white"> Search</button>
+                            </span>
+                        </div>
+                        <div class="m-t-md">
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-comments"></i> </button>
+                                <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-user"></i> </button>
+                                <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-list"></i> </button>
+                                <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-pencil"></i> </button>
+                                <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-print"></i> </button>
+                                <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-cogs"></i> </button>
+                            </div>
+                            <strong>Found @Model.Count() issues.</strong>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover issue-tracker">
+                            <thead>
+                                <tr>
+                                    <th>State</th>
+                                    <th>Number</th>
+                                    <th />
+                                    <th>Create date</th>
+                                    <th>Due date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var issue in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @switch (issue.Status)
+                                            {
+                                                case IssueStatus.Added:
+                                                    <span class="label label-primary">@issue.Status</span>
+                                                    break;
+                                                case IssueStatus.Modified:
+                                                    <span class="label label-warning">@issue.Status</span>
+                                                    break;
+                                            }
+                                        </td>
+                                        <td class="issue-info">
+                                            <a href="@Url.Action("Edit", "Issues", new {id = issue.Id})" class="modal-link">
+                                                @issue.IssueFullNumber
+                                            </a>
+                                            <small>
+                                                @issue.Summary
+                                            </small>
+                                        </td>
+                                        <td>
+                                            @issue.Reporter
+                                        </td>
+                                        <td>
+                                            @issue.CreateDate
+                                        </td>
+                                        <td>
+                                            @issue.DueDate
+                                        </td>
+                                        <td>
+                                            <span class="pie">0.52,1.041</span>
+                                            2d
+                                        </td>
+                                        <td class="text-right">
+                                            <a href="@Url.Action("Edit", "Issues", new {id = issue.Id})" class="btn btn-white btn-xs modal-link"> Edit</a>
+
+                                            @using (Html.BeginForm("Delete", "Issues", FormMethod.Post, new { @class = "inline-form" }))
+                                            {
+                                                @Html.Hidden("Id", issue.Id)
+                                                <button type="submit" class="btn btn-white btn-xs" onclick="return confirm('Are you sure you wish to delete this issue?');"> Delete</button>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
