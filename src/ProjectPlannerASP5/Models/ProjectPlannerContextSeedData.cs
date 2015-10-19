@@ -22,6 +22,7 @@ namespace ProjectPlannerASP5.Models
                 var project = new Project
                 {
                     Code = "JRS",
+                    Name = "JRSSSS",
                     CreateDate = DateTime.UtcNow,
                     Creator = "",
                     Status = ProjectStatus.Active,

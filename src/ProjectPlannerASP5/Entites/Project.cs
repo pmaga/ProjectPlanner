@@ -10,7 +10,11 @@ namespace ProjectPlannerASP5.Entites
 
         [MinLength(3)]
         [MaxLength(5)]
+        [Required]
         public string Code { get; set; }
+
+        [Required]
+        public string Name { get; set; }
 
         public DateTime CreateDate { get; set; }
         public ProjectStatus Status { get; set; }

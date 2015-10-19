@@ -16,7 +16,7 @@ namespace ProjectPlannerASP5.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var connString = Startup.Configuration["Data:ProjectPlannerContextConnection"];
-
+            
             optionsBuilder.UseSqlServer(connString);
 
             base.OnConfiguring(optionsBuilder);

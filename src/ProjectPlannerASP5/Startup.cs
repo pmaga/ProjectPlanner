@@ -7,6 +7,7 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Builder;
 using ProjectPlannerASP5.Configs;
 using Microsoft.Framework.Logging;
+using Newtonsoft.Json.Serialization;
 
 namespace ProjectPlannerASP5
 {
@@ -26,7 +27,12 @@ namespace ProjectPlannerASP5
 
         public void ConfigureServices(IServiceCollection services)//, IHostingEnvironment env)
         {
-            services.AddMvc();
+            services.AddMvc()
+                .AddJsonOptions(opt =>
+                {
+                    opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                });
+
             services.AddLogging();
 
             services.AddEntityFramework()
@@ -45,6 +51,7 @@ namespace ProjectPlannerASP5
             //}
 
             services.AddScoped<IIssueService, IssueService>();
+            services.AddScoped<IProjectService, ProjectService>();
         }
 
         public void Configure(IApplicationBuilder app, ProjectPlannerContextSeedData seeder, ILoggerFactory loggerFactory)

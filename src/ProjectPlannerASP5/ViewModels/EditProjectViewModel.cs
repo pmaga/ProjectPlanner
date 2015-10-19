@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace ProjectPlannerASP5.ViewModels
+{
+    public class EditProjectViewModel
+    {
+        public int Id { get; set; }
+
+        [Required]
+        [StringLength(7, MinimumLength = 3)]
+        public string Code { get; set; }
+
+        [Required]
+        [StringLength(255, MinimumLength = 5)]
+        public string Name { get; set; }
+
+        public DateTime CreateDate { get; set; } = DateTime.UtcNow;
+        //public virtual ApplicationUser Creator { get; set; }
+    }
+}

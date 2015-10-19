@@ -36,6 +36,20 @@ namespace ProjectPlannerASP5.Services
             }
         }
 
+        public IEnumerable<IssueView> GetIssuesByProjectId(int projectId)
+        {
+            try
+            {
+                return _context.Issues.Where(issue => issue.ProjectId == projectId).ProjectTo<IssueView>();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Could not get issues for project with id: {projectId}", ex);
+                return null;
+            }
+        }
+
+
         public EditIssueViewModel GetIssue(int id)
         {
             try
@@ -45,28 +59,31 @@ namespace ProjectPlannerASP5.Services
             }
             catch (Exception ex)
             {
-                return null;
                 _logger.LogError("Could not get issue from database", ex);
+                return null;
             }
         }
 
-        public void Insert(EditIssueViewModel issueVm)
+        public bool Insert(EditIssueViewModel issueVm)
         {
             try
             {
-                var issue = new Issue();
-                Mapper.Map(issueVm, issue);
+                var issue = Mapper.Map<Issue>(issueVm);
 
                 _context.Issues.Add(issue);
-                _context.SaveChanges();
+                var result = _context.SaveChanges() > 0;
+                issueVm.Id = issue.Id;
+
+                return result;
             }
             catch (Exception ex)
             {
                 _logger.LogError("Could not save issue into database", ex);
+                return false;
             }
         }
 
-        public void Update(EditIssueViewModel issueVm)
+        public bool Update(EditIssueViewModel issueVm)
         {
             try
             {
@@ -75,25 +92,27 @@ namespace ProjectPlannerASP5.Services
                 Mapper.Map(issueVm, issue);
                 issue.Status = IssueStatus.Modified;
 
-                _context.SaveChanges();
+                return _context.SaveChanges() > 0;
             }
             catch (Exception ex)
             {
                 _logger.LogError("Could not update issue in the database", ex);
+                return false;
             }
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             try
             {
-                var issueToRemove = _context.Issues.FirstOrDefault(task => task.Id == id);
+                var issueToRemove = _context.Issues.FirstOrDefault(issue => issue.Id == id);
                 _context.Issues.Remove(issueToRemove);
-                _context.SaveChanges();
+                return _context.SaveChanges() > 0;
             }
             catch (Exception ex)
             {
                 _logger.LogError("Could not delete issue from database", ex);
+                return false;
             }
         }
     }
