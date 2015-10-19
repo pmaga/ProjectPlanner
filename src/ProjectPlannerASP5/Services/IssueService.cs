@@ -36,16 +36,17 @@ namespace ProjectPlannerASP5.Services
             }
         }
 
-        public IEnumerable<IssueView> GetIssuesByProjectId(int projectId)
+        public IEnumerable<IssueView> GetIssuesByProjectCode(string projectCode)
         {
             try
             {
-                return _context.Issues.Where(issue => issue.ProjectId == projectId)
+                return _context.Issues.Include(i => i.Project)
+                    .Where(issue => issue.Project.Code == projectCode)
                     .OrderBy(issue => issue.CreateDate).ProjectTo<IssueView>();
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Could not get issues for project with id: {projectId}", ex);
+                _logger.LogError($"Could not get issues for project: {projectCode}", ex);
                 return null;
             }
         }

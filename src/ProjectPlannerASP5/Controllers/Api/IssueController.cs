@@ -26,22 +26,23 @@ namespace ProjectPlannerASP5.Controllers.Api
         }
 
         [HttpGet("")]
-        public JsonResult Get(int projectId)
+        public JsonResult Get(string projectCode)
         {
             try
             {
-                var results = _issueService.GetIssuesByProjectId(projectId);
+                var results = _issueService.GetIssuesByProjectCode(projectCode);
 
                 return Json(results);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Failed to get issues for project with id: {projectId}", ex);
+                _logger.LogError($"Failed to get issues for project: {projectCode}", ex);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return Json("Error occured finding the issues");
             }
         }
 
+        [HttpPost("")]
         public JsonResult Post(string projectCode, [FromBody]EditIssueViewModel vm)
         {
             try

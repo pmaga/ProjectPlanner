@@ -7,7 +7,7 @@ namespace ProjectPlannerASP5.Services
     public interface IIssueService
     {
         IEnumerable<IssueView> GetIssues();
-        IEnumerable<IssueView> GetIssuesByProjectId(int projectId);
+        IEnumerable<IssueView> GetIssuesByProjectCode(string projectCode);
         EditIssueViewModel GetIssue(int id);
 
         bool Insert(string projectCode, EditIssueViewModel issueVm);
