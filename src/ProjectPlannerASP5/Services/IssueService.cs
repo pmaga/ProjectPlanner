@@ -40,7 +40,8 @@ namespace ProjectPlannerASP5.Services
         {
             try
             {
-                return _context.Issues.Where(issue => issue.ProjectId == projectId).ProjectTo<IssueView>();
+                return _context.Issues.Where(issue => issue.ProjectId == projectId)
+                    .OrderBy(issue => issue.CreateDate).ProjectTo<IssueView>();
             }
             catch (Exception ex)
             {
@@ -64,11 +65,14 @@ namespace ProjectPlannerASP5.Services
             }
         }
 
-        public bool Insert(EditIssueViewModel issueVm)
+        public bool Insert(string projectCode, EditIssueViewModel issueVm)
         {
             try
             {
+                var project = _context.Projects.FirstOrDefault(p => p.Code == projectCode);
+
                 var issue = Mapper.Map<Issue>(issueVm);
+                issue.ProjectId = project.Id;
 
                 _context.Issues.Add(issue);
                 var result = _context.SaveChanges() > 0;

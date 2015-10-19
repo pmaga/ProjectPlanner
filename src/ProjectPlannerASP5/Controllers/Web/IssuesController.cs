@@ -41,14 +41,14 @@ namespace ProjectPlannerASP5.Controllers.Web
         {
             if (ModelState.IsValid)
             {
-                if (viewModel.Id == 0)
-                {
-                    _issueService.Insert(viewModel);
-                }
-                else
-                {
-                    _issueService.Update(viewModel);
-                }
+                //if (viewModel.Id == 0)
+                //{
+                //    _issueService.Insert(viewModel);
+                //}
+                //else
+                //{
+                //    _issueService.Update(viewModel);
+                //}
 
                 return RedirectToAction("Index");
             }

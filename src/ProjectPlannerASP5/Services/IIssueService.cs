@@ -10,7 +10,7 @@ namespace ProjectPlannerASP5.Services
         IEnumerable<IssueView> GetIssuesByProjectId(int projectId);
         EditIssueViewModel GetIssue(int id);
 
-        bool Insert(EditIssueViewModel issueVm);
+        bool Insert(string projectCode, EditIssueViewModel issueVm);
         bool Update(EditIssueViewModel issueVm);
         bool Delete(int id);
     }

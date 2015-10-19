@@ -11,6 +11,7 @@ namespace ProjectPlannerASP5.Entites
         [MinLength(3)]
         [MaxLength(5)]
         [Required]
+        // TODO: Ustawic jako unique
         public string Code { get; set; }
 
         [Required]
@@ -19,6 +20,7 @@ namespace ProjectPlannerASP5.Entites
         public DateTime CreateDate { get; set; }
         public ProjectStatus Status { get; set; }
 
+        //TODO: Przerobic na ASP Identity
         //public virtual ApplicationUser Creator { get; set; }
         public string Creator { get; set; }
 

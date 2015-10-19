@@ -15,7 +15,7 @@ namespace ProjectPlannerASP5.ViewModels
 
         [Display(Name = "Create date")]
         //[ReadOnly(true)]
-        public DateTime? CreateDate { get; private set; }
+        public DateTime CreateDate { get; private set; } = DateTime.UtcNow;
 
         [Display(Name = "Due date")]
         [DataType(DataType.Date)]
@@ -26,6 +26,7 @@ namespace ProjectPlannerASP5.ViewModels
         [Required(AllowEmptyStrings = false)]
         [StringLength(255, MinimumLength = 5)]
         public string Summary { get; set; }
+
         public string Description { get; set; }
 
         //public ApplicationUser Reporter { get; set; }
@@ -33,10 +34,5 @@ namespace ProjectPlannerASP5.ViewModels
         public int EstimatedTime { get; set; }
 
         public IssueStatus Status { get; private set; }
-
-        public EditIssueViewModel()
-        {
-            CreateDate = DateTime.Now;
-        }
     }
 }
