@@ -1,0 +1,42 @@
+﻿@model LoginViewModel
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<form method="post" asp-controller="Auth" asp-action="Login" asp-route-returnurl="@ViewBag.ReturnUrl" class="form-horizontal" role="form">
+    <h4>Welcome in Project Planner</h4>
+    <small>Use a local account to log in.</small>
+    <hr />
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        <label asp-for="UserName" , class="col-md-3 control-label"></label>
+        <div class="col-md-9">
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="col-md-3 control-label"></label>
+        <div class="col-md-9">
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-8">
+            <div class="checkbox">
+                <input asp-for="RememberMe" />
+                <label asp-for="RememberMe"></label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-8">
+            <input type="submit" value="Log in" class="btn btn-primary" />
+        </div>
+    </div>
+    <p>
+        <a asp-controller="Auth" asp-action="Register">Register</a> if you don't have a local account.
+    </p>
+</form>

@@ -1,9 +1,10 @@
-﻿using Microsoft.Data.Entity;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Data.Entity;
 using ProjectPlannerASP5.Entites;
 
 namespace ProjectPlannerASP5.Models
 {
-    public class ProjectPlannerContext : DbContext
+    public class ProjectPlannerContext : IdentityDbContext<AppUser>
     {
         public DbSet<Project> Projects { get; set; }
         public DbSet<Issue> Issues { get; set; }

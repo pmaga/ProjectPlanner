@@ -8,9 +8,10 @@ using ProjectPlannerASP5.Models;
 namespace ProjectPlannerASP5.Migrations
 {
     [DbContext(typeof(ProjectPlannerContext))]
-    partial class ProjectPlannerContextModelSnapshot : ModelSnapshot
+    [Migration("20151020210341_IdentityEntities")]
+    partial class IdentityEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .Annotation("ProductVersion", "7.0.0-beta8-15964")

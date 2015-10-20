@@ -8,12 +8,5 @@ namespace ProjectPlannerASP5.Controllers.Web
         {
             return View();
         }
-
-        public IActionResult Configuration()
-        {
-            var configEmail = Startup.Configuration["AppSettings:SiteEmailAddress"];
-
-            return View();
-        }
     }
 }

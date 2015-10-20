@@ -2,7 +2,6 @@
 using ProjectPlannerASP5.ViewModels;
 using ProjectPlannerASP5.Services;
 using ProjectPlannerASP5.Models;
-using System.Linq;
 
 namespace ProjectPlannerASP5.Controllers.Web
 {

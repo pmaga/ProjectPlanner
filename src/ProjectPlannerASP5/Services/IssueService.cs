@@ -51,7 +51,6 @@ namespace ProjectPlannerASP5.Services
             }
         }
 
-
         public EditIssueViewModel GetIssue(int id)
         {
             try

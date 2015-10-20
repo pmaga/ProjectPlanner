@@ -8,6 +8,7 @@ using Microsoft.AspNet.Builder;
 using ProjectPlannerASP5.Configs;
 using Microsoft.Framework.Logging;
 using Newtonsoft.Json.Serialization;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ProjectPlannerASP5
 {
@@ -33,6 +34,15 @@ namespace ProjectPlannerASP5
                     opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 });
 
+            services.AddIdentity<AppUser, IdentityRole>(config =>
+            {
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequiredLength = 8;
+            })
+            .AddEntityFrameworkStores<ProjectPlannerContext>();
+
+
+
             services.AddLogging();
 
             services.AddEntityFramework()
@@ -40,25 +50,23 @@ namespace ProjectPlannerASP5
                 .AddDbContext<ProjectPlannerContext>();
 
             services.AddTransient<ProjectPlannerContextSeedData>();
-
-            //if (env.IsDevelopment())
-            //{
-            //    services.AddScoped<IMailService, DebugMailService>();
-            //}
-            //else
-            //{
-            //    // user real mail service
-            //}
-
             services.AddScoped<IIssueService, IssueService>();
             services.AddScoped<IProjectService, ProjectService>();
+
+            services.AddCookieAuthentication(config =>
+            {
+                config.AutomaticAuthentication = true;
+                config.LoginPath = "/Auth/Login";
+            });
         }
 
-        public void Configure(IApplicationBuilder app, ProjectPlannerContextSeedData seeder, ILoggerFactory loggerFactory)
+        public async void Configure(IApplicationBuilder app, ProjectPlannerContextSeedData seeder, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddDebug(LogLevel.Warning);
 
             app.UseStaticFiles();
+
+            app.UseIdentity();
 
             app.UseMvc(config =>
             {
@@ -71,7 +79,7 @@ namespace ProjectPlannerASP5
 
             app.UseIISPlatformHandler();
 
-            seeder.EnsureSeedData();
+            await seeder.EnsureSeedDataAsync();
 
             MappingConfig.RegisterMaps();
 

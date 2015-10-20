@@ -31,6 +31,12 @@
                     <span class="nav-label">Main</span>
                 </a>
             </li>
+            <li class="@Html.IsSelected(controller: "Projects", action: "Index")">
+                <a asp-controller="Projects" asp-action="Index">
+                    <i class="fa fa-calculator"></i>
+                    <span class="nav-label">Projects</span>
+                </a>
+            </li>
             <li class="@Html.IsSelected(controller: "Issues", action: "Index")">
                 <a asp-controller="Issues" asp-action="Index">
                     <i class="fa fa-calendar"></i>
