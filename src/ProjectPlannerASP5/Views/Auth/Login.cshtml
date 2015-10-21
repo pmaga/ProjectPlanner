@@ -8,7 +8,7 @@
     <h4>Welcome in Project Planner</h4>
     <small>Use a local account to log in.</small>
     <hr />
-    @Html.ValidationSummary(true)
+    <div asp-validation-summary="ValidationSummary.ModelOnly"></div>
     <div class="form-group">
         <label asp-for="UserName" , class="col-md-3 control-label"></label>
         <div class="col-md-9">

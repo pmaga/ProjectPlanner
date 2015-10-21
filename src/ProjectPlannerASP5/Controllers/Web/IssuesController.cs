@@ -2,9 +2,11 @@
 using ProjectPlannerASP5.ViewModels;
 using ProjectPlannerASP5.Services;
 using ProjectPlannerASP5.Models;
+using Microsoft.AspNet.Authorization;
 
 namespace ProjectPlannerASP5.Controllers.Web
 {
+    [Authorize]
     public class IssuesController : Controller
     {
         private readonly IIssueService _issueService;

@@ -9,15 +9,20 @@ using ProjectPlannerASP5.Configs;
 using Microsoft.Framework.Logging;
 using Newtonsoft.Json.Serialization;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Mvc;
 
 namespace ProjectPlannerASP5
 {
     public class Startup
     {
         public static IConfigurationRoot Configuration;
+        private readonly IHostingEnvironment _env;
 
-        public Startup(IApplicationEnvironment appEnv)
+        public Startup(IApplicationEnvironment appEnv, IHostingEnvironment env)
         {
+            _env = env;
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(appEnv.ApplicationBasePath)
                 .AddJsonFile("config.json")
@@ -26,13 +31,19 @@ namespace ProjectPlannerASP5
             Configuration = builder.Build();
         }
 
-        public void ConfigureServices(IServiceCollection services)//, IHostingEnvironment env)
+        public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc()
-                .AddJsonOptions(opt =>
+            services.AddMvc(config =>
+            {
+                if (!_env.IsDevelopment())
                 {
-                    opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                });
+                    config.Filters.Add(new RequireHttpsAttribute());
+                }
+            })
+            .AddJsonOptions(opt =>
+            {
+                opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
 
             services.AddIdentity<AppUser, IdentityRole>(config =>
             {
@@ -40,8 +51,6 @@ namespace ProjectPlannerASP5
                 config.Password.RequiredLength = 8;
             })
             .AddEntityFrameworkStores<ProjectPlannerContext>();
-
-
 
             services.AddLogging();
 
@@ -53,10 +62,9 @@ namespace ProjectPlannerASP5
             services.AddScoped<IIssueService, IssueService>();
             services.AddScoped<IProjectService, ProjectService>();
 
-            services.AddCookieAuthentication(config =>
+            services.Configure<IdentityOptions>(options =>
             {
-                config.AutomaticAuthentication = true;
-                config.LoginPath = "/Auth/Login";
+                options.Cookies.ApplicationCookie.LoginPath = new Microsoft.AspNet.Http.PathString("/Auth/Login");
             });
         }
 
