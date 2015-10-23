@@ -2,11 +2,11 @@
 using AutoMapper.QueryableExtensions;
 using Microsoft.Data.Entity;
 using Microsoft.Framework.Logging;
-using ProjectPlannerASP5.Entites;
 using ProjectPlannerASP5.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ProjectPlannerASP5.Entities;
 using ProjectPlannerASP5.Models;
 
 namespace ProjectPlannerASP5.Services

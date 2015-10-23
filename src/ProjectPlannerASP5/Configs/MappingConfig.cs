@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ProjectPlannerASP5.Entites;
+using ProjectPlannerASP5.Entities;
 using ProjectPlannerASP5.Models;
 using ProjectPlannerASP5.ViewModels;
 

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Configuration;
-using ProjectPlannerASP5.Entites;
 using Microsoft.Dnx.Runtime;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Builder;

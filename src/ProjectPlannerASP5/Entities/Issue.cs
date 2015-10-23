@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProjectPlannerASP5.Entites
+namespace ProjectPlannerASP5.Entities
 {
     public class Issue
     {

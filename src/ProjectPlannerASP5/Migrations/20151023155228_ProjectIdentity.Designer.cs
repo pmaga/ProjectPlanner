@@ -3,7 +3,6 @@ using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Infrastructure;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
-using ProjectPlannerASP5.Entites;
 using ProjectPlannerASP5.Models;
 
 namespace ProjectPlannerASP5.Migrations
@@ -145,7 +144,7 @@ namespace ProjectPlannerASP5.Migrations
                     b.Annotation("Relational:TableName", "AspNetUsers");
                 });
 
-            modelBuilder.Entity("ProjectPlannerASP5.Entites.Issue", b =>
+            modelBuilder.Entity("ProjectPlannerASP5.Entities.Issue", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -171,7 +170,7 @@ namespace ProjectPlannerASP5.Migrations
                     b.HasKey("Id");
                 });
 
-            modelBuilder.Entity("ProjectPlannerASP5.Entites.Project", b =>
+            modelBuilder.Entity("ProjectPlannerASP5.Entities.Project", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -224,14 +223,14 @@ namespace ProjectPlannerASP5.Migrations
                         .ForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("ProjectPlannerASP5.Entites.Issue", b =>
+            modelBuilder.Entity("ProjectPlannerASP5.Entities.Issue", b =>
                 {
-                    b.HasOne("ProjectPlannerASP5.Entites.Project")
+                    b.HasOne("ProjectPlannerASP5.Entities.Project")
                         .WithMany()
                         .ForeignKey("ProjectId");
                 });
 
-            modelBuilder.Entity("ProjectPlannerASP5.Entites.Project", b =>
+            modelBuilder.Entity("ProjectPlannerASP5.Entities.Project", b =>
                 {
                     b.HasOne("ProjectPlannerASP5.Models.AppUser")
                         .WithMany()

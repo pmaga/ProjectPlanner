@@ -1,4 +1,4 @@
-﻿namespace ProjectPlannerASP5.Entites
+﻿namespace ProjectPlannerASP5.Entities
 {
     public enum IssueStatus
     {

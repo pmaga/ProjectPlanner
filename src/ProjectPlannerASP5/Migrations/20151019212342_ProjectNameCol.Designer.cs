@@ -3,7 +3,6 @@ using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Infrastructure;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
-using ProjectPlannerASP5.Entites;
 using ProjectPlannerASP5.Models;
 
 namespace ProjectPlannerASP5.Migrations
@@ -18,7 +17,7 @@ namespace ProjectPlannerASP5.Migrations
                 .Annotation("ProductVersion", "7.0.0-beta8-15964")
                 .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ProjectPlannerASP5.Entites.Issue", b =>
+            modelBuilder.Entity("ProjectPlannerASP5.Entities.Issue", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -44,7 +43,7 @@ namespace ProjectPlannerASP5.Migrations
                     b.HasKey("Id");
                 });
 
-            modelBuilder.Entity("ProjectPlannerASP5.Entites.Project", b =>
+            modelBuilder.Entity("ProjectPlannerASP5.Entities.Project", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -65,9 +64,9 @@ namespace ProjectPlannerASP5.Migrations
                     b.HasKey("Id");
                 });
 
-            modelBuilder.Entity("ProjectPlannerASP5.Entites.Issue", b =>
+            modelBuilder.Entity("ProjectPlannerASP5.Entities.Issue", b =>
                 {
-                    b.HasOne("ProjectPlannerASP5.Entites.Project")
+                    b.HasOne("ProjectPlannerASP5.Entities.Project")
                         .WithMany()
                         .ForeignKey("ProjectId");
                 });

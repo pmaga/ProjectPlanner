@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
-using ProjectPlannerASP5.Entites;
+using ProjectPlannerASP5.Entities;
 
 namespace ProjectPlannerASP5.Models
 {

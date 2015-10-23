@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Mvc;
-using ProjectPlannerASP5.Entites;
 using System;
 using System.ComponentModel.DataAnnotations;
+using ProjectPlannerASP5.Entities;
 
 namespace ProjectPlannerASP5.ViewModels
 {

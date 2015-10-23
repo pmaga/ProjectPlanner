@@ -1,5 +1,5 @@
 using System;
-using ProjectPlannerASP5.Entites;
+using ProjectPlannerASP5.Entities;
 
 namespace ProjectPlannerASP5.Models
 {

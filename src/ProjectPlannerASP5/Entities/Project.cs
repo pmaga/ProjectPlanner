@@ -1,9 +1,9 @@
-﻿using ProjectPlannerASP5.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using ProjectPlannerASP5.Models;
 
-namespace ProjectPlannerASP5.Entites
+namespace ProjectPlannerASP5.Entities
 {
     public class Project
     {
