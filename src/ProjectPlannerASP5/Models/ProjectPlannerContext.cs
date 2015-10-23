@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
+using ProjectPlannerASP5.Models;
 
 namespace ProjectPlannerASP5.Entites
 {

@@ -7,6 +7,7 @@ using Microsoft.Framework.DependencyInjection;
 using Newtonsoft.Json.Serialization;
 using ProjectPlannerASP5.Controllers.Web;
 using ProjectPlannerASP5.Entites;
+using ProjectPlannerASP5.Models;
 using ProjectPlannerASP5.Services;
 using System.Net;
 using System.Threading.Tasks;
