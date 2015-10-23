@@ -1,13 +1,11 @@
 ﻿using AutoMapper.QueryableExtensions;
-using ProjectPlannerASP5.Models;
+using ProjectPlannerASP5.Entites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using ProjectPlannerASP5.ViewModels;
 using Microsoft.Framework.Logging;
 using AutoMapper;
-using ProjectPlannerASP5.Entites;
 
 namespace ProjectPlannerASP5.Services
 {
@@ -26,7 +24,8 @@ namespace ProjectPlannerASP5.Services
         {
             try
             {
-                return _context.Projects.Project().To<ProjectView>().ToList();
+                return _context.Projects.Where(n => true)
+                    .Project().To<ProjectView>().ToList();
             }
             catch (Exception ex)
             {

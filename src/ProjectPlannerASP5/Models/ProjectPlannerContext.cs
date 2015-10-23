@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
-using ProjectPlannerASP5.Entites;
 
-namespace ProjectPlannerASP5.Models
+namespace ProjectPlannerASP5.Entites
 {
     public class ProjectPlannerContext : IdentityDbContext<AppUser>
     {
@@ -21,6 +20,11 @@ namespace ProjectPlannerASP5.Models
             optionsBuilder.UseSqlServer(connString);
 
             base.OnConfiguring(optionsBuilder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
         }
     }
 }

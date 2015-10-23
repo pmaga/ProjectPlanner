@@ -1,4 +1,6 @@
-﻿<nav class="navbar-default navbar-static-side" role="navigation">
+﻿<form method="post" asp-controller="Auth" asp-action="Logout" role="form" id="logoutForm"></form>
+
+<nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav" id="side-menu">
             <li class="nav-header">
@@ -17,7 +19,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a asp-controller="Auth" asp-action="Logout">Logout</a>
+                            <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
                         </li>
                     </ul>
                 </div>

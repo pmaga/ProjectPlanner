@@ -1,16 +1,19 @@
 ﻿using Microsoft.Framework.DependencyInjection;
-using ProjectPlannerASP5.Services;
 using Microsoft.Framework.Configuration;
-using ProjectPlannerASP5.Models;
+using ProjectPlannerASP5.Entites;
 using Microsoft.Dnx.Runtime;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Builder;
 using ProjectPlannerASP5.Configs;
 using Microsoft.Framework.Logging;
-using Newtonsoft.Json.Serialization;
+using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNet.Authentication.Cookies;
+using ProjectPlannerASP5.Services;
+using System.Threading.Tasks;
+using System.Net;
+using Newtonsoft.Json.Serialization;
 
 namespace ProjectPlannerASP5
 {
@@ -33,42 +36,11 @@ namespace ProjectPlannerASP5
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(config =>
-            {
-                if (!_env.IsDevelopment())
-                {
-                    config.Filters.Add(new RequireHttpsAttribute());
-                }
-            })
-            .AddJsonOptions(opt =>
-            {
-                opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            });
-
-            services.AddIdentity<AppUser, IdentityRole>(config =>
-            {
-                config.User.RequireUniqueEmail = true;
-                config.Password.RequiredLength = 8;
-            })
-            .AddEntityFrameworkStores<ProjectPlannerContext>();
-
-            services.AddLogging();
-
-            services.AddEntityFramework()
-                .AddSqlServer()
-                .AddDbContext<ProjectPlannerContext>();
-
-            services.AddTransient<ProjectPlannerContextSeedData>();
-            services.AddScoped<IIssueService, IssueService>();
-            services.AddScoped<IProjectService, ProjectService>();
-
-            services.Configure<IdentityOptions>(options =>
-            {
-                options.Cookies.ApplicationCookie.LoginPath = new Microsoft.AspNet.Http.PathString("/Auth/Login");
-            });
+            ServicesConfig.Configure(services, _env);
         }
 
-        public async void Configure(IApplicationBuilder app, ProjectPlannerContextSeedData seeder, ILoggerFactory loggerFactory)
+        public async void Configure(IApplicationBuilder app, ProjectPlannerContextSeedData seeder, ILoggerFactory loggerFactory,
+            IHostingEnvironment env)
         {
             loggerFactory.AddDebug(LogLevel.Warning);
 
@@ -85,16 +57,20 @@ namespace ProjectPlannerASP5
                     );
             });
 
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/App/Error");
+            }
+
             app.UseIISPlatformHandler();
 
             await seeder.EnsureSeedDataAsync();
 
             MappingConfig.RegisterMaps();
-
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("");
-            //});
         }
     }
 }

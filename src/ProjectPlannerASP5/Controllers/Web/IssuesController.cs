@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Mvc;
 using ProjectPlannerASP5.ViewModels;
 using ProjectPlannerASP5.Services;
-using ProjectPlannerASP5.Models;
+using ProjectPlannerASP5.Entites;
 using Microsoft.AspNet.Authorization;
 
 namespace ProjectPlannerASP5.Controllers.Web

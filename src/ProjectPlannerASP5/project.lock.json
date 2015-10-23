@@ -344,6 +344,31 @@
           "lib/dnx451/Microsoft.AspNet.DataProtection.Abstractions.dll": {}
         }
       },
+      "Microsoft.AspNet.Diagnostics/1.0.0-beta8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Diagnostics.Abstractions": "1.0.0-beta8",
+          "Microsoft.AspNet.FileProviders.Physical": "1.0.0-beta8",
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-beta8",
+          "Microsoft.AspNet.WebUtilities": "1.0.0-beta8",
+          "Microsoft.Dnx.Compilation.Abstractions": "1.0.0-beta8",
+          "Microsoft.Framework.Logging.Abstractions": "1.0.0-beta8",
+          "Microsoft.Framework.OptionsModel": "1.0.0-beta8",
+          "Microsoft.Framework.WebEncoders.Core": "1.0.0-beta8"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.AspNet.Diagnostics.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.AspNet.Diagnostics.dll": {}
+        }
+      },
       "Microsoft.AspNet.Diagnostics.Abstractions/1.0.0-beta8": {
         "type": "package",
         "frameworkAssemblies": [
@@ -2116,6 +2141,26 @@
         },
         "runtime": {
           "lib/dnxcore50/Microsoft.AspNet.DataProtection.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Diagnostics/1.0.0-beta8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Diagnostics.Abstractions": "1.0.0-beta8",
+          "Microsoft.AspNet.FileProviders.Physical": "1.0.0-beta8",
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-beta8",
+          "Microsoft.AspNet.WebUtilities": "1.0.0-beta8",
+          "Microsoft.Dnx.Compilation.Abstractions": "1.0.0-beta8",
+          "Microsoft.Framework.Logging.Abstractions": "1.0.0-beta8",
+          "Microsoft.Framework.OptionsModel": "1.0.0-beta8",
+          "Microsoft.Framework.WebEncoders.Core": "1.0.0-beta8",
+          "System.Reflection.Extensions": "4.0.1-beta-23409"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.AspNet.Diagnostics.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.AspNet.Diagnostics.dll": {}
         }
       },
       "Microsoft.AspNet.Diagnostics.Abstractions/1.0.0-beta8": {
@@ -4738,6 +4783,31 @@
           "lib/dnx451/Microsoft.AspNet.DataProtection.Abstractions.dll": {}
         }
       },
+      "Microsoft.AspNet.Diagnostics/1.0.0-beta8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Diagnostics.Abstractions": "1.0.0-beta8",
+          "Microsoft.AspNet.FileProviders.Physical": "1.0.0-beta8",
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-beta8",
+          "Microsoft.AspNet.WebUtilities": "1.0.0-beta8",
+          "Microsoft.Dnx.Compilation.Abstractions": "1.0.0-beta8",
+          "Microsoft.Framework.Logging.Abstractions": "1.0.0-beta8",
+          "Microsoft.Framework.OptionsModel": "1.0.0-beta8",
+          "Microsoft.Framework.WebEncoders.Core": "1.0.0-beta8"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.AspNet.Diagnostics.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.AspNet.Diagnostics.dll": {}
+        }
+      },
       "Microsoft.AspNet.Diagnostics.Abstractions/1.0.0-beta8": {
         "type": "package",
         "frameworkAssemblies": [
@@ -6568,6 +6638,31 @@
           "lib/dnx451/Microsoft.AspNet.DataProtection.Abstractions.dll": {}
         }
       },
+      "Microsoft.AspNet.Diagnostics/1.0.0-beta8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Diagnostics.Abstractions": "1.0.0-beta8",
+          "Microsoft.AspNet.FileProviders.Physical": "1.0.0-beta8",
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-beta8",
+          "Microsoft.AspNet.WebUtilities": "1.0.0-beta8",
+          "Microsoft.Dnx.Compilation.Abstractions": "1.0.0-beta8",
+          "Microsoft.Framework.Logging.Abstractions": "1.0.0-beta8",
+          "Microsoft.Framework.OptionsModel": "1.0.0-beta8",
+          "Microsoft.Framework.WebEncoders.Core": "1.0.0-beta8"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.AspNet.Diagnostics.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.AspNet.Diagnostics.dll": {}
+        }
+      },
       "Microsoft.AspNet.Diagnostics.Abstractions/1.0.0-beta8": {
         "type": "package",
         "frameworkAssemblies": [
@@ -8343,6 +8438,26 @@
         },
         "runtime": {
           "lib/dnxcore50/Microsoft.AspNet.DataProtection.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Diagnostics/1.0.0-beta8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Diagnostics.Abstractions": "1.0.0-beta8",
+          "Microsoft.AspNet.FileProviders.Physical": "1.0.0-beta8",
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-beta8",
+          "Microsoft.AspNet.WebUtilities": "1.0.0-beta8",
+          "Microsoft.Dnx.Compilation.Abstractions": "1.0.0-beta8",
+          "Microsoft.Framework.Logging.Abstractions": "1.0.0-beta8",
+          "Microsoft.Framework.OptionsModel": "1.0.0-beta8",
+          "Microsoft.Framework.WebEncoders.Core": "1.0.0-beta8",
+          "System.Reflection.Extensions": "4.0.1-beta-23409"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.AspNet.Diagnostics.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.AspNet.Diagnostics.dll": {}
         }
       },
       "Microsoft.AspNet.Diagnostics.Abstractions/1.0.0-beta8": {
@@ -11335,6 +11450,26 @@
           "lib/dnxcore50/Microsoft.AspNet.DataProtection.Abstractions.dll": {}
         }
       },
+      "Microsoft.AspNet.Diagnostics/1.0.0-beta8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Diagnostics.Abstractions": "1.0.0-beta8",
+          "Microsoft.AspNet.FileProviders.Physical": "1.0.0-beta8",
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-beta8",
+          "Microsoft.AspNet.WebUtilities": "1.0.0-beta8",
+          "Microsoft.Dnx.Compilation.Abstractions": "1.0.0-beta8",
+          "Microsoft.Framework.Logging.Abstractions": "1.0.0-beta8",
+          "Microsoft.Framework.OptionsModel": "1.0.0-beta8",
+          "Microsoft.Framework.WebEncoders.Core": "1.0.0-beta8",
+          "System.Reflection.Extensions": "4.0.1-beta-23409"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.AspNet.Diagnostics.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.AspNet.Diagnostics.dll": {}
+        }
+      },
       "Microsoft.AspNet.Diagnostics.Abstractions/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -14309,6 +14444,20 @@
         "Microsoft.AspNet.DataProtection.Abstractions.1.0.0-beta8.nupkg",
         "Microsoft.AspNet.DataProtection.Abstractions.1.0.0-beta8.nupkg.sha512",
         "Microsoft.AspNet.DataProtection.Abstractions.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.Diagnostics/1.0.0-beta8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "HGByiHoaozNzsAwRLsKuVlb8LugZVlv+gF/J869PNK8oeHg+LU6tVlAQ8qq2YYMibgJM9nL/fxu/4iB2hVX4tw==",
+      "files": [
+        "lib/dnx451/Microsoft.AspNet.Diagnostics.dll",
+        "lib/dnx451/Microsoft.AspNet.Diagnostics.xml",
+        "lib/dnxcore50/Microsoft.AspNet.Diagnostics.dll",
+        "lib/dnxcore50/Microsoft.AspNet.Diagnostics.xml",
+        "Microsoft.AspNet.Diagnostics.1.0.0-beta8.nupkg",
+        "Microsoft.AspNet.Diagnostics.1.0.0-beta8.nupkg.sha512",
+        "Microsoft.AspNet.Diagnostics.nuspec"
       ]
     },
     "Microsoft.AspNet.Diagnostics.Abstractions/1.0.0-beta8": {
@@ -18550,7 +18699,8 @@
       "Microsoft.AspNet.IISPlatformHandler >= 1.0.0-beta8",
       "AutoMapper >= 4.0.4",
       "Microsoft.Framework.Logging.Debug >= 1.0.0-beta8",
-      "Microsoft.AspNet.Identity.EntityFramework >= 3.0.0-beta8"
+      "Microsoft.AspNet.Identity.EntityFramework >= 3.0.0-beta8",
+      "Microsoft.AspNet.Diagnostics >= 1.0.0-beta8"
     ],
     "DNX,Version=v4.5.1": [],
     "DNXCore,Version=v5.0": []

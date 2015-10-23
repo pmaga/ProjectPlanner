@@ -2,14 +2,16 @@ using System;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Infrastructure;
 using Microsoft.Data.Entity.Metadata;
+using Microsoft.Data.Entity.Migrations;
 using ProjectPlannerASP5.Entites;
 
 namespace ProjectPlannerASP5.Migrations
 {
     [DbContext(typeof(ProjectPlannerContext))]
-    partial class ProjectPlannerContextModelSnapshot : ModelSnapshot
+    [Migration("20151023155228_ProjectIdentity")]
+    partial class ProjectIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .Annotation("ProductVersion", "7.0.0-beta8-15964")

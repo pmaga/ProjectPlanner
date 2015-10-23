@@ -20,9 +20,7 @@ namespace ProjectPlannerASP5.Entites
         public DateTime CreateDate { get; set; }
         public ProjectStatus Status { get; set; }
 
-        //TODO: Przerobic na ASP Identity
-        //public virtual ApplicationUser Creator { get; set; }
-        public string Creator { get; set; }
+        public virtual AppUser Creator { get; set; }
 
         public virtual ICollection<Issue> Issues { get; set; }
 

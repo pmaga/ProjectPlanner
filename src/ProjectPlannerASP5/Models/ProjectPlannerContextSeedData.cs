@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNet.Identity;
-using ProjectPlannerASP5.Entites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProjectPlannerASP5.Models
+namespace ProjectPlannerASP5.Entites
 {
     public class ProjectPlannerContextSeedData
     {
@@ -40,7 +39,7 @@ namespace ProjectPlannerASP5.Models
                     Code = "JRS",
                     Name = "JRSSSS",
                     CreateDate = DateTime.UtcNow,
-                    Creator = "pawelmaga",
+                    Creator = await _userManager.FindByEmailAsync("pawel.p.maga@gmail.com"),
                     Status = ProjectStatus.Active,
                     Issues = new List<Issue>
                     {

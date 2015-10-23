@@ -1,10 +1,6 @@
-﻿using ProjectPlannerASP5.Entites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
 
-namespace ProjectPlannerASP5.Models
+namespace ProjectPlannerASP5.Entites
 {
     public class ProjectView
     {

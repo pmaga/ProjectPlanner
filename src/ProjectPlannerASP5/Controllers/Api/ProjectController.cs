@@ -1,17 +1,14 @@
-﻿using AutoMapper;
+﻿using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.Logging;
-using ProjectPlannerASP5.Entites;
 using ProjectPlannerASP5.Services;
 using ProjectPlannerASP5.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace ProjectPlannerASP5.Controllers.Api
 {
+    [Authorize]
     [Route("api/projects")]
     public class ProjectController : Controller
     {
@@ -28,7 +25,7 @@ namespace ProjectPlannerASP5.Controllers.Api
         public JsonResult Get()
         {
             var projects = _projectsService.GetProjects();
-
+            
             return Json(projects);
         }
 
