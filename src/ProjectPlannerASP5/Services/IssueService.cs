@@ -69,6 +69,11 @@ namespace ProjectPlannerASP5.Services
             try
             {
                 var project = _context.Projects.FirstOrDefault(p => p.Code == projectCode);
+                if (project != null)
+                {
+                    _logger.LogError($"Project with the name: {projectCode} not found!");
+                    return false;
+                }
 
                 var issue = Mapper.Map<Issue>(issueVm);
                 issue.ProjectId = project.Id;
