@@ -1,5 +1,94 @@
-﻿@{
+﻿@model List<ProjectView>
+
+@{
     ViewBag.Title = "Projects";
 }
 
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>@ViewBag.Title</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a asp-controller="Project" asp-action="Index">Home</a>
+            </li>
+            <li class="active">
+                <strong>Projects</strong>
+            </li>
+        </ol>
+    </div>
+</div>
 
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5>Projects</h5>
+            <div class="ibox-tools">
+                <a href="" class="btn btn-primary btn-xs">Create new project</a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row m-b-sm m-t-sm">
+                <div class="col-md-1">
+                    <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> Refresh</button>
+                </div>
+                <div class="col-md-11">
+                    <div class="input-group">
+                        <input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
+                            <button type="button" class="btn btn-sm btn-primary"> Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-list">
+                <table class="table table-hover">
+                    <tbody>
+                        @foreach (var project in Model)
+                        {
+                            <tr>
+                                <td class="project-status">
+                                    @switch (project.Status)
+                                    {
+                                        case ProjectStatus.Active:
+                                            <span class="label label-primary">@project.Status</span>
+                                            break;
+                                    }
+                                </td>
+                                <td class="project-title">
+                                    <a asp-controller="Project" asp-action="ProjectDetail">@project.Code</a>
+                                    <br />
+                                    <small>Created @project.CreateDate</small>
+                                </td>
+                                <td class="project-completion">
+                                    <small>Completion with: @(project.PercentageCompleteness)%</small>
+                                    <div class="progress progress-mini">
+                                        <div style="width: @(project.PercentageCompleteness)%;" class="progress-bar"></div>
+                                    </div>
+                                </td>
+                                <td class="project-people">
+                                    <a href=""><img alt="image" class="img-circle" src="~/Images/a3.jpg"></a>
+                                    <a href=""><img alt="image" class="img-circle" src="~/Images/a1.jpg"></a>
+                                    <a href=""><img alt="image" class="img-circle" src="~/Images/a2.jpg"></a>
+                                    <a href=""><img alt="image" class="img-circle" src="~/Images/a4.jpg"></a>
+                                    <a href=""><img alt="image" class="img-circle" src="~/Images/a5.jpg"></a>
+                                </td>
+                                <td class="project-actions">
+                                    <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                    <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .inline-form {
+            display: inline;
+        }
+    </style>
+}

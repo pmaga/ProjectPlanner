@@ -24,7 +24,7 @@ namespace ProjectPlannerASP5.Controllers.Api
         [HttpGet("")]
         public JsonResult Get()
         {
-            var projects = _projectsService.GetProjects();
+            var projects = _projectsService.GetProjects(User.Identity.Name);
             
             return Json(projects);
         }

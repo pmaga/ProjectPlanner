@@ -7,7 +7,7 @@ namespace ProjectPlannerASP5.Services
 {
     public interface IProjectService
     {
-        List<ProjectView> GetProjects();
+        List<ProjectView> GetProjects(string userName);
 
         EditProjectViewModel GetProject(int id);
 

@@ -6,6 +6,7 @@ using System.Linq;
 using ProjectPlannerASP5.ViewModels;
 using Microsoft.Framework.Logging;
 using AutoMapper;
+using Microsoft.Data.Entity;
 using ProjectPlannerASP5.Models;
 
 namespace ProjectPlannerASP5.Services
@@ -21,11 +22,12 @@ namespace ProjectPlannerASP5.Services
             _logger = logger;
         }
 
-        public List<ProjectView> GetProjects()
+        public List<ProjectView> GetProjects(string userName)
         {
             try
             {
-                return _context.Projects.Where(n => true)
+                return _context.Projects.Include(p => p.Creator)
+                    .Where(n => n.Creator.UserName == userName)
                     .Project().To<ProjectView>().ToList();
             }
             catch (Exception ex)

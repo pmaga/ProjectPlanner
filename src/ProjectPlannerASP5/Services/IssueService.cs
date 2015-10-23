@@ -69,7 +69,7 @@ namespace ProjectPlannerASP5.Services
             try
             {
                 var project = _context.Projects.FirstOrDefault(p => p.Code == projectCode);
-                if (project != null)
+                if (project == null)
                 {
                     _logger.LogError($"Project with the name: {projectCode} not found!");
                     return false;
@@ -114,6 +114,12 @@ namespace ProjectPlannerASP5.Services
             try
             {
                 var issueToRemove = _context.Issues.FirstOrDefault(issue => issue.Id == id);
+                if (issueToRemove == null)
+                {
+                    _logger.LogError($"Issue with id: {id} not found!");
+                    return false;
+                }
+
                 _context.Issues.Remove(issueToRemove);
                 return _context.SaveChanges() > 0;
             }
