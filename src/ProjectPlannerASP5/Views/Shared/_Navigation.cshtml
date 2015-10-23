@@ -27,19 +27,19 @@
                     PM
                 </div>
             </li>
-            <li class="@Html.IsSelected(controller: "App", action: "Index")">
+            <li class="@Html.IsSelected(controller: "App", action: nameof(ProjectPlannerASP5.Controllers.Web.AppController.Index)))">
                 <a asp-controller="App" asp-action="Index">
                     <i class="fa fa-laptop"></i>
                     <span class="nav-label">Home</span>
                 </a>
             </li>
-            <li class="@Html.IsSelected(controller: "Projects", action: "Index")">
+            <li class="@Html.IsSelected(controller: "Projects", action: nameof(ProjectPlannerASP5.Controllers.Web.ProjectsController.Index)))">
                 <a asp-controller="Projects" asp-action="Index">
                     <i class="fa fa-calculator"></i>
                     <span class="nav-label">Projects</span>
                 </a>
             </li>
-            <li class="@Html.IsSelected(controller: "Issues", action: "Index")">
+            <li class="@Html.IsSelected(controller: "Issues", action: nameof(ProjectPlannerASP5.Controllers.Web.IssuesController.Index)))">
                 <a asp-controller="Issues" asp-action="Index">
                     <i class="fa fa-calendar"></i>
                     <span class="nav-label">Issues</span>

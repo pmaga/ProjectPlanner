@@ -46,6 +46,10 @@
   margin-right: 40px;
 }
 
+.body-small .navbar-top-links li:last-child {
+  margin-right: 0;
+}
+
 .navbar-top-links li a {
   padding: 20px 10px;
   min-height: 50px;
@@ -152,9 +156,6 @@
   background: darken(@nav-bg, 3%);
 }
 
-.nav-second-level {
-  //  transition-duration: 0.5s;
-}
 
 .nav.nav-second-level > li.active {
   border: none;
@@ -334,7 +335,17 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
 }
 
 .fixed-nav #wrapper {
+  margin-top: 0;
+}
+
+body.fixed-nav #wrapper .navbar-static-side,
+body.fixed-nav #wrapper #page-wrapper
+{
   margin-top: 60px;
+}
+
+body.top-navigation.fixed-nav #wrapper #page-wrapper {
+  margin-top: 0;
 }
 
 .fixed-nav .minimalize-styl-2 {
