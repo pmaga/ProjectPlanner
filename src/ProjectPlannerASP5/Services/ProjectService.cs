@@ -6,6 +6,7 @@ using System.Linq;
 using ProjectPlannerASP5.ViewModels;
 using Microsoft.Framework.Logging;
 using AutoMapper;
+using ProjectPlannerASP5.Models;
 
 namespace ProjectPlannerASP5.Services
 {

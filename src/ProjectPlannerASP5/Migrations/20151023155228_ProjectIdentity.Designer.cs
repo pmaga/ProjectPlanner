@@ -4,6 +4,7 @@ using Microsoft.Data.Entity.Infrastructure;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
 using ProjectPlannerASP5.Entites;
+using ProjectPlannerASP5.Models;
 
 namespace ProjectPlannerASP5.Migrations
 {
@@ -96,7 +97,7 @@ namespace ProjectPlannerASP5.Migrations
                     b.Annotation("Relational:TableName", "AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("ProjectPlannerASP5.Entites.AppUser", b =>
+            modelBuilder.Entity("ProjectPlannerASP5.Models.AppUser", b =>
                 {
                     b.Property<string>("Id");
 
@@ -200,14 +201,14 @@ namespace ProjectPlannerASP5.Migrations
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("ProjectPlannerASP5.Entites.AppUser")
+                    b.HasOne("ProjectPlannerASP5.Models.AppUser")
                         .WithMany()
                         .ForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("ProjectPlannerASP5.Entites.AppUser")
+                    b.HasOne("ProjectPlannerASP5.Models.AppUser")
                         .WithMany()
                         .ForeignKey("UserId");
                 });
@@ -218,7 +219,7 @@ namespace ProjectPlannerASP5.Migrations
                         .WithMany()
                         .ForeignKey("RoleId");
 
-                    b.HasOne("ProjectPlannerASP5.Entites.AppUser")
+                    b.HasOne("ProjectPlannerASP5.Models.AppUser")
                         .WithMany()
                         .ForeignKey("UserId");
                 });
@@ -232,7 +233,7 @@ namespace ProjectPlannerASP5.Migrations
 
             modelBuilder.Entity("ProjectPlannerASP5.Entites.Project", b =>
                 {
-                    b.HasOne("ProjectPlannerASP5.Entites.AppUser")
+                    b.HasOne("ProjectPlannerASP5.Models.AppUser")
                         .WithMany()
                         .ForeignKey("CreatorId");
                 });

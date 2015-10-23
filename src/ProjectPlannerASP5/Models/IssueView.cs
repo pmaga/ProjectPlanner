@@ -1,6 +1,7 @@
 using System;
+using ProjectPlannerASP5.Entites;
 
-namespace ProjectPlannerASP5.Entites
+namespace ProjectPlannerASP5.Models
 {
     public class IssueView
     {

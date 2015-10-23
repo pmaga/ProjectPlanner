@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNet.Identity;
-using ProjectPlannerASP5.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using ProjectPlannerASP5.Entites;
 
-namespace ProjectPlannerASP5.Entites
+namespace ProjectPlannerASP5.Models
 {
     public class ProjectPlannerContextSeedData
     {

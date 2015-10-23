@@ -4,6 +4,7 @@ using Microsoft.Data.Entity.Infrastructure;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
 using ProjectPlannerASP5.Entites;
+using ProjectPlannerASP5.Models;
 
 namespace ProjectPlannerASP5.Migrations
 {

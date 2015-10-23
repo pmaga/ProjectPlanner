@@ -3,6 +3,7 @@ using ProjectPlannerASP5.ViewModels;
 using ProjectPlannerASP5.Services;
 using ProjectPlannerASP5.Entites;
 using Microsoft.AspNet.Authorization;
+using ProjectPlannerASP5.Models;
 
 namespace ProjectPlannerASP5.Controllers.Web
 {

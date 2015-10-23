@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
-using ProjectPlannerASP5.Models;
+using ProjectPlannerASP5.Entites;
 
-namespace ProjectPlannerASP5.Entites
+namespace ProjectPlannerASP5.Models
 {
     public class ProjectPlannerContext : IdentityDbContext<AppUser>
     {
