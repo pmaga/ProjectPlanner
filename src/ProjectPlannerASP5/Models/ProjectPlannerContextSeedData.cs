@@ -46,11 +46,11 @@ namespace ProjectPlannerASP5.Models
                     {
                         new Issue { IssueNumber = 1, Summary = "Title", UserName = "pawelmaga", LastChangeDate = DateTime.UtcNow, Description = "Opis", Status = IssueStatus.Added, CreateDate = DateTime.UtcNow, DueDate = DateTime.Now.AddDays(14) },
                         new Issue { IssueNumber = 2, Summary = "Title 2", UserName = "pawelmaga", LastChangeDate = DateTime.UtcNow, Description = "Opis", Status = IssueStatus.Added, CreateDate = DateTime.UtcNow, DueDate = DateTime.Now.AddDays(14) },
-                        new Issue { IssueNumber = 3, Summary = "Title 3", UserName = "pawelmaga", LastChangeDate = DateTime.UtcNow, Description = "Opis", Status = IssueStatus.Added, CreateDate = DateTime.UtcNow, DueDate = DateTime.Now.AddDays(14) },
+                        new Issue { IssueNumber = 3, Summary = "Title 3", UserName = "pawelmaga", LastChangeDate = DateTime.UtcNow, Description = "Opis", Status = IssueStatus.Modified, CreateDate = DateTime.UtcNow, DueDate = DateTime.Now.AddDays(14) },
                         new Issue { IssueNumber = 4, Summary = "Title 4", UserName = "pawelmaga", LastChangeDate = DateTime.UtcNow, Description = "Opis", Status = IssueStatus.Added, CreateDate = DateTime.UtcNow, DueDate = DateTime.Now.AddDays(14) },
                         new Issue { IssueNumber = 5, Summary = "Title 5", UserName = "pawelmaga", LastChangeDate = DateTime.UtcNow, Description = "Opis", Status = IssueStatus.Added, CreateDate = DateTime.UtcNow, DueDate = DateTime.Now.AddDays(14) },
-                        new Issue { IssueNumber = 6, Summary = "Title 6", UserName = "pawelmaga", LastChangeDate = DateTime.UtcNow, Description = "Opis", Status = IssueStatus.Added, CreateDate = DateTime.UtcNow, DueDate = DateTime.Now.AddDays(14) },
-                        new Issue { IssueNumber = 7, Summary = "Title 7", UserName = "pawelmaga", LastChangeDate = DateTime.UtcNow, Description = "Opis", Status = IssueStatus.Added, CreateDate = DateTime.UtcNow, DueDate = DateTime.Now.AddDays(14) }
+                        new Issue { IssueNumber = 6, Summary = "Title 6", UserName = "pawelmaga", LastChangeDate = DateTime.UtcNow, Description = "Opis", Status = IssueStatus.Modified, CreateDate = DateTime.UtcNow, DueDate = DateTime.Now.AddDays(14) },
+                        new Issue { IssueNumber = 7, Summary = "Title 7", UserName = "pawelmaga", LastChangeDate = DateTime.UtcNow, Description = "Opis", Status = IssueStatus.Modified, CreateDate = DateTime.UtcNow, DueDate = DateTime.Now.AddDays(14) }
                     }
                 };
 

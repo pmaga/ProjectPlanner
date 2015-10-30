@@ -1,5 +1,7 @@
 using System;
 using ProjectPlannerASP5.Entities;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace ProjectPlannerASP5.Models
 {
@@ -15,6 +17,7 @@ namespace ProjectPlannerASP5.Models
         public string Summary { get; set; }
         public string Description { get; set; }
 
+        [JsonConverter(typeof(StringEnumConverter))]
         public IssueStatus Status { get; set; }
 
         public string Reporter { get; set; }

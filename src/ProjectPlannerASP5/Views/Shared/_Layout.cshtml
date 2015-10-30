@@ -23,7 +23,7 @@
     <div id="wrapper">
         @Html.Partial("_Navigation")
 
-        <div id="page-wrapper" class="gray-bg">
+        <div id="page-wrapper" class="gray-bg" ng-app="app-projects">
             @Html.Partial("_TopNavbar")
 
             @RenderBody()
@@ -38,6 +38,8 @@
     <script type="text/javascript" src="~/lib/slimScroll/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="~/js/site.js"></script>
     <script type="text/javascript" src="~/js/modalWindows.js"></script>
+    <script type="text/javascript" src="~/lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="~/js/app-projects.js"></script>
 
     @RenderSection("Scripts", false)
 
