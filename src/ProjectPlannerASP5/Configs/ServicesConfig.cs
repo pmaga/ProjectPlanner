@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.DependencyInjection;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using ProjectPlannerASP5.Controllers.Web;
 using ProjectPlannerASP5.Models;
@@ -33,6 +34,7 @@ namespace ProjectPlannerASP5.Configs
             .AddJsonOptions(opt =>
             {
                 opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                opt.SerializerSettings.Converters.Add(new StringEnumConverter());
             });
 
             services.AddIdentity<AppUser, IdentityRole>(config =>
