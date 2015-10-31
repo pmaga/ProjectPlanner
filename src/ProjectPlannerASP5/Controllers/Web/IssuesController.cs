@@ -25,6 +25,18 @@ namespace ProjectPlannerASP5.Controllers.Web
             return View(issues);
         }
 
+
+        [Route("Create")]
+        //[AjaxOnly]
+        public PartialViewResult Create()
+        {
+            @ViewBag.Title = "Add a new task";
+            @ViewBag.AdditionalInfo = "Here you can add a new task";
+
+            //var vm = new EditIssueViewModel();
+
+            return PartialView("Edit");
+        }
         //[Route("Edit/{id}")]
         //[AjaxOnly]
         public PartialViewResult Edit(int id)
@@ -54,6 +66,16 @@ namespace ProjectPlannerASP5.Controllers.Web
                 return RedirectToAction("Index");
             }
             return PartialView("Edit", viewModel);
+        }
+
+
+        [HttpPost]
+        [Route("Delete")]
+        public ActionResult Delete(int id)
+        {
+            _issueService.Delete(id);
+
+            return RedirectToAction("Index");
         }
     }
 }

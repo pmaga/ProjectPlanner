@@ -10,6 +10,7 @@
         var vm = this;
 
         vm.issues = [];
+        vm.issue = [];
 
         $http.get("/api/projects/jrs/issues")
             .then(function (response) {
@@ -28,7 +29,14 @@
             } else if (status === "Warning") {
                 return "label label-warning";
             }
+        };
 
+        vm.showIssueDialog = function ($dialog) {
+            $dialog.dialog({}).open("~/Views/Issues/Edit.cshtml");
+        }
+
+        vm.saveIssue = function ($window) {
+            $window.alert(vm.issue.summary);
         };
     }
 })();
