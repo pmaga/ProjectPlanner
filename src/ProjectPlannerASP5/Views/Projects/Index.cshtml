@@ -1,6 +1,4 @@
-﻿@model List<ProjectView>
-
-@{
+﻿@{
     ViewBag.Title = "Projects";
 }
 
@@ -8,20 +6,4 @@
     <script type="text/javascript" src="~/js/projectsController.js"></script>
 }
 
-<div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-lg-12">
-        <h2>@ViewBag.Title</h2>
-        <ol class="breadcrumb">
-            <li>
-                <a asp-controller="Project" asp-action="Index">Home</a>
-            </li>
-            <li class="active">
-                <strong>Projects</strong>
-            </li>
-        </ol>
-    </div>
-</div>
-
-<div>
-    <div ng-view></div>
-</div>
+<div ng-view></div>

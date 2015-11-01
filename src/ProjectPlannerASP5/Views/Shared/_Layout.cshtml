@@ -20,10 +20,10 @@
 </head>
 
 <body>
-    <div id="wrapper">
+    <div id="wrapper" ng-app="app-projects">
         @Html.Partial("_Navigation")
 
-        <div id="page-wrapper" class="gray-bg" ng-app="app-projects">
+        <div id="page-wrapper" class="gray-bg">
             @Html.Partial("_TopNavbar")
 
             @RenderBody()
