@@ -5,6 +5,7 @@ using ProjectPlannerASP5.Services;
 using ProjectPlannerASP5.ViewModels;
 using System;
 using System.Net;
+using System.Security.Claims;
 
 namespace ProjectPlannerASP5.Controllers.Api
 {
@@ -24,8 +25,14 @@ namespace ProjectPlannerASP5.Controllers.Api
         [HttpGet("")]
         public JsonResult Get()
         {
-            var projects = _projectsService.GetProjects(User.Identity.Name);
-            
+            var currentUserId = User.GetUserId();
+            var projects = _projectsService.GetProjects(currentUserId);
+           
+            if (projects == null)
+            {
+                //Response.StatusCode = (int)HttpStatusCode.NoContent;
+            }
+
             return Json(projects);
         }
 

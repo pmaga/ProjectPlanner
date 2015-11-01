@@ -8,6 +8,8 @@ using AutoMapper;
 using Microsoft.Data.Entity;
 using ProjectPlannerASP5.Entities;
 using ProjectPlannerASP5.Models;
+using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
 
 namespace ProjectPlannerASP5.Services
 {
@@ -22,12 +24,12 @@ namespace ProjectPlannerASP5.Services
             _logger = logger;
         }
 
-        public List<ProjectView> GetProjects(string userName)
+        public List<ProjectView> GetProjects(string userId)
         {
             try
             {
                 return _context.Projects.Include(p => p.Creator)
-                    .Where(n => n.Creator.UserName == userName)
+                    //.Where(n => n.Users.Any(user => user.UserId == userId)) //TODO: Weryfikacja bug EF 7
                     .Project().To<ProjectView>().ToList();
             }
             catch (Exception ex)

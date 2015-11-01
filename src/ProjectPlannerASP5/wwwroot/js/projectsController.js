@@ -2,36 +2,34 @@
 
 (function () {
 
-	"use strict";
+    "use strict";
 
-	angular.module("app-projects")
+    angular.module("app-projects")
 		.controller("projectsController", projectsController);
 
-	function projectsController($http) {
+    function projectsController($http) {
 
-		var vm = this;
+        var vm = this;
 
-		vm.projects = [];
-		vm.errorMessage = "";
-		vm.isBusy = true;
+        vm.projects = [];
+        vm.errorMessage = "";
+        vm.isBusy = true;
 
-		$http.get("api/projects")
+        $http.get("api/projects")
 			.then(function (response) {
-
 			    angular.copy(response.data, vm.projects);
-
 			},
 			function (error) {
 			    vm.errorMessage = "Failed to load data: " + error;
 			})
-            .finally(function() {
+            .finally(function () {
                 vm.isBusy = false;
             });
 
-		vm.getStatusClass = function (status) {
-		    if (status === "Active")
-		        return "label label-primary";
-		}
-	}
+        vm.getStatusClass = function (status) {
+            if (status === "Active")
+                return "label label-primary";
+        }
+    }
 
 })();

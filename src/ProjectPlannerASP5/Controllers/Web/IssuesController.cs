@@ -43,7 +43,7 @@ namespace ProjectPlannerASP5.Controllers.Web
             
             @ViewBag.Title = string.Format("Edit task: {{ProjectName}}-{0}", taskVm.IssueNumber);
             @ViewBag.AdditionalInfo = "Here you can edit your task";
-
+            
             return PartialView("Edit", taskVm);
         }
 

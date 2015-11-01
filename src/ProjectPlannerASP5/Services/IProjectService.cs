@@ -1,12 +1,13 @@
 ﻿using ProjectPlannerASP5.ViewModels;
 using System.Collections.Generic;
 using ProjectPlannerASP5.Models;
+using System.Threading.Tasks;
 
 namespace ProjectPlannerASP5.Services
 {
     public interface IProjectService
     {
-        List<ProjectView> GetProjects(string userName);
+        List<ProjectView> GetProjects(string userId);
 
         EditProjectViewModel GetProject(int id);
 
