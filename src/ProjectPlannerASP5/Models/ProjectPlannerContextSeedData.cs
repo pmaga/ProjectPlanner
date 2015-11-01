@@ -31,16 +31,17 @@ namespace ProjectPlannerASP5.Models
                 await _userManager.CreateAsync(newUser, "P@ssw0rd");
             }
 
-
             if (!_context.Projects.Any())
             {
+                var user = await _userManager.FindByEmailAsync("pawel.p.maga@gmail.com");
+
                 // Add new data
                 var project = new Project
                 {
                     Code = "JRS",
                     Name = "JRSSSS",
                     CreateDate = DateTime.UtcNow,
-                    Creator = await _userManager.FindByEmailAsync("pawel.p.maga@gmail.com"),
+                    Creator = user,
                     Status = ProjectStatus.Active,
                     Issues = new List<Issue>
                     {
@@ -56,6 +57,12 @@ namespace ProjectPlannerASP5.Models
 
                 _context.Projects.Add(project);
                 _context.Issues.AddRange(project.Issues);
+                _context.SaveChanges();
+
+                project.Users = new List<ProjectUser>
+                {
+                    new ProjectUser { Project = project, ProjectId = project.Id, User = user, UserId = user.Id }
+                };
 
                 _context.SaveChanges();
                 

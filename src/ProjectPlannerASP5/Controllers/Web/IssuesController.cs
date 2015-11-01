@@ -20,9 +20,7 @@ namespace ProjectPlannerASP5.Controllers.Web
 
         public IActionResult Index()
         {
-            var issues = _issueService.GetIssues();
-
-            return View(issues);
+            return View();
         }
 
 

@@ -22,7 +22,9 @@
     </div>
 </div>
 
-<div class="wrapper wrapper-content animated fadeInRight">
+<div class="row text-danger" ng-show="vm.errorMessage">{{vm.errorMessage}}</div>
+
+<div class="wrapper wrapper-content animated fadeInRight" ng-show="!vm.errorMessage">
     <div class="ibox">
         <div class="ibox-title">
             <h5>Projects</h5>
@@ -45,6 +47,10 @@
             </div>
             <div class="row m-t-md m-b-sm">
                 <strong>Found {{ vm.projects.length }} projects.</strong>
+            </div>
+
+            <div ng-show="vm.isBusy" class="text-center">
+                <i class="fa fa-spinner fa-spin"></i>Loading...
             </div>
 
             <div class="project-list">

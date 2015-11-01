@@ -16,9 +16,7 @@ namespace ProjectPlannerASP5.Controllers.Web
 
         public IActionResult Index()
         {
-            var projects = _projectsService.GetProjects(User.Identity.Name);
-
-            return View(projects);
+            return View();
         }
     }
 }

@@ -24,6 +24,7 @@ namespace ProjectPlannerASP5.Entities
         public virtual AppUser Creator { get; set; }
 
         public virtual ICollection<Issue> Issues { get; set; }
+        public virtual ICollection<ProjectUser> Users { get; set; }
 
         public Project()
         {

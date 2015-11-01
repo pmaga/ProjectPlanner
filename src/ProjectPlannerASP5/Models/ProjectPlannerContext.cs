@@ -25,6 +25,8 @@ namespace ProjectPlannerASP5.Models
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<ProjectUser>().HasKey(n => new { n.ProjectId, n.UserId });
+
             base.OnModelCreating(builder);
         }
     }

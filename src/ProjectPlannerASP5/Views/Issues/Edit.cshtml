@@ -18,16 +18,18 @@
 
     <form name="issueForm" role="form" ng-submit="vm.saveIssue()">
         <input name="Id" id="Id" type="hidden" value="{{issue.id}}" />
-
         @*<div asp-validation-summary="ValidationSummary.ModelOnly"></div>*@
 
         <div class="modal-body">
             <div class="form-group">
                 <label for="summary" class="col-sm-2 control-label">Summary</label>
                 <div class="col-sm-10">
-                    <input name="summary" ng-model="vm.issue.summary" class="form-control" />
+                    <input name="summary" ng-model="vm.issue.summary" class="form-control" required ng-minlength="5" ng-maxlength="255" />
                     <span class="help-block m-b-none">Summary here</span>
                 </div>
+                <span ng-show="issueForm.summary.$error.required" class="text=warning">Summary field is required.</span>
+                <span ng-show="issueForm.summary.$error.minlength" class="text=warning">Summary must be atleast 5 characters.</span>
+                <span ng-show="issueForm.summary.$error.maxlength" class="text=warning">Summary may have a maximum of 255 characters.</span>
                 @*<span asp-validation-for="Summary"></span>*@
             </div>
             <div class="form-group">
@@ -54,7 +56,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary" ng-disabled="issueForm.$invalid">Save changes</button>
         </div>
     </form>
 </div>
