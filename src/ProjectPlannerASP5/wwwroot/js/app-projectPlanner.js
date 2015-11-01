@@ -1,7 +1,7 @@
 // app-projects.js
 (function () {
 
-    angular.module("app-projects", ["simpleControls", "ngRoute"])
+    angular.module("app-projectPlanner", ["simpleControls", "ngRoute"])
         .config(function ($routeProvider) {
             $routeProvider.when("/", {
                 controller: "projectsController",

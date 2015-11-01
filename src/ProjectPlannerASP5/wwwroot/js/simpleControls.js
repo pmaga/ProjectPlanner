@@ -2,7 +2,7 @@
 (function () {
     "use strict";
 
-    angular.module("app-projects", [])
+    angular.module("simpleControls", [])
         .directive("waitCursor", waitCursor);
 
     function waitCursor() {

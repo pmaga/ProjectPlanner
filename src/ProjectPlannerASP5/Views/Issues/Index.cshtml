@@ -22,7 +22,6 @@
 </div>
 
 <div class="wrapper wrapper-content animated fadeInRight" ng-controller="issuesController as vm">
-
     <div class="row text-danger" ng-show="vm.errorMessage">{{ vm.errorMessage }}</div>
 
     <div class="row" ng-show="!vm.errorMessage">
@@ -33,7 +32,7 @@
                     <a asp-controller="Issues" asp-action="Create" class="btn btn-primary btn-xs modal-link">Add new issue</a>
                 </div>
             </div>
-            <wait-cursor class="ibox-content">
+            <div class="ibox-content">
                 <div class="row m-b-sm m-t-sm">
                     <div class="col-md-1">
                         <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> Refresh</button>
@@ -73,7 +72,7 @@
                                         {{ issue.issueFullNumber }}
                                     </a>
                                     <small>
-                                       {{ issue.summary }}
+                                        {{ issue.summary }}
                                     </small>
                                 </td>
                                 <td>
