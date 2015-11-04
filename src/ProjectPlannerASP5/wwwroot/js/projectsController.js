@@ -4,7 +4,7 @@
 
     "use strict";
 
-    angular.module("app-projects")
+    angular.module("projectsModule")
 		.controller("projectsController", projectsController);
 
     function projectsController($http) {

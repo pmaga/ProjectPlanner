@@ -5,7 +5,7 @@
 
     "use strict";
 
-    angular.module("app-projects")
+    angular.module("issuesModule")
         .controller("issuesController", issuesController);
 
     function issuesController($http) {

@@ -1,2 +1,6 @@
 /artifacts
 /src/ProjectPlannerASP5/node_modules
+/src/ProjectPlannerASP5/*.user
+*.dll
+bin
+obj

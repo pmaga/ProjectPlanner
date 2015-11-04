@@ -7,11 +7,8 @@ namespace ProjectPlannerASP5.Controllers.Web
     [Authorize]
     public class ProjectsController : Controller
     {
-        private readonly IProjectService _projectsService;
-
-        public ProjectsController(IProjectService projectsService)
+        public ProjectsController()
         {
-            _projectsService = projectsService;
         }
 
         public IActionResult Index()
