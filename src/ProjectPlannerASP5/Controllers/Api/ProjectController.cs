@@ -7,6 +7,7 @@ using System;
 using System.Net;
 using System.Security.Claims;
 using ProjectPlanner.Projects.Interfaces.Presentation;
+using System.Linq;
 
 namespace ProjectPlannerASP5.Controllers.Api
 {
@@ -27,13 +28,16 @@ namespace ProjectPlannerASP5.Controllers.Api
         public JsonResult Get()
         {
             var projects = _projectFinder.FindProjects();
-           
+
             if (projects == null)
             {
                 //Response.StatusCode = (int)HttpStatusCode.NoContent;
+                return Json(null);
             }
-
-            return Json(projects);
+            else
+            {
+                return Json(projects.ToList());
+            }
         }
 
         [HttpPost("")]

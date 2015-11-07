@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0-*",
+  "description": "ProjectPlanner.Infrastructure.Orm Class Library",
+  "authors": [ "Pawel" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+
+  "frameworks": {
+    "dnx451": {
+      "dependencies": {
+        "NHibernate": "4.0.4.4000",
+        "FluentNHibernate": "2.0.3",
+        "dnx-clr-win-x86": "1.0.0-beta8-15736"
+      }
+    }
+  }
+}
