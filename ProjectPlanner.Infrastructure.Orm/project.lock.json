@@ -38,6 +38,13 @@
         "runtime": {
           "lib/net40/NHibernate.dll": {}
         }
+      },
+      "ProjectPlanner.Cqrs.Base/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+        }
       }
     },
     "DNX,Version=v4.5.1/win7-x86": {
@@ -75,6 +82,13 @@
         },
         "runtime": {
           "lib/net40/NHibernate.dll": {}
+        }
+      },
+      "ProjectPlanner.Cqrs.Base/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736"
         }
       }
     },
@@ -114,10 +128,21 @@
         "runtime": {
           "lib/net40/NHibernate.dll": {}
         }
+      },
+      "ProjectPlanner.Cqrs.Base/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+        }
       }
     }
   },
   "libraries": {
+    "ProjectPlanner.Cqrs.Base/1.0.0": {
+      "type": "project",
+      "path": "../ProjectPlanner.Cqrs.Base/project.json"
+    },
     "dnx-clr-win-x86/1.0.0-beta8-15736": {
       "type": "package",
       "serviceable": true,
@@ -210,11 +235,13 @@
     }
   },
   "projectFileDependencyGroups": {
-    "": [],
+    "": [
+      "ProjectPlanner.Cqrs.Base >= 1.0.0-*",
+      "dnx-clr-win-x86 >= 1.0.0-beta8-15736"
+    ],
     "DNX,Version=v4.5.1": [
       "NHibernate >= 4.0.4.4000",
-      "FluentNHibernate >= 2.0.3",
-      "dnx-clr-win-x86 >= 1.0.0-beta8-15736"
+      "FluentNHibernate >= 2.0.3"
     ]
   }
 }

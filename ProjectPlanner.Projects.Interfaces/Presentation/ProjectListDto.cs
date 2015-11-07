@@ -5,7 +5,8 @@ namespace ProjectPlanner.Projects.Interfaces.Presentation
 {
     public class ProjectListDto
     {
-        public string Code { get; set; }
+        public int Id { get; private set; }
+        public string Code { get; private set; }
         public ProjectStatus Status { get; set; }
 
         public int PercentageCompleteness { get; set; }
@@ -17,8 +18,9 @@ namespace ProjectPlanner.Projects.Interfaces.Presentation
             
         }
 
-        public ProjectListDto(string code, ProjectStatus status, int percentageCompleteness, DateTime createDate)
+        public ProjectListDto(int id, string code, ProjectStatus status, int percentageCompleteness, DateTime createDate)
         {
+            Id = id;
             Code = code;
             Status = status;
             PercentageCompleteness = percentageCompleteness;

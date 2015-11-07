@@ -6,19 +6,16 @@
   "projectUrl": "",
   "licenseUrl": "",
   "frameworks": {
-    "dnx451": { },
-    "dnxcore50": {
+    "dnx451": {
       "dependencies": {
-        "Microsoft.CSharp": "4.0.1-beta-23409",
-        "System.Collections": "4.0.11-beta-23409",
-        "System.Linq": "4.0.1-beta-23409",
-        "System.Runtime": "4.0.21-beta-23409",
-        "System.Threading": "4.0.11-beta-23409"
       }
     }
   },
   "dependencies": {
     "ProjectPlanner.Cqrs.Base": "1.0.0-*",
-    "ProjectPlanner.Projects.Interfaces": "1.0.0-*"
+    "ProjectPlanner.Projects.Interfaces": "1.0.0-*",
+    "dnx-clr-win-x86": "1.0.0-beta8-15736",
+    "NHibernate": "4.0.4.4000",
+    "ProjectPlanner.Infrastructure.Orm": "1.0.0-*"
   }
 }

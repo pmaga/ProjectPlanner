@@ -6,6 +6,27 @@
       "dnx-clr-win-x86/1.0.0-beta8-15736": {
         "type": "package"
       },
+      "FluentNHibernate/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "NHibernate": "4.0.0"
+        },
+        "compile": {
+          "lib/net40/FluentNHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net40/FluentNHibernate.dll": {}
+        }
+      },
+      "Iesi.Collections/4.0.0.4000": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Iesi.Collections.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Iesi.Collections.dll": {}
+        }
+      },
       "Microsoft.Dnx.Compilation.Abstractions/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -136,21 +157,52 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "NHibernate/4.0.4.4000": {
+        "type": "package",
+        "dependencies": {
+          "Iesi.Collections": "[4.0.0, 5.0.0)"
+        },
+        "compile": {
+          "lib/net40/NHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net40/NHibernate.dll": {}
+        }
+      },
       "ProjectPlanner.Cqrs.Base/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1"
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+        }
+      },
+      "ProjectPlanner.Infrastructure.Orm/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736",
+          "FluentNHibernate": "2.0.3",
+          "NHibernate": "4.0.4.4000",
+          "ProjectPlanner.Cqrs.Base": "1.0.0"
+        }
       },
       "ProjectPlanner.Projects/1.0.0": {
         "type": "project",
         "framework": "DNX,Version=v4.5.1",
         "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736",
+          "NHibernate": "4.0.4.4000",
           "ProjectPlanner.Cqrs.Base": "1.0.0",
+          "ProjectPlanner.Infrastructure.Orm": "1.0.0",
           "ProjectPlanner.Projects.Interfaces": "1.0.0"
         }
       },
       "ProjectPlanner.Projects.Interfaces/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1"
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+        }
       },
       "xunit/2.1.0": {
         "type": "package",
@@ -267,6 +319,27 @@
       "dnx-clr-win-x86/1.0.0-beta8-15736": {
         "type": "package"
       },
+      "FluentNHibernate/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "NHibernate": "4.0.0"
+        },
+        "compile": {
+          "lib/net40/FluentNHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net40/FluentNHibernate.dll": {}
+        }
+      },
+      "Iesi.Collections/4.0.0.4000": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Iesi.Collections.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Iesi.Collections.dll": {}
+        }
+      },
       "Microsoft.Dnx.Compilation.Abstractions/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -397,21 +470,52 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "NHibernate/4.0.4.4000": {
+        "type": "package",
+        "dependencies": {
+          "Iesi.Collections": "[4.0.0, 5.0.0)"
+        },
+        "compile": {
+          "lib/net40/NHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net40/NHibernate.dll": {}
+        }
+      },
       "ProjectPlanner.Cqrs.Base/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1"
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+        }
+      },
+      "ProjectPlanner.Infrastructure.Orm/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736",
+          "FluentNHibernate": "2.0.3",
+          "NHibernate": "4.0.4.4000",
+          "ProjectPlanner.Cqrs.Base": "1.0.0"
+        }
       },
       "ProjectPlanner.Projects/1.0.0": {
         "type": "project",
         "framework": "DNX,Version=v4.5.1",
         "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736",
+          "NHibernate": "4.0.4.4000",
           "ProjectPlanner.Cqrs.Base": "1.0.0",
+          "ProjectPlanner.Infrastructure.Orm": "1.0.0",
           "ProjectPlanner.Projects.Interfaces": "1.0.0"
         }
       },
       "ProjectPlanner.Projects.Interfaces/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1"
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+        }
       },
       "xunit/2.1.0": {
         "type": "package",
@@ -528,6 +632,27 @@
       "dnx-clr-win-x86/1.0.0-beta8-15736": {
         "type": "package"
       },
+      "FluentNHibernate/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "NHibernate": "4.0.0"
+        },
+        "compile": {
+          "lib/net40/FluentNHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net40/FluentNHibernate.dll": {}
+        }
+      },
+      "Iesi.Collections/4.0.0.4000": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Iesi.Collections.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Iesi.Collections.dll": {}
+        }
+      },
       "Microsoft.Dnx.Compilation.Abstractions/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -658,21 +783,52 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "NHibernate/4.0.4.4000": {
+        "type": "package",
+        "dependencies": {
+          "Iesi.Collections": "[4.0.0, 5.0.0)"
+        },
+        "compile": {
+          "lib/net40/NHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/net40/NHibernate.dll": {}
+        }
+      },
       "ProjectPlanner.Cqrs.Base/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1"
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+        }
+      },
+      "ProjectPlanner.Infrastructure.Orm/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736",
+          "FluentNHibernate": "2.0.3",
+          "NHibernate": "4.0.4.4000",
+          "ProjectPlanner.Cqrs.Base": "1.0.0"
+        }
       },
       "ProjectPlanner.Projects/1.0.0": {
         "type": "project",
         "framework": "DNX,Version=v4.5.1",
         "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736",
+          "NHibernate": "4.0.4.4000",
           "ProjectPlanner.Cqrs.Base": "1.0.0",
+          "ProjectPlanner.Infrastructure.Orm": "1.0.0",
           "ProjectPlanner.Projects.Interfaces": "1.0.0"
         }
       },
       "ProjectPlanner.Projects.Interfaces/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1"
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+        }
       },
       "xunit/2.1.0": {
         "type": "package",
@@ -791,6 +947,10 @@
       "type": "project",
       "path": "../ProjectPlanner.Cqrs.Base/project.json"
     },
+    "ProjectPlanner.Infrastructure.Orm/1.0.0": {
+      "type": "project",
+      "path": "../ProjectPlanner.Infrastructure.Orm/project.json"
+    },
     "ProjectPlanner.Projects/1.0.0": {
       "type": "project",
       "path": "../ProjectPlanner.Projects/project.json"
@@ -840,6 +1000,29 @@
         "dnx-clr-win-x86.1.0.0-beta8-15736.nupkg",
         "dnx-clr-win-x86.1.0.0-beta8-15736.nupkg.sha512",
         "dnx-clr-win-x86.nuspec"
+      ]
+    },
+    "FluentNHibernate/2.0.3": {
+      "type": "package",
+      "sha512": "qlnjj/a2ClTVWLw0uESCBsmd5r+LaeNXoaUiVyeGzpXmqTs/mfcgZP+GO63xp3VTq4ydNBHKBuWMFMndW/uzOQ==",
+      "files": [
+        "FluentNHibernate.2.0.3.nupkg",
+        "FluentNHibernate.2.0.3.nupkg.sha512",
+        "FluentNHibernate.nuspec",
+        "lib/net40/FluentNHibernate.dll",
+        "lib/net40/FluentNHibernate.pdb",
+        "lib/net40/FluentNHibernate.XML"
+      ]
+    },
+    "Iesi.Collections/4.0.0.4000": {
+      "type": "package",
+      "sha512": "fLQKwZovMOhjte47Op+2YWLpmncQ/siA7hOdmG2eBLTFjp81s+gGkkGnDetOhBqYnmWK8g2kyx1DP9uNaJ68Ew==",
+      "files": [
+        "Iesi.Collections.4.0.0.4000.nupkg",
+        "Iesi.Collections.4.0.0.4000.nupkg.sha512",
+        "Iesi.Collections.nuspec",
+        "lib/net40/Iesi.Collections.dll",
+        "lib/net40/Iesi.Collections.xml"
       ]
     },
     "Microsoft.Dnx.Compilation.Abstractions/1.0.0-beta8": {
@@ -973,6 +1156,30 @@
         "Newtonsoft.Json.7.0.1.nupkg.sha512",
         "Newtonsoft.Json.nuspec",
         "tools/install.ps1"
+      ]
+    },
+    "NHibernate/4.0.4.4000": {
+      "type": "package",
+      "sha512": "jAKwpGLeGai8KWj1e3p1K882vlZUJaQeH4RTuscKTyXhsEsiQEe2uKs9S3bY91aPyygMiPXg1CyRopi1K+e5aA==",
+      "files": [
+        "ConfigurationTemplates/FireBird.cfg.xml",
+        "ConfigurationTemplates/MSSQL.cfg.xml",
+        "ConfigurationTemplates/MySql.cfg.xml",
+        "ConfigurationTemplates/Oracle.cfg.xml",
+        "ConfigurationTemplates/PostgreSQL.cfg.xml",
+        "ConfigurationTemplates/SQLite.cfg.xml",
+        "ConfigurationTemplates/SybaseASE.cfg.xml",
+        "ConfigurationTemplates/SybaseSQLAnywhere.cfg.xml",
+        "lib/net40/NHibernate.dll",
+        "lib/net40/NHibernate.xml",
+        "NHibernate.4.0.4.4000.nupkg",
+        "NHibernate.4.0.4.4000.nupkg.sha512",
+        "NHibernate.license.txt",
+        "NHibernate.nuspec",
+        "NHibernate.readme.html",
+        "NHibernate.releasenotes.txt",
+        "nhibernate-configuration.xsd",
+        "nhibernate-mapping.xsd"
       ]
     },
     "xunit/2.1.0": {
