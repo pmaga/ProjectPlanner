@@ -8,8 +8,6 @@ using AutoMapper;
 using Microsoft.Data.Entity;
 using ProjectPlannerASP5.Entities;
 using ProjectPlannerASP5.Models;
-using Microsoft.AspNet.Identity;
-using System.Threading.Tasks;
 
 namespace ProjectPlannerASP5.Services
 {

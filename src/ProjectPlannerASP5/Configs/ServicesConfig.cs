@@ -6,11 +6,12 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.DependencyInjection;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-using ProjectPlannerASP5.Controllers.Web;
 using ProjectPlannerASP5.Models;
 using ProjectPlannerASP5.Services;
 using System.Net;
 using System.Threading.Tasks;
+using ProjectPlanner.Cqrs.Base.DDD.Application;
+using ProjectPlannerASP5.Application;
 
 namespace ProjectPlannerASP5.Configs
 {
@@ -78,6 +79,7 @@ namespace ProjectPlannerASP5.Configs
             services.AddTransient<ProjectPlannerContextSeedData>();
             services.AddScoped<IIssueService, IssueService>();
             services.AddScoped<IProjectService, ProjectService>();
+            services.AddScoped<ISystemUser, SystemUser>();
         }
     }
 }

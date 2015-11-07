@@ -5,14 +5,6 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Builder;
 using ProjectPlannerASP5.Configs;
 using Microsoft.Framework.Logging;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Authentication.Cookies;
-using ProjectPlannerASP5.Services;
-using System.Threading.Tasks;
-using System.Net;
-using Newtonsoft.Json.Serialization;
 using ProjectPlannerASP5.Models;
 
 namespace ProjectPlannerASP5

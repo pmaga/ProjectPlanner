@@ -1,6 +1,5 @@
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Filters;
 
 namespace ProjectPlannerASP5.Controllers.Web
 {

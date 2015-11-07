@@ -7,8 +7,7 @@
   "licenseUrl": "",
   "frameworks": {
     "dnx451": {
-      "dependencies": {
-      }
+  
     },
     "dnxcore50": {
       "dependencies": {
@@ -28,5 +27,5 @@
   },
   "commands": {
     "test": "xunit.runner.dnx"
-  },
+  }
 }

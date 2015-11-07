@@ -2,6 +2,7 @@
 using Xunit;
 using ProjectPlanner.Projects.Domain;
 using ProjectPlanner.Projects.Interfaces.Domain.Exceptions;
+using ProjectPlanner.Projects.Tests.Mocks;
 
 namespace ProjectPlanner.Projects.Tests.Domain
 {
@@ -12,7 +13,9 @@ namespace ProjectPlanner.Projects.Tests.Domain
         public ProjectTests()
         {
             var systemUser = new SystemUser();
-            _projectFactory = new ProjectFactory(systemUser);
+            var projectRepository = new ProjectRepository();
+
+            _projectFactory = new ProjectFactory(systemUser, projectRepository);
         }
 
         [Fact]

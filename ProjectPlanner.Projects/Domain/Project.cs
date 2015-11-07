@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using ProjectPlanner.Cqrs.Base.DDD.Domain;
+using ProjectPlanner.Projects.Interfaces.Domain;
 using ProjectPlanner.Projects.Interfaces.Domain.Exceptions;
 
 namespace ProjectPlanner.Projects.Domain
@@ -12,7 +13,7 @@ namespace ProjectPlanner.Projects.Domain
         public string Name { get; private set; }
 
         public DateTime CreateDate { get; private set; }
-        public ProjectStatus Status { get; private set; }
+        public ProjectStatus Status { get; private set; } //TODO: Zmiana statusu na Modified po zapisie
 
         public int CreatorUserId { get; private set; }
 
@@ -21,6 +22,8 @@ namespace ProjectPlanner.Projects.Domain
 
         private Project()
         {
+            CreateDate = DateTime.UtcNow;
+
             Issues = new List<Issue>();
             Users = new List<int>();
         }
@@ -84,7 +87,7 @@ namespace ProjectPlanner.Projects.Domain
         {
             if (Status == ProjectStatus.Closed)
             {
-                throw new ProjectOperationException("Operation is not allowed in closed project");
+                throw new ProjectOperationException("Operation is not allowed in closed project.");
             }
         }
     }

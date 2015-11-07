@@ -1,7 +1,5 @@
 using System;
 using ProjectPlannerASP5.Entities;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace ProjectPlannerASP5.Models
 {

@@ -1,7 +1,6 @@
 ﻿using ProjectPlannerASP5.ViewModels;
 using System.Collections.Generic;
 using ProjectPlannerASP5.Models;
-using System.Threading.Tasks;
 
 namespace ProjectPlannerASP5.Services
 {

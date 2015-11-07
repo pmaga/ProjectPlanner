@@ -6,6 +6,7 @@ using ProjectPlannerASP5.ViewModels;
 using System;
 using System.Net;
 using System.Security.Claims;
+using ProjectPlanner.Projects.Interfaces.Presentation;
 
 namespace ProjectPlannerASP5.Controllers.Api
 {
@@ -14,19 +15,18 @@ namespace ProjectPlannerASP5.Controllers.Api
     public class ProjectController : Controller
     {
         private readonly ILogger<ProjectController> _logger;
-        private readonly IProjectService _projectsService;
+        private readonly IProjectFinder _projectFinder;
 
-        public ProjectController(IProjectService projectsService, ILogger<ProjectController> logger)
+        public ProjectController(IProjectFinder projectsService, ILogger<ProjectController> logger)
         {
-            _projectsService = projectsService;
+            _projectFinder = projectsService;
             _logger = logger;
         }
 
         [HttpGet("")]
         public JsonResult Get()
         {
-            var currentUserId = User.GetUserId();
-            var projects = _projectsService.GetProjects(currentUserId);
+            var projects = _projectFinder.FindProjects();
            
             if (projects == null)
             {
@@ -45,11 +45,11 @@ namespace ProjectPlannerASP5.Controllers.Api
                 {
                     _logger.LogInformation("Attempting to saving a new project.");
 
-                    if (_projectsService.Insert(vm))
-                    {
-                        Response.StatusCode = (int)HttpStatusCode.Created;
-                        return Json(new { id = vm.Id });
-                    }
+                    //if (_projectsService.Insert(vm)) // TODO: ApplicationService albo Command
+                    //{
+                    //    Response.StatusCode = (int)HttpStatusCode.Created;
+                    //    return Json(new { id = vm.Id });
+                    //}
                 }
             }
             catch (Exception ex)
