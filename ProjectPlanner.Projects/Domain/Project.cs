@@ -18,14 +18,14 @@ namespace ProjectPlanner.Projects.Domain
         public Guid CreatorUserId { get; private set; }
 
         public IList<Issue> Issues { get; private set; }
-        public IList<Guid> Users { get; private set; }
+        public IList<string> Users { get; private set; }
 
         private Project()
         {
             CreateDate = DateTime.UtcNow;
 
             Issues = new List<Issue>();
-            Users = new List<Guid>();
+            Users = new List<string>();
         }
 
         public Project(Guid creatorUserId, string code, string name)
@@ -43,7 +43,7 @@ namespace ProjectPlanner.Projects.Domain
 
             if (!ContainsUser(userId))
             {
-                Users.Add(userId);
+                Users.Add(userId.ToString());
             }
 
             // TODO: Add user event
@@ -60,7 +60,7 @@ namespace ProjectPlanner.Projects.Domain
 
             if (ContainsUser(userId))
             {
-                Users.Remove(userId);
+                Users.Remove(userId.ToString());
             }
 
             // TODO: Remove user event
@@ -80,7 +80,7 @@ namespace ProjectPlanner.Projects.Domain
 
         private bool ContainsUser(Guid userId)
         {
-            return Users.Any(user => user == userId);
+            return Users.Any(user => user == userId.ToString());
         }
 
         private void CheckIfActive()

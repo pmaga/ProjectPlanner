@@ -16,6 +16,7 @@
     "ProjectPlanner.Projects": "1.0.0-*",
     "ProjectPlanner.Infrastructure.Orm": "1.0.0-*",
     "Autofac": "4.0.0-beta8-157",
+    "Autofac.Extras.AggregateService": "4.0.0",
     "Autofac.Framework.DependencyInjection": "4.0.0-beta8-157"
   },
 

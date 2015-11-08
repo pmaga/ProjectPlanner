@@ -40,7 +40,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
             project.AddUser(userId);
 
             Assert.Equal(2, project.Users.Count);
-            Assert.Contains(userId, project.Users);
+            Assert.Contains(userId.ToString(), project.Users);
         }
 
         [Fact]
@@ -75,7 +75,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
             project.RemoveUser(userId);
 
             Assert.Equal(1, project.Users.Count);
-            Assert.DoesNotContain(userId, project.Users);
+            Assert.DoesNotContain(userId.ToString(), project.Users);
         }
 
         [Fact]

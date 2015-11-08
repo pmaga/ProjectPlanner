@@ -1,5 +1,7 @@
 ﻿using System;
 using Autofac;
+using Autofac.Builder;
+using Autofac.Extras.AggregateService;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.DependencyInjection;
@@ -17,6 +19,7 @@ using ProjectPlanner.Projects.Interfaces.Presentation;
 using ProjectPlanner.Projects.Presentation.Implementation;
 using Project = ProjectPlanner.Projects.Domain.Project;
 using Autofac.Framework.DependencyInjection;
+using ProjectPlanner.Projects.Domain;
 
 namespace ProjectPlannerASP5.Configs
 {
@@ -43,7 +46,6 @@ namespace ProjectPlannerASP5.Configs
 
             builder.RegisterType<SystemUser>().As<ISystemUser>();
             builder.RegisterType<ProjectFinder>().As<IProjectFinder>();
-            builder.RegisterType<EntityManager>().As<IEntityManager>();
             RegisterOrm(builder);
 
             builder.Populate(services);
@@ -53,12 +55,26 @@ namespace ProjectPlannerASP5.Configs
             return container.Resolve<IServiceProvider>();
         }
 
-        private static void RegisterOrm(ContainerBuilder containerBuilder)
+        private static void RegisterOrm(ContainerBuilder container)
         {
             AutomappingConfiguration.IsEntityPredicate = e => e.IsDefined(typeof (DomainEntityAttribute), true);
             AutomappingConfiguration.IsComponentPredicate = e => e.IsDefined(typeof (DomainValueObjectAttribute), true);
 
+            EntityManager.GetAssemblies = () => new[]
+            {
+                typeof(Project).Assembly
+            };
             EntityManager.SeedData = s => new ProjectPlannerSeedData().SeedData(s);
+
+            container.Register<ISessionFactory>(context => EntityManager.SessionFactory)
+                .SingleInstance();
+            container.Register<ISession>(context => EntityManager.SessionFactory.OpenSession())
+                .InstancePerLifetimeScope();
+
+            container.RegisterAggregateService<IPerRequestSessionFactory>();
+            container.RegisterType<EntityManager>().As<IEntityManager>().SingleInstance();
+
+
         }
     }
 
@@ -66,21 +82,8 @@ namespace ProjectPlannerASP5.Configs
     {
         public void SeedData(ISession session)
         {
-            //if (await _userManager.FindByEmailAsync("pawel.p.maga@gmail.com") == null)
-            //{
-            //    var newUser = new AppUser
-            //    {
-            //        UserName = "pawelmaga",
-            //        Email = "pawel.p.maga@gmail.com"
-            //    };
-
-            //    await _userManager.CreateAsync(newUser, "P@ssw0rd");
-            //}
-
             if (session.QueryOver<Project>().SingleOrDefault() == null)
             {
-                //var user = await _userManager.FindByEmailAsync("pawel.p.maga@gmail.com");
-
                 var project = new Project(new Guid(), "JRS", "Name");
 
                 session.Save(project);

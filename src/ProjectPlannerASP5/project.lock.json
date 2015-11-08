@@ -18,6 +18,19 @@
           "lib/dnx451/Autofac.dll": {}
         }
       },
+      "Autofac.Extras.AggregateService/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Autofac": "[3.3.1, 5.0.0)",
+          "Castle.Core": "3.2.2"
+        },
+        "compile": {
+          "lib/net45/Autofac.Extras.AggregateService.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Autofac.Extras.AggregateService.dll": {}
+        }
+      },
       "Autofac.Framework.DependencyInjection/4.0.0-beta8-157": {
         "type": "package",
         "dependencies": {
@@ -37,6 +50,15 @@
         "runtime": {
           "lib/dnx451/Autofac.dll": {},
           "lib/dnx451/Autofac.Framework.DependencyInjection.dll": {}
+        }
+      },
+      "Castle.Core/3.2.2": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Castle.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Castle.Core.dll": {}
         }
       },
       "dnx-clr-win-x86/1.0.0-beta8-15736": {
@@ -1623,6 +1645,19 @@
           "lib/dnx451/Autofac.dll": {}
         }
       },
+      "Autofac.Extras.AggregateService/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Autofac": "[3.3.1, 5.0.0)",
+          "Castle.Core": "3.2.2"
+        },
+        "compile": {
+          "lib/net45/Autofac.Extras.AggregateService.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Autofac.Extras.AggregateService.dll": {}
+        }
+      },
       "Autofac.Framework.DependencyInjection/4.0.0-beta8-157": {
         "type": "package",
         "dependencies": {
@@ -1642,6 +1677,15 @@
         "runtime": {
           "lib/dnx451/Autofac.dll": {},
           "lib/dnx451/Autofac.Framework.DependencyInjection.dll": {}
+        }
+      },
+      "Castle.Core/3.2.2": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Castle.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Castle.Core.dll": {}
         }
       },
       "dnx-clr-win-x86/1.0.0-beta8-15736": {
@@ -3231,6 +3275,19 @@
           "lib/dnx451/Autofac.dll": {}
         }
       },
+      "Autofac.Extras.AggregateService/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Autofac": "[3.3.1, 5.0.0)",
+          "Castle.Core": "3.2.2"
+        },
+        "compile": {
+          "lib/net45/Autofac.Extras.AggregateService.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Autofac.Extras.AggregateService.dll": {}
+        }
+      },
       "Autofac.Framework.DependencyInjection/4.0.0-beta8-157": {
         "type": "package",
         "dependencies": {
@@ -3250,6 +3307,15 @@
         "runtime": {
           "lib/dnx451/Autofac.dll": {},
           "lib/dnx451/Autofac.Framework.DependencyInjection.dll": {}
+        }
+      },
+      "Castle.Core/3.2.2": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Castle.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Castle.Core.dll": {}
         }
       },
       "dnx-clr-win-x86/1.0.0-beta8-15736": {
@@ -4860,6 +4926,17 @@
         "lib/win/Autofac.xml"
       ]
     },
+    "Autofac.Extras.AggregateService/4.0.0": {
+      "type": "package",
+      "sha512": "E4Bd1hXxEoe9Dvp8YuH/GeBeDmEYzPvI029RtB711e8+WwFrdI1BP4ycqowN9f0DQY/7XEIBHSARzccs034MNQ==",
+      "files": [
+        "Autofac.Extras.AggregateService.4.0.0.nupkg",
+        "Autofac.Extras.AggregateService.4.0.0.nupkg.sha512",
+        "Autofac.Extras.AggregateService.nuspec",
+        "lib/net45/Autofac.Extras.AggregateService.dll",
+        "lib/net45/Autofac.Extras.AggregateService.xml"
+      ]
+    },
     "Autofac.Framework.DependencyInjection/4.0.0-beta8-157": {
       "type": "package",
       "sha512": "onkvcXyk76jNxnb9wm50spSoU4l73qsf5PTa+axZXHnpmbA6/onG67jZpUbUDfiYFx8LwnE69KYzrv3UpC4D/g==",
@@ -4879,6 +4956,30 @@
         "lib/net45/Autofac.Framework.DependencyInjection.dll",
         "lib/net45/Autofac.Framework.DependencyInjection.xml",
         "lib/net45/Autofac.xml"
+      ]
+    },
+    "Castle.Core/3.2.2": {
+      "type": "package",
+      "sha512": "QktR5tZulLzd2EK0DwwCtNW9sx41+HmMmQ6uivrGTuaD8MOHsyEfDtKMYR2pxl4obocyXCq3CKM/CbFldakQcQ==",
+      "files": [
+        "ASL - Apache Software Foundation License.txt",
+        "BreakingChanges.txt",
+        "Castle.Core.3.2.2.nupkg",
+        "Castle.Core.3.2.2.nupkg.sha512",
+        "Castle.Core.nuspec",
+        "Changes.txt",
+        "lib/net35/Castle.Core.dll",
+        "lib/net35/Castle.Core.xml",
+        "lib/net40-client/Castle.Core.dll",
+        "lib/net40-client/Castle.Core.xml",
+        "lib/net45/Castle.Core.dll",
+        "lib/net45/Castle.Core.xml",
+        "lib/sl4/Castle.Core.dll",
+        "lib/sl4/Castle.Core.xml",
+        "lib/sl5/Castle.Core.dll",
+        "lib/sl5/Castle.Core.xml",
+        "License.txt",
+        "readme.txt"
       ]
     },
     "dnx-clr-win-x86/1.0.0-beta8-15736": {
@@ -6432,6 +6533,7 @@
       "ProjectPlanner.Projects >= 1.0.0-*",
       "ProjectPlanner.Infrastructure.Orm >= 1.0.0-*",
       "Autofac >= 4.0.0-beta8-157",
+      "Autofac.Extras.AggregateService >= 4.0.0",
       "Autofac.Framework.DependencyInjection >= 4.0.0-beta8-157"
     ],
     "DNX,Version=v4.5.1": []

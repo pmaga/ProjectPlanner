@@ -4,6 +4,7 @@ using FluentNHibernate.Automapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Conventions.Helpers;
+using FluentNHibernate.Mapping;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
@@ -15,7 +16,7 @@ namespace ProjectPlanner.Infrastructure.Orm
     {
         private readonly IPerRequestSessionFactory _perRequestSessionFactory;
 
-        private static readonly Lazy<ISessionFactory> SessionFactory =
+        private static readonly Lazy<ISessionFactory> NHibernateSessionFactory =
             new Lazy<ISessionFactory>(() =>
             {
                 var config = Configure();
@@ -33,6 +34,7 @@ namespace ProjectPlanner.Infrastructure.Orm
         public static Func<Assembly[]> GetAssemblies = () => new Assembly[0];
 
         public ISession CurrentSession => _perRequestSessionFactory.CreateSession();
+        public static ISessionFactory SessionFactory => NHibernateSessionFactory.Value;
 
         public EntityManager(IPerRequestSessionFactory perRequestSessionFactory)
         {
@@ -46,7 +48,11 @@ namespace ProjectPlanner.Infrastructure.Orm
                 {
                     return
                         MsSqlConfiguration.MsSql2012.ConnectionString(
-                            c => c.FromConnectionStringWithKey("projectPlannerDb"));
+                            c =>
+                            {
+                                c.Server(".").Database("ProjectPlannerDb").TrustedConnection();
+                            });
+                    //Server=.;Database=ProjectPlannerDb;Trusted_Connection=True;MultipleActiveResultSets=True;
                 })
                 .Mappings(m =>
                 {
