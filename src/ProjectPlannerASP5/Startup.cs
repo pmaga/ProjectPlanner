@@ -1,5 +1,4 @@
 ﻿using System;
-using Autofac;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Configuration;
 using Microsoft.Dnx.Runtime;
@@ -7,9 +6,6 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Builder;
 using ProjectPlannerASP5.Configs;
 using Microsoft.Framework.Logging;
-using ProjectPlanner.Cqrs.Base.DDD.Application;
-using ProjectPlannerASP5.Models;
-using ProjectPlannerASP5.Services;
 
 namespace ProjectPlannerASP5
 {
@@ -30,9 +26,9 @@ namespace ProjectPlannerASP5
             Configuration = builder.Build();
         }
 
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            ServicesConfig.Configure(services, _env);
+            return ServicesConfig.Configure(services, _env);
         }
 
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory,

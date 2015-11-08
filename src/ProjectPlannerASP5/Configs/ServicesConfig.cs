@@ -22,7 +22,7 @@ namespace ProjectPlannerASP5.Configs
 {
     public class ServicesConfig
     {
-        public static void Configure(IServiceCollection services, IHostingEnvironment hostingEnv)
+        public static IServiceProvider Configure(IServiceCollection services, IHostingEnvironment hostingEnv)
         {
             services.AddMvc(config =>
             {
@@ -39,28 +39,21 @@ namespace ProjectPlannerASP5.Configs
 
             services.AddLogging();
 
-            //var builder = new ContainerBuilder();
+            var builder = new ContainerBuilder();
 
-            //services.AddTransient<ProjectPlannerContextSeedData>();
+            builder.RegisterType<SystemUser>().As<ISystemUser>();
+            builder.RegisterType<ProjectFinder>().As<IProjectFinder>();
+            builder.RegisterType<EntityManager>().As<IEntityManager>();
+            RegisterOrm(builder);
 
-            //builder.RegisterType<IssueService>().As<IIssueService>();
-            //builder.RegisterType<ProjectService>().As<IProjectService>();
-            //builder.RegisterType<SystemUser>().As<ISystemUser>();
-            //builder.RegisterType<ProjectFinder>().As<IProjectFinder>();
-            //builder.RegisterType<EntityManager>().As<IEntityManager>();
-            //RegisterOrm();
+            builder.Populate(services);
 
-            //builder.Populate(services);
+            var container = builder.Build();
 
-            //var container = builder.Build();
-
-            services.AddScoped(typeof (ISystemUser), typeof (SystemUser));
-            //return services.BuildServiceProvider();
-
-           // return container.Resolve<IServiceProvider>();
+            return container.Resolve<IServiceProvider>();
         }
 
-        private static void RegisterOrm()
+        private static void RegisterOrm(ContainerBuilder containerBuilder)
         {
             AutomappingConfiguration.IsEntityPredicate = e => e.IsDefined(typeof (DomainEntityAttribute), true);
             AutomappingConfiguration.IsComponentPredicate = e => e.IsDefined(typeof (DomainValueObjectAttribute), true);

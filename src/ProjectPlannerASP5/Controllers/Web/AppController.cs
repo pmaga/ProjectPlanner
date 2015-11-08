@@ -1,5 +1,4 @@
 using Microsoft.AspNet.Mvc;
-using ProjectPlanner.Cqrs.Base.DDD.Application;
 
 namespace ProjectPlannerASP5.Controllers.Web
 {
