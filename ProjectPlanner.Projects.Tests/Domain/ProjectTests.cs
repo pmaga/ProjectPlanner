@@ -1,4 +1,4 @@
-﻿using ProjectPlanner.Cqrs.Base.DDD.Application;
+﻿using System;
 using Xunit;
 using ProjectPlanner.Projects.Domain;
 using ProjectPlanner.Projects.Interfaces.Domain.Exceptions;
@@ -8,6 +8,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
 {
     public class ProjectTests
     {
+        private readonly Guid _defaultUserId = new Guid("edf05842-e174-4777-bb48-3c21ea177be2");
         private readonly ProjectFactory _projectFactory;
 
         public ProjectTests()
@@ -27,7 +28,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
 
             Assert.Throws<ProjectOperationException>(() =>
             {
-                project.AddUser(1);
+                project.AddUser(_defaultUserId);
             });
         }
 
@@ -35,11 +36,11 @@ namespace ProjectPlanner.Projects.Tests.Domain
         public void AddUser_CanAddUser()
         {
             var project = _projectFactory.CreateProject("Code", "Name");
-
-            project.AddUser(10);
+            var userId = new Guid();
+            project.AddUser(userId);
 
             Assert.Equal(2, project.Users.Count);
-            Assert.Contains(10, project.Users);
+            Assert.Contains(userId, project.Users);
         }
 
         [Fact]
@@ -47,7 +48,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
         {
             var project = _projectFactory.CreateProject("Code", "Name");
 
-            project.AddUser(1);
+            project.AddUser(_defaultUserId);
 
             Assert.Equal(1, project.Users.Count);
         }
@@ -61,7 +62,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
 
             Assert.Throws<ProjectOperationException>(() =>
             {
-                project.RemoveUser(1);
+                project.RemoveUser(_defaultUserId);
             });
         }
 
@@ -69,12 +70,12 @@ namespace ProjectPlanner.Projects.Tests.Domain
         public void RemoveUser_CanRemoveUser()
         {
             var project = _projectFactory.CreateProject("Code", "Name");
-
-            project.AddUser(10);
-            project.RemoveUser(10);
+            var userId = new Guid();
+            project.AddUser(userId);
+            project.RemoveUser(userId);
 
             Assert.Equal(1, project.Users.Count);
-            Assert.DoesNotContain(10, project.Users);
+            Assert.DoesNotContain(userId, project.Users);
         }
 
         [Fact]
@@ -84,7 +85,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
 
             Assert.Throws<ProjectOperationException>(() =>
             {
-                project.RemoveUser(1);
+                project.RemoveUser(_defaultUserId);
             });
         }
     }

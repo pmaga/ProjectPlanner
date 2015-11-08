@@ -1,7 +1,9 @@
 ﻿using System;
+using ProjectPlanner.Cqrs.Base.DDD.Domain.Annotations;
 
 namespace ProjectPlanner.Cqrs.Base.DDD.Domain
 {
+    [DomainAggregateRoot]
     public class AggregateRoot : Entity
     {
         public DateTime Version { get; private set; }

@@ -15,20 +15,20 @@ namespace ProjectPlanner.Projects.Domain
         public DateTime CreateDate { get; private set; }
         public ProjectStatus Status { get; private set; } //TODO: Zmiana statusu na Modified po zapisie
 
-        public int CreatorUserId { get; private set; }
+        public Guid CreatorUserId { get; private set; }
 
         public IList<Issue> Issues { get; private set; }
-        public IList<int> Users { get; private set; }
+        public IList<Guid> Users { get; private set; }
 
         private Project()
         {
             CreateDate = DateTime.UtcNow;
 
             Issues = new List<Issue>();
-            Users = new List<int>();
+            Users = new List<Guid>();
         }
 
-        public Project(int creatorUserId, string code, string name)
+        public Project(Guid creatorUserId, string code, string name)
             : this()
         {
             CreatorUserId = creatorUserId;
@@ -37,7 +37,7 @@ namespace ProjectPlanner.Projects.Domain
             AddUser(creatorUserId);
         }
 
-        public void AddUser(int userId)
+        public void AddUser(Guid userId)
         {
             CheckIfActive();
 
@@ -49,7 +49,7 @@ namespace ProjectPlanner.Projects.Domain
             // TODO: Add user event
         }
 
-        public void RemoveUser(int userId)
+        public void RemoveUser(Guid userId)
         {
             CheckIfActive();
 
@@ -73,12 +73,12 @@ namespace ProjectPlanner.Projects.Domain
             // TODO: Close event
         }
 
-        private bool IsUserCreatedProject(int userId)
+        private bool IsUserCreatedProject(Guid userId)
         {
             return CreatorUserId == userId;
         }
 
-        private bool ContainsUser(int userId)
+        private bool ContainsUser(Guid userId)
         {
             return Users.Any(user => user == userId);
         }

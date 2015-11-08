@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ProjectPlanner.Projects.Domain;
 using ProjectPlanner.Projects.Interfaces.Domain.Exceptions;
 using ProjectPlanner.Projects.Tests.Mocks;
@@ -11,6 +8,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
 {
     public class ProjectFactoryTests
     {
+        private readonly Guid _defaultUserId = new Guid("edf05842-e174-4777-bb48-3c21ea177be2");
         private ProjectFactory _projectFactory;
 
         public ProjectFactoryTests()
@@ -27,7 +25,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
             var project = _projectFactory.CreateProject("projectCode", "projectName");
 
             Assert.NotNull(project);
-            Assert.Equal(1, project.CreatorUserId);
+            Assert.Equal(_defaultUserId, project.CreatorUserId);
             Assert.Equal("projectCode", project.Code);
             Assert.Equal("projectName", project.Name);
         }
@@ -45,14 +43,15 @@ namespace ProjectPlanner.Projects.Tests.Domain
         public void CreateProject_CanCreateProjectWithExistingCodeForOtherUser()
         {
             var systemUser = new SystemUser();
-            systemUser.SetUserId(2);
+            var newId = new Guid();
+            systemUser.SetUserId(newId);
             var projectRepository = new ProjectRepository();
             _projectFactory = new ProjectFactory(systemUser, projectRepository);
 
             var project = _projectFactory.CreateProject("code", "projectName");
 
             Assert.NotNull(project);
-            Assert.Equal(2, project.CreatorUserId);
+            Assert.Equal(newId, project.CreatorUserId);
             Assert.Equal("code", project.Code);
             Assert.Equal("projectName", project.Name);
         }

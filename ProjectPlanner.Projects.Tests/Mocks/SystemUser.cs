@@ -8,9 +8,9 @@ namespace ProjectPlanner.Projects.Tests.Mocks
 {
     public class SystemUser : ISystemUser
     {
-        public int UserId { get; private set; } = 1;
+        public Guid UserId { get; private set; } = new Guid("edf05842-e174-4777-bb48-3c21ea177be2");
 
-        public void SetUserId(int id)
+        public void SetUserId(Guid id)
         {
             UserId = id;
         }

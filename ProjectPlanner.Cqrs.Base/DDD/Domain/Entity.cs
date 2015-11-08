@@ -1,5 +1,8 @@
-﻿namespace ProjectPlanner.Cqrs.Base.DDD.Domain
+﻿using ProjectPlanner.Cqrs.Base.DDD.Domain.Annotations;
+
+namespace ProjectPlanner.Cqrs.Base.DDD.Domain
 {
+    [DomainEntity]
     public abstract class Entity
     {
         public int Id { get; private set; }

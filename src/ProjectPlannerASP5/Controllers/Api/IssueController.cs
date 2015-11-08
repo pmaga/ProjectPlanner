@@ -8,7 +8,7 @@ using System.Net;
 
 namespace ProjectPlannerASP5.Controllers.Api
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/projects/{projectCode}/issues")]
     public class IssueController : Controller
     {
@@ -26,9 +26,10 @@ namespace ProjectPlannerASP5.Controllers.Api
         {
             try
             {
-                var results = _issueService.GetIssuesByProjectCode(projectCode);
+                //var results = _issueService.GetIssuesByProjectCode(projectCode);
 
-                return Json(results);
+                //return Json(results);
+                return Json(null);
             }
             catch (Exception ex)
             {
@@ -47,11 +48,11 @@ namespace ProjectPlannerASP5.Controllers.Api
                 {
                     _logger.LogInformation("Attempting to saving new issue.");
 
-                    if (_issueService.Insert(projectCode, vm))
-                    {
-                        Response.StatusCode = (int)HttpStatusCode.Created;
-                        return Json(new { id = vm.Id });
-                    }
+                    //if (_issueService.Insert(projectCode, vm))
+                    //{
+                    //    Response.StatusCode = (int)HttpStatusCode.Created;
+                    //    return Json(new { id = vm.Id });
+                    //}
                 }
             }
             catch (Exception ex)

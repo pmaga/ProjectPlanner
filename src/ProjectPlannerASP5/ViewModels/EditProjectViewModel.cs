@@ -16,8 +16,6 @@ namespace ProjectPlannerASP5.ViewModels
         [StringLength(255, MinimumLength = 5)]
         public string Name { get; set; }
 
-        public AppUser Creator { get; set; }
-
         public DateTime CreateDate { get; set; } = DateTime.UtcNow;
     }
 }

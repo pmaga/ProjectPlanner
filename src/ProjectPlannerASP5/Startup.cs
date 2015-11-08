@@ -1,11 +1,15 @@
-﻿using Microsoft.Framework.DependencyInjection;
+﻿using System;
+using Autofac;
+using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Configuration;
 using Microsoft.Dnx.Runtime;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Builder;
 using ProjectPlannerASP5.Configs;
 using Microsoft.Framework.Logging;
+using ProjectPlanner.Cqrs.Base.DDD.Application;
 using ProjectPlannerASP5.Models;
+using ProjectPlannerASP5.Services;
 
 namespace ProjectPlannerASP5
 {
@@ -31,23 +35,11 @@ namespace ProjectPlannerASP5
             ServicesConfig.Configure(services, _env);
         }
 
-        public async void Configure(IApplicationBuilder app, ProjectPlannerContextSeedData seeder, ILoggerFactory loggerFactory,
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory,
             IHostingEnvironment env)
         {
+            loggerFactory.MinimumLevel = LogLevel.Information;
             loggerFactory.AddDebug(LogLevel.Warning);
-
-            app.UseStaticFiles();
-
-            app.UseIdentity();
-
-            app.UseMvc(config =>
-            {
-                config.MapRoute(
-                    name: "Default",
-                    template: "{controller}/{action}/{id?}",
-                    defaults: new { controller = "App", action = "Index" }
-                    );
-            });
 
             if (env.IsDevelopment())
             {
@@ -60,9 +52,16 @@ namespace ProjectPlannerASP5
 
             app.UseIISPlatformHandler();
 
-            await seeder.EnsureSeedDataAsync();
+            app.UseStaticFiles();
 
-            MappingConfig.RegisterMaps();
+            app.UseMvc(config =>
+            {
+                config.MapRoute(
+                    name: "Default",
+                    template: "{controller}/{action}/{id?}",
+                    defaults: new { controller = "App", action = "Index" }
+                    );
+            });
         }
     }
 }

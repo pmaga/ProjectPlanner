@@ -4,9 +4,9 @@ namespace ProjectPlanner.Projects.Interfaces.Domain.Exceptions
 {
     public class ProjectCreationException : Exception
     {
-        public int UserId { get; private set; }
+        public Guid UserId { get; private set; }
 
-        public ProjectCreationException(string message, int userId)
+        public ProjectCreationException(string message, Guid userId)
             : base(message)
         {
             UserId = userId;

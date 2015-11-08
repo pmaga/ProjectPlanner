@@ -1,7 +1,9 @@
-﻿namespace ProjectPlanner.Cqrs.Base.DDD.Application
+﻿using System;
+
+namespace ProjectPlanner.Cqrs.Base.DDD.Application
 {
     public interface ISystemUser
     {
-        int UserId { get; }
+        Guid UserId { get; }
     }
 }

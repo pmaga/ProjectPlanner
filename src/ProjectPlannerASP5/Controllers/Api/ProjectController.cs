@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace ProjectPlannerASP5.Controllers.Api
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/projects")]
     public class ProjectController : Controller
     {
