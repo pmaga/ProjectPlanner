@@ -1,5 +1,4 @@
-﻿using ProjectPlannerASP5.Models;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProjectPlannerASP5.ViewModels

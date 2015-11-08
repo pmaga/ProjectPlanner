@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ProjectPlanner.Cqrs.Base.DDD.Application;
 
 namespace ProjectPlanner.Projects.Tests.Mocks

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.Authorization;
-using Microsoft.AspNet.Mvc;
+﻿using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.Logging;
 using ProjectPlannerASP5.Services;
 using ProjectPlannerASP5.ViewModels;

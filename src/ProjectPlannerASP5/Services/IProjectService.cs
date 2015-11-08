@@ -1,8 +1,4 @@
-﻿using ProjectPlannerASP5.ViewModels;
-using System.Collections.Generic;
-using ProjectPlannerASP5.Models;
-
-namespace ProjectPlannerASP5.Services
+﻿namespace ProjectPlannerASP5.Services
 {
     public interface IProjectService
     {

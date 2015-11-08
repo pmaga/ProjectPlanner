@@ -1,11 +1,4 @@
-﻿using Microsoft.AspNet.Authorization;
-using Microsoft.AspNet.Mvc;
-using ProjectPlannerASP5.Controllers.Web;
-using ProjectPlannerASP5.Models;
-using ProjectPlannerASP5.ViewModels;
-using System.Threading.Tasks;
-
-namespace ProjectPlannerASP5.Controllers
+﻿namespace ProjectPlannerASP5.Controllers
 {
     //[Authorize]
     //public class AuthController : Controller 

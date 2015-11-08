@@ -1,11 +1,4 @@
-﻿using Microsoft.Framework.Logging;
-using ProjectPlannerASP5.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using ProjectPlannerASP5.Models;
-
-namespace ProjectPlannerASP5.Services
+﻿namespace ProjectPlannerASP5.Services
 {
     //public class IssueService : IIssueService
     //{

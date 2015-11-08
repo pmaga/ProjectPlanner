@@ -4,7 +4,6 @@ using FluentNHibernate.Automapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Conventions.Helpers;
-using FluentNHibernate.Mapping;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
@@ -52,7 +51,6 @@ namespace ProjectPlanner.Infrastructure.Orm
                             {
                                 c.Server(".").Database("ProjectPlannerDb").TrustedConnection();
                             });
-                    //Server=.;Database=ProjectPlannerDb;Trusted_Connection=True;MultipleActiveResultSets=True;
                 })
                 .Mappings(m =>
                 {

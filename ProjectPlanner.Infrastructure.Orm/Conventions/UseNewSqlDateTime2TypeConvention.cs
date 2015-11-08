@@ -12,11 +12,6 @@ namespace ProjectPlanner.Infrastructure.Orm.Conventions
             {
                 instance.CustomSqlType("datetime2");
             }
-
-            if (instance.Type == typeof(Guid))
-            {
-                instance.CustomSqlType("uniqueidentifier");
-            }
         }
     }
 }

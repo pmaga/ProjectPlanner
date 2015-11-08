@@ -1,14 +1,11 @@
 ﻿using System;
 using Autofac;
-using Autofac.Builder;
 using Autofac.Extras.AggregateService;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.DependencyInjection;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-using ProjectPlannerASP5.Models;
-using ProjectPlannerASP5.Services;
 using NHibernate;
 using ProjectPlanner.Cqrs.Base.DDD.Application;
 using ProjectPlanner.Cqrs.Base.DDD.Domain.Annotations;
@@ -19,7 +16,6 @@ using ProjectPlanner.Projects.Interfaces.Presentation;
 using ProjectPlanner.Projects.Presentation.Implementation;
 using Project = ProjectPlanner.Projects.Domain.Project;
 using Autofac.Framework.DependencyInjection;
-using ProjectPlanner.Projects.Domain;
 
 namespace ProjectPlannerASP5.Configs
 {

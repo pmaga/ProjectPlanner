@@ -45,7 +45,7 @@ alter table Users  drop constraint FK2C1C7FE5F894640E
        Name NVARCHAR(255) null,
        CreateDate datetime2 null,
        Status INT null,
-       CreatorUserId uniqueidentifier null,
+       CreatorUserId UNIQUEIDENTIFIER null,
        EntityStatus INT null,
        primary key (Id)
     )
