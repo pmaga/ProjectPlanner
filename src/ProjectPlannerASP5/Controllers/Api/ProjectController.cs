@@ -31,10 +31,8 @@ namespace ProjectPlannerASP5.Controllers.Api
                 //Response.StatusCode = (int)HttpStatusCode.NoContent;
                 return Json(null);
             }
-            else
-            {
-                return Json(projects.ToList());
-            }
+
+            return Json(projects.ToList());
         }
 
         [HttpPost("")]

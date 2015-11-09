@@ -27,7 +27,7 @@
             });
 
         vm.getStatusClass = function (status) {
-            if (status === "Active")
+            if (status === "Added")
                 return "label label-primary";
         }
     }

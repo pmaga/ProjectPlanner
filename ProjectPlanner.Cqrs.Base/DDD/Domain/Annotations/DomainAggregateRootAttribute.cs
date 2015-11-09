@@ -3,7 +3,7 @@
 namespace ProjectPlanner.Cqrs.Base.DDD.Domain.Annotations
 {
     [AttributeUsage(AttributeTargets.Class)]
-    public class DomainAggregateRootAttribute : Attribute
+    public class DomainAggregateRootAttribute : DomainEntityAttribute
     {
     }
 }

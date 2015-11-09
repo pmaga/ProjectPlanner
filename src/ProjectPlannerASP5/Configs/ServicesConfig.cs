@@ -69,8 +69,6 @@ namespace ProjectPlannerASP5.Configs
 
             container.RegisterAggregateService<IPerRequestSessionFactory>();
             container.RegisterType<EntityManager>().As<IEntityManager>().SingleInstance();
-
-
         }
     }
 

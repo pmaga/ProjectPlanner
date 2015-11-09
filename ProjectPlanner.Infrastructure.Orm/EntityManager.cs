@@ -10,7 +10,7 @@ using NHibernate.Tool.hbm2ddl;
 using ProjectPlanner.Infrastructure.Orm.Conventions;
 
 namespace ProjectPlanner.Infrastructure.Orm
-{
+{//TODO: Zweryfikowac mapowania (na bazie)
     public class EntityManager : IEntityManager
     {
         private readonly IPerRequestSessionFactory _perRequestSessionFactory;
@@ -61,7 +61,7 @@ namespace ProjectPlanner.Infrastructure.Orm
                     autoPersistenceModel.Conventions.Add(new SqlTimestampConvention());
                     autoPersistenceModel.Conventions.Add(new SqlTableNameConvention());
                     autoPersistenceModel.Conventions.Add(DefaultLazy.Never());
-
+                    
                     m.AutoMappings.Add(autoPersistenceModel);
                 })
                 .BuildConfiguration();
