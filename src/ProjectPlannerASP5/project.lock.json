@@ -1531,7 +1531,8 @@
         "type": "project",
         "framework": "DNX,Version=v4.5.1",
         "dependencies": {
-          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+          "dnx-clr-win-x86": "1.0.0-beta8-15736",
+          "ProjectPlanner.Cqrs.Base": "1.0.0"
         }
       },
       "System.Collections.Immutable/1.1.36": {
@@ -3161,7 +3162,8 @@
         "type": "project",
         "framework": "DNX,Version=v4.5.1",
         "dependencies": {
-          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+          "dnx-clr-win-x86": "1.0.0-beta8-15736",
+          "ProjectPlanner.Cqrs.Base": "1.0.0"
         }
       },
       "System.Collections.Immutable/1.1.36": {
@@ -4791,7 +4793,8 @@
         "type": "project",
         "framework": "DNX,Version=v4.5.1",
         "dependencies": {
-          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+          "dnx-clr-win-x86": "1.0.0-beta8-15736",
+          "ProjectPlanner.Cqrs.Base": "1.0.0"
         }
       },
       "System.Collections.Immutable/1.1.36": {

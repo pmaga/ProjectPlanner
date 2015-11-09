@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
   "description": "ProjectPlanner.Projects.Interfaces Class Library",
   "authors": [ "Pawel" ],
@@ -11,6 +11,7 @@
     }
   },
   "dependencies": {
-    "dnx-clr-win-x86": "1.0.0-beta8-15736"
+    "dnx-clr-win-x86": "1.0.0-beta8-15736",
+    "ProjectPlanner.Cqrs.Base": "1.0.0-*"
   }
 }

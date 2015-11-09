@@ -201,7 +201,8 @@
         "type": "project",
         "framework": "DNX,Version=v4.5.1",
         "dependencies": {
-          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+          "dnx-clr-win-x86": "1.0.0-beta8-15736",
+          "ProjectPlanner.Cqrs.Base": "1.0.0"
         }
       },
       "xunit/2.1.0": {
@@ -514,7 +515,8 @@
         "type": "project",
         "framework": "DNX,Version=v4.5.1",
         "dependencies": {
-          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+          "dnx-clr-win-x86": "1.0.0-beta8-15736",
+          "ProjectPlanner.Cqrs.Base": "1.0.0"
         }
       },
       "xunit/2.1.0": {
@@ -827,7 +829,8 @@
         "type": "project",
         "framework": "DNX,Version=v4.5.1",
         "dependencies": {
-          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+          "dnx-clr-win-x86": "1.0.0-beta8-15736",
+          "ProjectPlanner.Cqrs.Base": "1.0.0"
         }
       },
       "xunit/2.1.0": {

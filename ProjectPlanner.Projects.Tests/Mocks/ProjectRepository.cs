@@ -14,5 +14,15 @@ namespace ProjectPlanner.Projects.Tests.Mocks
 
             return null;
         }
+
+        public void Save(Project project)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Project Load(int projectId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -5,20 +5,45 @@
     "DNX,Version=v4.5.1": {
       "dnx-clr-win-x86/1.0.0-beta8-15736": {
         "type": "package"
+      },
+      "ProjectPlanner.Cqrs.Base/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+        }
       }
     },
     "DNX,Version=v4.5.1/win7-x86": {
       "dnx-clr-win-x86/1.0.0-beta8-15736": {
         "type": "package"
+      },
+      "ProjectPlanner.Cqrs.Base/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+        }
       }
     },
     "DNX,Version=v4.5.1/win7-x64": {
       "dnx-clr-win-x86/1.0.0-beta8-15736": {
         "type": "package"
+      },
+      "ProjectPlanner.Cqrs.Base/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+        }
       }
     }
   },
   "libraries": {
+    "ProjectPlanner.Cqrs.Base/1.0.0": {
+      "type": "project",
+      "path": "../ProjectPlanner.Cqrs.Base/project.json"
+    },
     "dnx-clr-win-x86/1.0.0-beta8-15736": {
       "type": "package",
       "serviceable": true,
@@ -65,7 +90,8 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "dnx-clr-win-x86 >= 1.0.0-beta8-15736"
+      "dnx-clr-win-x86 >= 1.0.0-beta8-15736",
+      "ProjectPlanner.Cqrs.Base >= 1.0.0-*"
     ],
     "DNX,Version=v4.5.1": []
   }
