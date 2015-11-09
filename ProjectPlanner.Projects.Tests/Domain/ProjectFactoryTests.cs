@@ -51,7 +51,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
             var project = _projectFactory.CreateProject("code", "projectName");
 
             Assert.NotNull(project);
-            Assert.Equal(newId.ToString(), project.CreatorUserId);
+            Assert.Equal(newId, project.CreatorUserId);
             Assert.Equal("code", project.Code);
             Assert.Equal("projectName", project.Name);
         }

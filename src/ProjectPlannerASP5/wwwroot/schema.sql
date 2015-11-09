@@ -9,8 +9,6 @@ alter table Users  drop constraint FK2C1C7FE5F894640E
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Issues') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Issues
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'AggregateRoots') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AggregateRoots
-
     if exists (select * from dbo.sysobjects where id = object_id(N'Projects') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Projects
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Users') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Users
@@ -28,13 +26,6 @@ alter table Users  drop constraint FK2C1C7FE5F894640E
        UserName NVARCHAR(255) null,
        EntityStatus INT null,
        Project_id INT null,
-       primary key (Id)
-    )
-
-    create table AggregateRoots (
-        Id INT IDENTITY NOT NULL,
-       Version DATETIME not null,
-       EntityStatus INT null,
        primary key (Id)
     )
 
