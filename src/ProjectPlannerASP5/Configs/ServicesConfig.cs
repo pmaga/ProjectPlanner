@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 using Autofac;
 using Autofac.Extras.AggregateService;
 using Microsoft.AspNet.Hosting;
@@ -16,6 +18,14 @@ using ProjectPlanner.Projects.Interfaces.Presentation;
 using ProjectPlanner.Projects.Presentation.Implementation;
 using Project = ProjectPlanner.Projects.Domain.Project;
 using Autofac.Framework.DependencyInjection;
+using ProjectPlanner.Cqrs.Base.CQRS.Commands;
+using ProjectPlanner.Cqrs.Base.CQRS.Commands.Handler;
+using ProjectPlanner.Cqrs.Base.CQRS.Query.Attributes;
+using ProjectPlanner.Cqrs.Base.Infrastructure.Attributes;
+using ProjectPlanner.Projects.Application.Commands.Handlers;
+using ProjectPlanner.Projects.Domain;
+using ProjectPlanner.Projects.Infrastructure.Repositories;
+using ProjectPlanner.Projects.Interfaces.Application.Commands;
 
 namespace ProjectPlannerASP5.Configs
 {
@@ -41,9 +51,31 @@ namespace ProjectPlannerASP5.Configs
             var builder = new ContainerBuilder();
 
             builder.RegisterType<SystemUser>().As<ISystemUser>();
-            builder.RegisterType<ProjectFinder>().As<IProjectFinder>();
+
+            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
+                .Where(t => t.IsComponentLifestyle(ComponentLifestyle.Transient) ||
+                         t.IsDefined(typeof(FinderAttribute), true) ||
+                         t.IsDefined(typeof(DomainServiceAttribute), true) ||
+                         t.IsDefined(typeof(DomainRepositoryImplementationAttribute), true) ||
+                         t.IsDefined(typeof(DomainFactoryAttribute), true))
+                .AsImplementedInterfaces()
+                .AsSelf()
+                .InstancePerDependency();
+
+            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
+                .Where(t => t.IsComponentLifestyle(ComponentLifestyle.Singleton))
+                .AsImplementedInterfaces()
+                .AsSelf()
+                .SingleInstance();
+
             RegisterOrm(builder);
 
+            builder.RegisterAggregateService<IPerRequestSessionFactory>();
+            builder.RegisterAggregateService<ICommandHandlerFactory>();
+            builder.RegisterType<EntityManager>().As<IEntityManager>().SingleInstance();
+            builder.RegisterType<CreateProjectCommand>().AsSelf();
+            builder.RegisterType<CreateProjectCommandHandler>().As<ICommandHandler<CreateProjectCommand>>();
+            
             builder.Populate(services);
 
             var container = builder.Build();
@@ -51,7 +83,7 @@ namespace ProjectPlannerASP5.Configs
             return container.Resolve<IServiceProvider>();
         }
 
-        private static void RegisterOrm(ContainerBuilder container)
+        private static void RegisterOrm(ContainerBuilder builder)
         {
             AutomappingConfiguration.IsEntityPredicate = e => e.IsDefined(typeof (DomainEntityAttribute), true);
             AutomappingConfiguration.IsComponentPredicate = e => e.IsDefined(typeof (DomainValueObjectAttribute), true);
@@ -62,13 +94,10 @@ namespace ProjectPlannerASP5.Configs
             };
             EntityManager.SeedData = s => new ProjectPlannerSeedData().SeedData(s);
 
-            container.Register<ISessionFactory>(context => EntityManager.SessionFactory)
+            builder.Register<ISessionFactory>(context => EntityManager.SessionFactory)
                 .SingleInstance();
-            container.Register<ISession>(context => EntityManager.SessionFactory.OpenSession())
+            builder.Register<ISession>(context => EntityManager.SessionFactory.OpenSession())
                 .InstancePerLifetimeScope();
-
-            container.RegisterAggregateService<IPerRequestSessionFactory>();
-            container.RegisterType<EntityManager>().As<IEntityManager>().SingleInstance();
         }
     }
 

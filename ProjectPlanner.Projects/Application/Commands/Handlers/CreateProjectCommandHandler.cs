@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ProjectPlanner.Cqrs.Base.CQRS.Commands.Handler;
+﻿using ProjectPlanner.Cqrs.Base.CQRS.Commands.Handler;
 using ProjectPlanner.Projects.Domain;
 using ProjectPlanner.Projects.Interfaces.Application.Commands;
 
@@ -13,7 +9,13 @@ namespace ProjectPlanner.Projects.Application.Commands.Handlers
         public ProjectFactory ProjectFactory { get; set; }
         public IProjectRepository ProjectRepository { get; set; }
 
-        public void Handler(CreateProjectCommand command)
+        public CreateProjectCommandHandler(ProjectFactory projectFactory, IProjectRepository projectRepository)
+        {
+            ProjectFactory = projectFactory;
+            ProjectRepository = projectRepository;
+        }
+
+        public void Handle(CreateProjectCommand command)
         {
             var project = ProjectFactory.CreateProject(command.Code, command.Name);
 

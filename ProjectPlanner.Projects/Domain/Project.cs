@@ -12,7 +12,7 @@ namespace ProjectPlanner.Projects.Domain
         public string Code { get; private set; }
         public string Name { get; private set; }
 
-        public DateTime CreateDate { get; private set; }
+        public DateTime CreateDate { get; private set; } = DateTime.UtcNow;
         public ProjectStatus Status { get; private set; } //TODO: Zmiana statusu na Modified po zapisie
 
         public Guid CreatorUserId { get; private set; }
@@ -22,8 +22,6 @@ namespace ProjectPlanner.Projects.Domain
 
         private Project()
         {
-            CreateDate = DateTime.UtcNow;
-
             Issues = new List<Issue>();
             Users = new List<string>();
         }

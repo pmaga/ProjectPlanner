@@ -4,6 +4,11 @@
     {
         public IEntityManager EntityManager { get; set; }
 
+        public Repository(IEntityManager entityManager)
+        {
+            EntityManager = entityManager;
+        }
+
         public virtual TEntity Load(TKey id)
         {
             return EntityManager.CurrentSession.Get<TEntity>(id);

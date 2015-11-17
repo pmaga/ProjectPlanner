@@ -5,6 +5,8 @@ using System;
 using System.Net;
 using ProjectPlanner.Projects.Interfaces.Presentation;
 using System.Linq;
+using ProjectPlanner.Cqrs.Base.CQRS.Commands;
+using ProjectPlanner.Projects.Interfaces.Application.Commands;
 
 namespace ProjectPlannerASP5.Controllers.Api
 {
@@ -13,12 +15,15 @@ namespace ProjectPlannerASP5.Controllers.Api
     public class ProjectController : Controller
     {
         private readonly ILogger<ProjectController> _logger;
+        private readonly IGate _gate;
         private readonly IProjectFinder _projectFinder;
 
-        public ProjectController(IProjectFinder projectsService, ILogger<ProjectController> logger)
+        public ProjectController(IProjectFinder projectsService, ILogger<ProjectController> logger,
+            IGate gate)
         {
             _projectFinder = projectsService;
             _logger = logger;
+            _gate = gate;
         }
 
         [HttpGet("")]
@@ -44,11 +49,11 @@ namespace ProjectPlannerASP5.Controllers.Api
                 {
                     _logger.LogInformation("Attempting to saving a new project.");
 
-                    //if (_projectsService.Insert(vm)) // TODO: ApplicationService albo Command
-                    //{
-                    //    Response.StatusCode = (int)HttpStatusCode.Created;
-                    //    return Json(new { id = vm.Id });
-                    //}
+                    var createProjectCommand = new CreateProjectCommand(vm.Code, vm.Name);
+                    _gate.Dispatch(createProjectCommand);
+
+                    Response.StatusCode = (int)HttpStatusCode.Created;
+                    return Json(new {id = createProjectCommand.ProjectId});
                 }
             }
             catch (Exception ex)

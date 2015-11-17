@@ -1,8 +1,10 @@
 ﻿using ProjectPlanner.Cqrs.Base.DDD.Application;
+using ProjectPlanner.Cqrs.Base.DDD.Domain.Annotations;
 using ProjectPlanner.Projects.Interfaces.Domain.Exceptions;
 
 namespace ProjectPlanner.Projects.Domain
 {
+    [DomainFactory]
     public class ProjectFactory
     {
         private readonly ISystemUser _user;
