@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Reflection;
 using Autofac;
 using Autofac.Extras.AggregateService;
 using Microsoft.AspNet.Hosting;
@@ -14,17 +12,12 @@ using ProjectPlanner.Cqrs.Base.DDD.Domain.Annotations;
 using ProjectPlanner.Infrastructure.Orm;
 using ProjectPlanner.Infrastructure.Orm.Conventions;
 using ProjectPlannerASP5.Application;
-using ProjectPlanner.Projects.Interfaces.Presentation;
-using ProjectPlanner.Projects.Presentation.Implementation;
 using Project = ProjectPlanner.Projects.Domain.Project;
 using Autofac.Framework.DependencyInjection;
-using ProjectPlanner.Cqrs.Base.CQRS.Commands;
 using ProjectPlanner.Cqrs.Base.CQRS.Commands.Handler;
 using ProjectPlanner.Cqrs.Base.CQRS.Query.Attributes;
 using ProjectPlanner.Cqrs.Base.Infrastructure.Attributes;
 using ProjectPlanner.Projects.Application.Commands.Handlers;
-using ProjectPlanner.Projects.Domain;
-using ProjectPlanner.Projects.Infrastructure.Repositories;
 using ProjectPlanner.Projects.Interfaces.Application.Commands;
 
 namespace ProjectPlannerASP5.Configs

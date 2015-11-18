@@ -31,21 +31,25 @@
                         </div>
                         <div class="col-md-11">
                             <div class="input-group">
+                                <input type="text" ng-model="vm.searchText" placeholder="Search" class="input-sm form-control">
+                                <span class="input-group-btn">
+                                </span>
+                            </div>
+                            <!--<div class="input-group">
                                 <input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
                                     <button type="button" class="btn btn-sm btn-primary"> Go!</button>
                                 </span>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                     <div class="row m-t-md m-b-sm">
-                        <strong>Found {{ vm.projects.length }} projects.</strong>
+                        <strong>Found {{ filteredProjects.length }} projects.</strong>
                     </div>
-
                     <wait-cursor display-when="vm.isBusy"></wait-cursor>
 
                     <div class="project-list">
                         <table class="table table-hover">
-                            <tbody ng-repeat="project in vm.projects">
+                            <tbody ng-repeat="project in vm.projects | filter: vm.searchText as filteredProjects">
                                 <tr>
                                     <td class="project-status">
                                         <span ng-class="vm.getStatusClass(project.status)">{{ project.status }}</span>
@@ -58,7 +62,7 @@
                                     <td class="project-completion">
                                         <small>Completion with: {{ project.percentageCompleteness }}%</small>
                                         <div class="progress progress-mini">
-                                            <div style="width: {{ project.percentageCompleteness }}%;" class="progress-bar"></div>
+                                            <div ng-style="width: {{ project.percentageCompleteness }}%" class="progress-bar"></div>
                                         </div>
                                     </td>
                                     <td class="project-people" ng-repeat="user in project.users">
