@@ -43,9 +43,10 @@ namespace ProjectPlannerASP5.Configs
 
             var builder = new ContainerBuilder();
 
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             builder.RegisterType<SystemUser>().As<ISystemUser>();
 
-            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
+            builder.RegisterAssemblyTypes(assemblies)
                 .Where(t => t.IsComponentLifestyle(ComponentLifestyle.Transient) ||
                          t.IsDefined(typeof(FinderAttribute), true) ||
                          t.IsDefined(typeof(DomainServiceAttribute), true) ||
@@ -67,8 +68,11 @@ namespace ProjectPlannerASP5.Configs
             builder.RegisterAggregateService<ICommandHandlerFactory>();
             builder.RegisterType<EntityManager>().As<IEntityManager>().SingleInstance();
             builder.RegisterType<CreateProjectCommand>().AsSelf();
-            builder.RegisterType<CreateProjectCommandHandler>().As<ICommandHandler<CreateProjectCommand>>();
-            
+
+            builder.RegisterAssemblyTypes(assemblies)
+                .AsClosedTypesOf(typeof (ICommandHandler<>))
+                .AsImplementedInterfaces();
+
             builder.Populate(services);
 
             var container = builder.Build();

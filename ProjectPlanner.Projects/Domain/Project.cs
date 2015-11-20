@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ProjectPlanner.Cqrs.Base.DDD.Domain;
 using ProjectPlanner.Projects.Interfaces.Domain;
+using ProjectPlanner.Projects.Interfaces.Domain.Events;
 using ProjectPlanner.Projects.Interfaces.Domain.Exceptions;
 
 namespace ProjectPlanner.Projects.Domain
@@ -44,7 +45,7 @@ namespace ProjectPlanner.Projects.Domain
                 Users.Add(userId.ToString());
             }
 
-            // TODO: Add user event
+            EventPublisher.Publish(new UserAddedToProjectEvent(userId));
         }
 
         public void RemoveUser(Guid userId)
@@ -61,14 +62,14 @@ namespace ProjectPlanner.Projects.Domain
                 Users.Remove(userId.ToString());
             }
 
-            // TODO: Remove user event
+            EventPublisher.Publish(new UserRemovedFromProjectEvent(userId));
         }
 
         public void Close()
         {
             Status = ProjectStatus.Closed;
-            
-            // TODO: Close event
+
+            EventPublisher.Publish(new ProjectClosedEvent(Id));
         }
 
         private bool IsUserCreatedProject(Guid userId)
