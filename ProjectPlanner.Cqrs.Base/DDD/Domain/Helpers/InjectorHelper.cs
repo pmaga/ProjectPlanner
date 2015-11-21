@@ -7,6 +7,11 @@ namespace ProjectPlanner.Cqrs.Base.DDD.Domain.Helpers
     {
         public IDomainEventPublisher EventPublisher { get; set; }
 
+        public InjectorHelper(IDomainEventPublisher  eventPublisher)
+        {
+            EventPublisher = eventPublisher;
+        }
+
         public void InjectDependencies(AggregateRoot aggregateRoot)
         {
             if (aggregateRoot != null)

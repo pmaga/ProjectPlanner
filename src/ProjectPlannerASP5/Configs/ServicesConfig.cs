@@ -21,6 +21,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ProjectPlanner.Cqrs.Base.CQRS.Commands.Handler;
 using ProjectPlanner.Cqrs.Base.CQRS.Query.Attributes;
+using ProjectPlanner.Cqrs.Base.DDD.Domain;
+using ProjectPlanner.Cqrs.Base.DDD.Infrastructure.Events;
+using ProjectPlanner.Cqrs.Base.DDD.Infrastructure.Events.Implementation;
 using ProjectPlanner.Cqrs.Base.Infrastructure.Attributes;
 using ProjectPlanner.Projects.Interfaces.Application.Commands;
 using ProjectPlanner.Projects.Interfaces.Presentation;
@@ -36,46 +39,7 @@ namespace ProjectPlannerASP5.Configs
         {
             ConfigureMvcServices(services, hostingEnv);
 
-            var builder = new ContainerBuilder();
-
-            var domainAssemblies = new[]
-            {
-                typeof (ProjectFinder).Assembly,
-                typeof (IProjectFinder).Assembly
-            };
-            builder.RegisterType<SystemUser>().As<ISystemUser>();
-            builder.RegisterType<IdentityContextSeedData>().AsSelf();
-
-            builder.RegisterAssemblyTypes(domainAssemblies)
-                .Where(t => t.IsComponentLifestyle(ComponentLifestyle.Transient) ||
-                         t.IsDefined(typeof(FinderAttribute), true) ||
-                         t.IsDefined(typeof(DomainServiceAttribute), true) ||
-                         t.IsDefined(typeof(DomainRepositoryAttribute), true) ||
-                         t.IsDefined(typeof(DomainFactoryAttribute), true))
-                .AsImplementedInterfaces()
-                .AsSelf()
-                .InstancePerDependency();
-
-            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
-                .Where(t => t.IsComponentLifestyle(ComponentLifestyle.Singleton))
-                .AsImplementedInterfaces()
-                .AsSelf()
-                .SingleInstance();
-
-            RegisterOrm(builder);
-
-            builder.RegisterAggregateService<IPerRequestSessionFactory>();
-            builder.RegisterAggregateService<ICommandHandlerFactory>();
-            builder.RegisterType<EntityManager>().As<IEntityManager>().SingleInstance();
-            builder.RegisterType<CreateProjectCommand>().AsSelf();
-
-            builder.RegisterAssemblyTypes(domainAssemblies)
-                .AsClosedTypesOf(typeof (ICommandHandler<>))
-                .AsImplementedInterfaces();
-
-            builder.Populate(services);
-
-            var container = builder.Build();
+            var container = ConfigureAutofacServices(services);
 
             return container.Resolve<IServiceProvider>();
         }
@@ -86,23 +50,22 @@ namespace ProjectPlannerASP5.Configs
             {
                 if (!hostingEnv.IsDevelopment())
                 {
-                    config.Filters.Add(new RequireHttpsAttribute());
+                    config.Filters.Add(typeof(RequireHttpsAttribute));
                 }
             })
-                .AddJsonOptions(opt =>
-                {
-                    opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                    opt.SerializerSettings.Converters.Add(new StringEnumConverter());
-                });
+            .AddJsonOptions(opt =>
+            {
+                opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                opt.SerializerSettings.Converters.Add(new StringEnumConverter());
+            });
 
             services.AddIdentity<AppUser, IdentityRole>(config =>
             {
                 config.User.RequireUniqueEmail = true;
                 config.Password.RequiredLength = 8;
             })
-                .AddEntityFrameworkStores<IdentityContext>();
+            .AddEntityFrameworkStores<IdentityContext>();
 
-            services.AddScoped<IdentityContextSeedData>();
             services.AddLogging();
 
             services.AddEntityFramework()
@@ -119,7 +82,7 @@ namespace ProjectPlannerASP5.Configs
                     {
                         if (ctx.Request.Path.StartsWithSegments("/api") && ctx.Response.StatusCode == 200)
                         {
-                            ctx.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
+                            ctx.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                         }
                         else
                         {
@@ -134,10 +97,58 @@ namespace ProjectPlannerASP5.Configs
             services.AddTransient<IdentityContextSeedData>();
         }
 
+        private static IContainer ConfigureAutofacServices(IServiceCollection services)
+        {
+            var builder = new ContainerBuilder();
+
+            var domainAssemblies = new[]
+            {
+                typeof (ProjectFinder).Assembly,
+                typeof (IProjectFinder).Assembly
+            };
+            builder.RegisterType<SystemUser>().As<ISystemUser>();
+            builder.RegisterType<IdentityContextSeedData>().AsSelf();
+
+            builder.RegisterAssemblyTypes(domainAssemblies)
+                .Where(t => t.IsComponentLifestyle(ComponentLifestyle.Transient) ||
+                            t.IsDefined(typeof(FinderAttribute), true) ||
+                            t.IsDefined(typeof(DomainServiceAttribute), true) ||
+                            t.IsDefined(typeof(DomainRepositoryAttribute), true) ||
+                            t.IsDefined(typeof(DomainFactoryAttribute), true))
+                .AsImplementedInterfaces()
+                .AsSelf()
+                .InstancePerDependency();
+
+            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
+                .Where(t => t.IsComponentLifestyle(ComponentLifestyle.Singleton))
+                .AsImplementedInterfaces()
+                .AsSelf()
+                .SingleInstance();
+
+            RegisterOrm(builder);
+
+            builder.RegisterAggregateService<IPerRequestSessionFactory>();
+            builder.RegisterAggregateService<ICommandHandlerFactory>();
+            builder.RegisterType<EntityManager>().As<IEntityManager>().SingleInstance();
+            builder.RegisterType<CreateProjectCommand>().AsSelf();
+            builder.RegisterType<EventPublisher>().AsImplementedInterfaces()
+                .SingleInstance();
+
+
+            builder.RegisterAssemblyTypes(domainAssemblies)
+                .AsClosedTypesOf(typeof(ICommandHandler<>))
+                .AsImplementedInterfaces();
+
+            builder.Populate(services);
+
+            var container = builder.Build();
+            return container;
+        }
+
         private static void RegisterOrm(ContainerBuilder builder)
         {
-            AutomappingConfiguration.IsEntityPredicate = e => e.IsDefined(typeof (DomainEntityAttribute), true);
-            AutomappingConfiguration.IsComponentPredicate = e => e.IsDefined(typeof (DomainValueObjectAttribute), true);
+            AutomappingConfiguration.IsEntityPredicate = e => e.IsDefined(typeof(DomainEntityAttribute), true);
+            AutomappingConfiguration.IsComponentPredicate = e => e.IsDefined(typeof(DomainValueObjectAttribute), true);
 
             EntityManager.GetAssemblies = () => new[]
             {

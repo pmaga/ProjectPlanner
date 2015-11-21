@@ -36,7 +36,7 @@ namespace ProjectPlannerASP5.Controllers
         public async Task<IActionResult> Login(LoginViewModel vm, string returnUrl = null)
         {
             ViewBag.ReturnUrl = returnUrl;
-
+ 
             if (ModelState.IsValid)
             {
                 var signInResult = await _signInManager.PasswordSignInAsync(vm.UserName,

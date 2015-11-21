@@ -6,7 +6,6 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Builder;
 using ProjectPlannerASP5.Configs;
 using Microsoft.Framework.Logging;
-using ProjectPlannerASP5.Models;
 using ProjectPlannerASP5.Models.Seeders;
 
 namespace ProjectPlannerASP5
@@ -51,6 +50,8 @@ namespace ProjectPlannerASP5
             app.UseIISPlatformHandler();
 
             app.UseStaticFiles();
+
+            app.UseIdentity();
 
             app.UseMvc(config =>
             {
