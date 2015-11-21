@@ -3,7 +3,7 @@
 namespace ProjectPlanner.Cqrs.Base.DDD.Domain.Annotations
 {
     [AttributeUsage(AttributeTargets.Class)]
-    public class DomainRepositoryImplementationAttribute : Attribute
+    public class DomainRepositoryAttribute : Attribute
     {
     }
 }

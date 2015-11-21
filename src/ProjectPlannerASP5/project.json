@@ -17,11 +17,16 @@
     "ProjectPlanner.Infrastructure.Orm": "1.0.0-*",
     "Autofac": "4.0.0-beta8-157",
     "Autofac.Extras.AggregateService": "4.0.0",
-    "Autofac.Framework.DependencyInjection": "4.0.0-beta8-157"
+    "Autofac.Framework.DependencyInjection": "4.0.0-beta8-157",
+    "EntityFramework.Core": "7.0.0-beta8",
+    "EntityFramework.SqlServer": "7.0.0-beta8",
+    "EntityFramework.Commands": "7.0.0-beta8",
+    "Microsoft.AspNet.Identity.EntityFramework": "3.0.0-beta8"
   },
 
   "commands": {
-    "web": "Microsoft.AspNet.Server.Kestrel"
+    "web": "Microsoft.AspNet.Server.Kestrel",
+    "ef": "EntityFramework.Commands"
   },
 
   "frameworks": {

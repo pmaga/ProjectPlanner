@@ -6,6 +6,8 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Builder;
 using ProjectPlannerASP5.Configs;
 using Microsoft.Framework.Logging;
+using ProjectPlannerASP5.Models;
+using ProjectPlannerASP5.Models.Seeders;
 
 namespace ProjectPlannerASP5
 {
@@ -31,8 +33,8 @@ namespace ProjectPlannerASP5
             return ServicesConfig.Configure(services, _env);
         }
 
-        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory,
-            IHostingEnvironment env)
+        public async void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory,
+            IHostingEnvironment env, IdentityContextSeedData seeder)
         {
             loggerFactory.MinimumLevel = LogLevel.Information;
             loggerFactory.AddDebug(LogLevel.Warning);
@@ -58,6 +60,8 @@ namespace ProjectPlannerASP5
                     defaults: new { controller = "App", action = "Index" }
                     );
             });
+
+            await seeder.EnsureSeedDataAsync();
         }
     }
 }

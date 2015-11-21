@@ -10,7 +10,7 @@ using ProjectPlanner.Projects.Interfaces.Domain.Events;
 
 namespace ProjectPlanner.Projects.Infrastructure.Repositories
 {
-    [DomainRepositoryImplementation]
+    [DomainRepository]
     public class ProjectRepository : RepositoryForBaseEntity<Project>, IProjectRepository
     {
         public IDomainEventPublisher DomainEventPublisher { get; set; }

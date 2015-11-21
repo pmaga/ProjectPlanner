@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net;
+using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extras.AggregateService;
 using Microsoft.AspNet.Hosting;
@@ -14,13 +16,17 @@ using ProjectPlanner.Infrastructure.Orm.Conventions;
 using ProjectPlannerASP5.Application;
 using Project = ProjectPlanner.Projects.Domain.Project;
 using Autofac.Framework.DependencyInjection;
+using Microsoft.AspNet.Authentication.Cookies;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using ProjectPlanner.Cqrs.Base.CQRS.Commands.Handler;
 using ProjectPlanner.Cqrs.Base.CQRS.Query.Attributes;
 using ProjectPlanner.Cqrs.Base.Infrastructure.Attributes;
-using ProjectPlanner.Projects.Application.Commands.Handlers;
 using ProjectPlanner.Projects.Interfaces.Application.Commands;
 using ProjectPlanner.Projects.Interfaces.Presentation;
 using ProjectPlanner.Projects.Presentation.Implementation;
+using ProjectPlannerASP5.Models;
+using ProjectPlannerASP5.Models.Seeders;
 
 namespace ProjectPlannerASP5.Configs
 {
@@ -28,20 +34,7 @@ namespace ProjectPlannerASP5.Configs
     {
         public static IServiceProvider Configure(IServiceCollection services, IHostingEnvironment hostingEnv)
         {
-            services.AddMvc(config =>
-            {
-                if (!hostingEnv.IsDevelopment())
-                {
-                    config.Filters.Add(new RequireHttpsAttribute());
-                }
-            })
-            .AddJsonOptions(opt =>
-            {
-                opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                opt.SerializerSettings.Converters.Add(new StringEnumConverter());
-            });
-
-            services.AddLogging();
+            ConfigureMvcServices(services, hostingEnv);
 
             var builder = new ContainerBuilder();
 
@@ -51,12 +44,13 @@ namespace ProjectPlannerASP5.Configs
                 typeof (IProjectFinder).Assembly
             };
             builder.RegisterType<SystemUser>().As<ISystemUser>();
+            builder.RegisterType<IdentityContextSeedData>().AsSelf();
 
             builder.RegisterAssemblyTypes(domainAssemblies)
                 .Where(t => t.IsComponentLifestyle(ComponentLifestyle.Transient) ||
                          t.IsDefined(typeof(FinderAttribute), true) ||
                          t.IsDefined(typeof(DomainServiceAttribute), true) ||
-                         t.IsDefined(typeof(DomainRepositoryImplementationAttribute), true) ||
+                         t.IsDefined(typeof(DomainRepositoryAttribute), true) ||
                          t.IsDefined(typeof(DomainFactoryAttribute), true))
                 .AsImplementedInterfaces()
                 .AsSelf()
@@ -86,6 +80,60 @@ namespace ProjectPlannerASP5.Configs
             return container.Resolve<IServiceProvider>();
         }
 
+        private static void ConfigureMvcServices(IServiceCollection services, IHostingEnvironment hostingEnv)
+        {
+            services.AddMvc(config =>
+            {
+                if (!hostingEnv.IsDevelopment())
+                {
+                    config.Filters.Add(new RequireHttpsAttribute());
+                }
+            })
+                .AddJsonOptions(opt =>
+                {
+                    opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    opt.SerializerSettings.Converters.Add(new StringEnumConverter());
+                });
+
+            services.AddIdentity<AppUser, IdentityRole>(config =>
+            {
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequiredLength = 8;
+            })
+                .AddEntityFrameworkStores<IdentityContext>();
+
+            services.AddScoped<IdentityContextSeedData>();
+            services.AddLogging();
+
+            services.AddEntityFramework()
+                .AddSqlServer()
+                .AddDbContext<IdentityContext>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Cookies.ApplicationCookie.CookieName = "authCookie";
+                options.Cookies.ApplicationCookie.LoginPath = new Microsoft.AspNet.Http.PathString("/Auth/Login");
+                options.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()
+                {
+                    OnRedirect = ctx =>
+                    {
+                        if (ctx.Request.Path.StartsWithSegments("/api") && ctx.Response.StatusCode == 200)
+                        {
+                            ctx.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
+                        }
+                        else
+                        {
+                            ctx.Response.Redirect(ctx.RedirectUri);
+                        }
+
+                        return Task.FromResult<object>(null);
+                    }
+                };
+            });
+
+            services.AddTransient<IdentityContextSeedData>();
+        }
+
         private static void RegisterOrm(ContainerBuilder builder)
         {
             AutomappingConfiguration.IsEntityPredicate = e => e.IsDefined(typeof (DomainEntityAttribute), true);
@@ -101,20 +149,6 @@ namespace ProjectPlannerASP5.Configs
                 .SingleInstance();
             builder.Register<ISession>(context => EntityManager.SessionFactory.OpenSession())
                 .InstancePerLifetimeScope();
-        }
-    }
-
-    public class ProjectPlannerSeedData
-    {
-        public void SeedData(ISession session)
-        {
-            if (session.QueryOver<Project>().SingleOrDefault() == null)
-            {
-                var project = new Project(new Guid(), "JRS", "Name");
-
-                session.Save(project);
-                session.Flush();
-            }
         }
     }
 }
