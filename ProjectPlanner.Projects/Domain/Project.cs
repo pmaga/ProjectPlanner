@@ -33,7 +33,6 @@ namespace ProjectPlanner.Projects.Domain
             CreatorUserId = creatorUserId;
             Code = code;
             Name = name;
-            AddUser(creatorUserId);
         }
 
         public void AddUser(Guid userId)

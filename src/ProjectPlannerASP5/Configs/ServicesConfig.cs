@@ -19,6 +19,8 @@ using ProjectPlanner.Cqrs.Base.CQRS.Query.Attributes;
 using ProjectPlanner.Cqrs.Base.Infrastructure.Attributes;
 using ProjectPlanner.Projects.Application.Commands.Handlers;
 using ProjectPlanner.Projects.Interfaces.Application.Commands;
+using ProjectPlanner.Projects.Interfaces.Presentation;
+using ProjectPlanner.Projects.Presentation.Implementation;
 
 namespace ProjectPlannerASP5.Configs
 {
@@ -43,10 +45,14 @@ namespace ProjectPlannerASP5.Configs
 
             var builder = new ContainerBuilder();
 
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            var domainAssemblies = new[]
+            {
+                typeof (ProjectFinder).Assembly,
+                typeof (IProjectFinder).Assembly
+            };
             builder.RegisterType<SystemUser>().As<ISystemUser>();
 
-            builder.RegisterAssemblyTypes(assemblies)
+            builder.RegisterAssemblyTypes(domainAssemblies)
                 .Where(t => t.IsComponentLifestyle(ComponentLifestyle.Transient) ||
                          t.IsDefined(typeof(FinderAttribute), true) ||
                          t.IsDefined(typeof(DomainServiceAttribute), true) ||
@@ -69,7 +75,7 @@ namespace ProjectPlannerASP5.Configs
             builder.RegisterType<EntityManager>().As<IEntityManager>().SingleInstance();
             builder.RegisterType<CreateProjectCommand>().AsSelf();
 
-            builder.RegisterAssemblyTypes(assemblies)
+            builder.RegisterAssemblyTypes(domainAssemblies)
                 .AsClosedTypesOf(typeof (ICommandHandler<>))
                 .AsImplementedInterfaces();
 

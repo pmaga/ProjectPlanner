@@ -1,4 +1,5 @@
 ﻿using System;
+using ProjectPlanner.Cqrs.Base.DDD.Domain.Helpers;
 using Xunit;
 using ProjectPlanner.Projects.Domain;
 using ProjectPlanner.Projects.Interfaces.Domain.Exceptions;
@@ -15,8 +16,9 @@ namespace ProjectPlanner.Projects.Tests.Domain
         {
             var systemUser = new SystemUser();
             var projectRepository = new ProjectRepository();
+            var injectorHelper = new InjectorHelper();
 
-            _projectFactory = new ProjectFactory(systemUser, projectRepository);
+            _projectFactory = new ProjectFactory(systemUser, projectRepository, injectorHelper);
         }
 
         [Fact]
