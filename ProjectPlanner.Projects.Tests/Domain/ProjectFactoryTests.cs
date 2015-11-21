@@ -3,6 +3,7 @@ using ProjectPlanner.Cqrs.Base.DDD.Domain.Helpers;
 using ProjectPlanner.Projects.Domain;
 using ProjectPlanner.Projects.Interfaces.Domain.Exceptions;
 using ProjectPlanner.Projects.Tests.Mocks;
+using ProjectPlanner.Tests.Helpers;
 using Xunit;
 
 namespace ProjectPlanner.Projects.Tests.Domain
@@ -16,7 +17,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
         {
             var systemUser = new SystemUser();
             var projectRepository = new ProjectRepository();
-            var injectorHelper = new InjectorHelper();
+            var injectorHelper = new TestInjectorHelper();
 
             _projectFactory = new ProjectFactory(systemUser, projectRepository, injectorHelper);
         }
@@ -48,7 +49,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
             var newId = new Guid();
             systemUser.SetUserId(newId);
             var projectRepository = new ProjectRepository();
-            var injectorHelper = new InjectorHelper();
+            var injectorHelper = new TestInjectorHelper();
             _projectFactory = new ProjectFactory(systemUser, projectRepository, injectorHelper);
 
             var project = _projectFactory.CreateProject("code", "projectName");

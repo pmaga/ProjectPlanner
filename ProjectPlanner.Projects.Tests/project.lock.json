@@ -205,6 +205,15 @@
           "ProjectPlanner.Cqrs.Base": "1.0.0"
         }
       },
+      "ProjectPlanner.Tests.Helpers/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736",
+          "ProjectPlanner.Projects": "1.0.0",
+          "ProjectPlanner.Projects.Interfaces": "1.0.0"
+        }
+      },
       "xunit/2.1.0": {
         "type": "package",
         "dependencies": {
@@ -517,6 +526,15 @@
         "dependencies": {
           "dnx-clr-win-x86": "1.0.0-beta8-15736",
           "ProjectPlanner.Cqrs.Base": "1.0.0"
+        }
+      },
+      "ProjectPlanner.Tests.Helpers/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736",
+          "ProjectPlanner.Projects": "1.0.0",
+          "ProjectPlanner.Projects.Interfaces": "1.0.0"
         }
       },
       "xunit/2.1.0": {
@@ -833,6 +851,15 @@
           "ProjectPlanner.Cqrs.Base": "1.0.0"
         }
       },
+      "ProjectPlanner.Tests.Helpers/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "dnx-clr-win-x86": "1.0.0-beta8-15736",
+          "ProjectPlanner.Projects": "1.0.0",
+          "ProjectPlanner.Projects.Interfaces": "1.0.0"
+        }
+      },
       "xunit/2.1.0": {
         "type": "package",
         "dependencies": {
@@ -961,6 +988,10 @@
     "ProjectPlanner.Projects.Interfaces/1.0.0": {
       "type": "project",
       "path": "../ProjectPlanner.Projects.Interfaces/project.json"
+    },
+    "ProjectPlanner.Tests.Helpers/1.0.0": {
+      "type": "project",
+      "path": "../ProjectPlanner.Tests.Helpers/project.json"
     },
     "dnx-clr-win-x86/1.0.0-beta8-15736": {
       "type": "package",
@@ -1355,7 +1386,8 @@
       "ProjectPlanner.Projects.Interfaces >= 1.0.0-*",
       "xunit.runner.dnx >= 2.1.0-beta6-build191",
       "xunit >= 2.1.0",
-      "dnx-clr-win-x86 >= 1.0.0-beta8-15736"
+      "dnx-clr-win-x86 >= 1.0.0-beta8-15736",
+      "ProjectPlanner.Tests.Helpers >= 1.0.0-*"
     ],
     "DNX,Version=v4.5.1": []
   }

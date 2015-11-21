@@ -1,7 +1,7 @@
 ﻿using System;
 using ProjectPlanner.Cqrs.Base.DDD.Application;
 
-namespace ProjectPlanner.Projects.Tests.Mocks
+namespace ProjectPlanner.Tests.Helpers
 {
     public class SystemUser : ISystemUser
     {

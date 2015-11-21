@@ -4,6 +4,7 @@ using Xunit;
 using ProjectPlanner.Projects.Domain;
 using ProjectPlanner.Projects.Interfaces.Domain.Exceptions;
 using ProjectPlanner.Projects.Tests.Mocks;
+using ProjectPlanner.Tests.Helpers;
 
 namespace ProjectPlanner.Projects.Tests.Domain
 {
@@ -16,7 +17,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
         {
             var systemUser = new SystemUser();
             var projectRepository = new ProjectRepository();
-            var injectorHelper = new InjectorHelper();
+            var injectorHelper = new TestInjectorHelper();
 
             _projectFactory = new ProjectFactory(systemUser, projectRepository, injectorHelper);
         }

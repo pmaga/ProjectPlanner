@@ -17,12 +17,17 @@ namespace ProjectPlanner.Infrastructure.Orm.Repositories
         public override TEntity Load(int id)
         {
             TEntity entity = base.Load(id);
-            if (entity is AggregateRoot)
-            {
-                InjectorHelper.InjectDependencies((AggregateRoot)(object)entity);
-            }
+            InjectDependenciesIfAggregateRoot(entity);
 
             return entity;
+        }
+
+        private void InjectDependenciesIfAggregateRoot(TEntity entity)
+        {
+            if (entity is AggregateRoot)
+            {
+                InjectorHelper.InjectDependencies((AggregateRoot) (object) entity);
+            }
         }
 
         public override void Delete(int id)
