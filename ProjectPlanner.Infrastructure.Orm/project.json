@@ -15,6 +15,6 @@
   },
   "dependencies": {
     "ProjectPlanner.Cqrs.Base": "1.0.0-*",
-    "dnx-clr-win-x86": "1.0.0-beta8-15736"
+    "dnx-clr-win-x86": "1.0.0-rc1-final"
   }
 }

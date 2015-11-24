@@ -3,7 +3,7 @@
   "version": 2,
   "targets": {
     "DNX,Version=v4.5.1": {
-      "dnx-clr-win-x86/1.0.0-beta8-15736": {
+      "dnx-clr-win-x86/1.0.0-rc1-final": {
         "type": "package"
       },
       "FluentNHibernate/2.0.3": {
@@ -43,12 +43,12 @@
         "type": "project",
         "framework": "DNX,Version=v4.5.1",
         "dependencies": {
-          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+          "dnx-clr-win-x86": "1.0.0-rc1-final"
         }
       }
     },
     "DNX,Version=v4.5.1/win7-x86": {
-      "dnx-clr-win-x86/1.0.0-beta8-15736": {
+      "dnx-clr-win-x86/1.0.0-rc1-final": {
         "type": "package"
       },
       "FluentNHibernate/2.0.3": {
@@ -88,12 +88,12 @@
         "type": "project",
         "framework": "DNX,Version=v4.5.1",
         "dependencies": {
-          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+          "dnx-clr-win-x86": "1.0.0-rc1-final"
         }
       }
     },
     "DNX,Version=v4.5.1/win7-x64": {
-      "dnx-clr-win-x86/1.0.0-beta8-15736": {
+      "dnx-clr-win-x86/1.0.0-rc1-final": {
         "type": "package"
       },
       "FluentNHibernate/2.0.3": {
@@ -133,7 +133,7 @@
         "type": "project",
         "framework": "DNX,Version=v4.5.1",
         "dependencies": {
-          "dnx-clr-win-x86": "1.0.0-beta8-15736"
+          "dnx-clr-win-x86": "1.0.0-rc1-final"
         }
       }
     }
@@ -143,10 +143,10 @@
       "type": "project",
       "path": "../ProjectPlanner.Cqrs.Base/project.json"
     },
-    "dnx-clr-win-x86/1.0.0-beta8-15736": {
+    "dnx-clr-win-x86/1.0.0-rc1-final": {
       "type": "package",
       "serviceable": true,
-      "sha512": "2XhjfbyKkjKMbe9qObDK1Arjya0qvo9L2mxbzHaCxw6KCgEReN01XEG/07YOGJlk2jZHTmBA0Kgm9PF3t5d9KQ==",
+      "sha512": "TZOZE/nNiHWAxe50v1GSuuYKwm+DKLOvLF/iEQI6HEyicR5mryLXtHwcNj8a6W2renh6tn6KAsEbbR/d6EmQkQ==",
       "files": [
         "bin/dnu.cmd",
         "bin/dnx.clr.dll",
@@ -175,14 +175,14 @@
         "bin/Microsoft.Dnx.Host.dll",
         "bin/Microsoft.Dnx.Host.Mono.dll",
         "bin/Microsoft.Dnx.Loader.dll",
-        "bin/Microsoft.Dnx.Runtime.Abstractions.dll",
         "bin/Microsoft.Dnx.Runtime.dll",
         "bin/Microsoft.Dnx.Runtime.Internals.dll",
+        "bin/Microsoft.Extensions.PlatformAbstractions.dll",
         "bin/System.Collections.Immutable.dll",
         "bin/System.Reflection.Metadata.dll",
         "bin/vcruntime140.dll",
-        "dnx-clr-win-x86.1.0.0-beta8-15736.nupkg",
-        "dnx-clr-win-x86.1.0.0-beta8-15736.nupkg.sha512",
+        "dnx-clr-win-x86.1.0.0-rc1-final.nupkg",
+        "dnx-clr-win-x86.1.0.0-rc1-final.nupkg.sha512",
         "dnx-clr-win-x86.nuspec"
       ]
     },
@@ -237,7 +237,7 @@
   "projectFileDependencyGroups": {
     "": [
       "ProjectPlanner.Cqrs.Base >= 1.0.0-*",
-      "dnx-clr-win-x86 >= 1.0.0-beta8-15736"
+      "dnx-clr-win-x86 >= 1.0.0-rc1-final"
     ],
     "DNX,Version=v4.5.1": [
       "NHibernate >= 4.0.4.4000",

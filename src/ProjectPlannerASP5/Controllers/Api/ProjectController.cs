@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNet.Mvc;
-using Microsoft.Framework.Logging;
+using Microsoft.Extensions.Logging;
 using ProjectPlannerASP5.ViewModels;
 using System;
 using System.Net;

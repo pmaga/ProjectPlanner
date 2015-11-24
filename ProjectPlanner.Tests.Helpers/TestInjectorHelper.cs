@@ -4,9 +4,8 @@ namespace ProjectPlanner.Tests.Helpers
 {
     public class TestInjectorHelper : InjectorHelper
     {
-        public TestInjectorHelper()
+        public TestInjectorHelper() : base(new EmptyEventPublisher())
         {
-            EventPublisher = new EmptyEventPublisher();
         }
     }
 }

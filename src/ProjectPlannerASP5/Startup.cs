@@ -1,11 +1,12 @@
 ﻿using System;
-using Microsoft.Framework.DependencyInjection;
-using Microsoft.Framework.Configuration;
-using Microsoft.Dnx.Runtime;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Builder;
+using Microsoft.AspNet.Http;
 using ProjectPlannerASP5.Configs;
-using Microsoft.Framework.Logging;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.PlatformAbstractions;
 using ProjectPlannerASP5.Models.Seeders;
 
 namespace ProjectPlannerASP5
@@ -14,6 +15,8 @@ namespace ProjectPlannerASP5
     {
         public static IConfigurationRoot Configuration;
         private readonly IHostingEnvironment _env;
+
+        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
 
         public Startup(IApplicationEnvironment appEnv, IHostingEnvironment env)
         {
@@ -60,6 +63,11 @@ namespace ProjectPlannerASP5
                     template: "{controller}/{action}/{id?}",
                     defaults: new { controller = "App", action = "Index" }
                     );
+            });
+
+            app.UseCookieAuthentication(options =>
+            {
+                options.AccessDeniedPath = new PathString("/Home/AccessDenied");
             });
 
             await seeder.EnsureSeedDataAsync();

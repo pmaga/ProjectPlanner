@@ -2,10 +2,11 @@
 using System.Net;
 using System.Threading.Tasks;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Autofac.Extras.AggregateService;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Mvc;
-using Microsoft.Framework.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using NHibernate;
@@ -15,14 +16,9 @@ using ProjectPlanner.Infrastructure.Orm;
 using ProjectPlanner.Infrastructure.Orm.Conventions;
 using ProjectPlannerASP5.Application;
 using Project = ProjectPlanner.Projects.Domain.Project;
-using Autofac.Framework.DependencyInjection;
-using Microsoft.AspNet.Authentication.Cookies;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ProjectPlanner.Cqrs.Base.CQRS.Commands.Handler;
 using ProjectPlanner.Cqrs.Base.CQRS.Query.Attributes;
-using ProjectPlanner.Cqrs.Base.DDD.Domain;
-using ProjectPlanner.Cqrs.Base.DDD.Infrastructure.Events;
 using ProjectPlanner.Cqrs.Base.DDD.Infrastructure.Events.Implementation;
 using ProjectPlanner.Cqrs.Base.Infrastructure.Attributes;
 using ProjectPlanner.Projects.Interfaces.Application.Commands;
@@ -72,27 +68,27 @@ namespace ProjectPlannerASP5.Configs
                 .AddSqlServer()
                 .AddDbContext<IdentityContext>();
 
-            services.Configure<IdentityOptions>(options =>
-            {
-                options.Cookies.ApplicationCookie.CookieName = "authCookie";
-                options.Cookies.ApplicationCookie.LoginPath = new Microsoft.AspNet.Http.PathString("/Auth/Login");
-                options.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()
-                {
-                    OnRedirect = ctx =>
-                    {
-                        if (ctx.Request.Path.StartsWithSegments("/api") && ctx.Response.StatusCode == 200)
-                        {
-                            ctx.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                        }
-                        else
-                        {
-                            ctx.Response.Redirect(ctx.RedirectUri);
-                        }
+            //services.Configure<IdentityOptions>(options =>
+            //{
+            //    options.Cookies.ApplicationCookie.CookieName = "authCookie";
+            //    options.Cookies.ApplicationCookie.LoginPath = new Microsoft.AspNet.Http.PathString("/Auth/Login");
+            //    options.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()
+            //    {
+            //        OnRedirect = ctx =>
+            //        {
+            //            if (ctx.Request.Path.StartsWithSegments("/api") && ctx.Response.StatusCode == 200)
+            //            {
+            //                ctx.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+            //            }
+            //            else
+            //            {
+            //                ctx.Response.Redirect(ctx.RedirectUri);
+            //            }
 
-                        return Task.FromResult<object>(null);
-                    }
-                };
-            });
+            //            return Task.FromResult<object>(null);
+            //        }
+            //    };
+            //});
 
             services.AddTransient<IdentityContextSeedData>();
         }
