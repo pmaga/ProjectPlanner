@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Logging;
+using ProjectPlanner.Cqrs.Base.CQRS.Commands;
 using ProjectPlannerASP5.Services;
 using ProjectPlannerASP5.ViewModels;
 using System;
 using System.Net;
+using ProjectPlanner.Projects.Interfaces.Presentation;
 
 namespace ProjectPlannerASP5.Controllers.Api
 {
@@ -11,13 +13,15 @@ namespace ProjectPlannerASP5.Controllers.Api
     [Route("api/projects/{projectCode}/issues")]
     public class IssueController : Controller
     {
-        private readonly IIssueService _issueService;
+        private readonly IGate _gate;
         private readonly ILogger<IssueController> _logger;
+        private readonly IIssuesFinder _issueFinder;
 
-        public IssueController(IIssueService issueService, ILogger<IssueController> logger)
+        public IssueController(IGate gate, ILogger<IssueController> logger, IIssuesFinder issueFinder)
         {
-            _issueService = issueService;
+            _gate = gate;
             _logger = logger;
+            _issueFinder = issueFinder;
         }
 
         [HttpGet("")]
@@ -25,10 +29,9 @@ namespace ProjectPlannerASP5.Controllers.Api
         {
             try
             {
-                //var results = _issueService.GetIssuesByProjectCode(projectCode);
+                var results = _issueFinder.FindIssues(projectCode);
 
-                //return Json(results);
-                return Json(null);
+                return Json(results);
             }
             catch (Exception ex)
             {

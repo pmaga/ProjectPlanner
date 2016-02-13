@@ -1,4 +1,4 @@
-﻿namespace ProjectPlanner.Projects.Domain
+﻿namespace ProjectPlanner.Projects.Interfaces.Domain
 {
     public enum IssueStatus
     {

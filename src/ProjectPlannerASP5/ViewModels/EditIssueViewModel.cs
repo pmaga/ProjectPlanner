@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using ProjectPlanner.Projects.Domain;
+using ProjectPlanner.Projects.Interfaces.Domain;
 
 namespace ProjectPlannerASP5.ViewModels
 {

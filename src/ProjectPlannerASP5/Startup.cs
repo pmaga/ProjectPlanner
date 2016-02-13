@@ -40,7 +40,7 @@ namespace ProjectPlannerASP5
         {
             loggerFactory.MinimumLevel = LogLevel.Information;
             loggerFactory.AddDebug(LogLevel.Warning);
-
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -68,6 +68,7 @@ namespace ProjectPlannerASP5
             app.UseCookieAuthentication(options =>
             {
                 options.AccessDeniedPath = new PathString("/Home/AccessDenied");
+                options.LoginPath = new PathString("/Auth/Login");
             });
 
             await seeder.EnsureSeedDataAsync();

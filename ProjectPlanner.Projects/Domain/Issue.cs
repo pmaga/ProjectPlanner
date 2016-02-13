@@ -1,5 +1,6 @@
 ﻿using System;
 using ProjectPlanner.Cqrs.Base.DDD.Domain;
+using ProjectPlanner.Projects.Interfaces.Domain;
 
 namespace ProjectPlanner.Projects.Domain
 {
