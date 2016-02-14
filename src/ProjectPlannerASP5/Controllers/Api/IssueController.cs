@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Logging;
-using ProjectPlanner.Cqrs.Base.CQRS.Commands;
 using ProjectPlannerASP5.Services;
 using ProjectPlannerASP5.ViewModels;
 using System;
 using System.Net;
-using ProjectPlanner.Projects.Interfaces.Presentation;
+using ProjectPlannerASP5.Base.Cqrs.Base.CQRS.Commands;
+using ProjectPlannerASP5.Projects.Abstract.Presentation;
 
 namespace ProjectPlannerASP5.Controllers.Api
 {
