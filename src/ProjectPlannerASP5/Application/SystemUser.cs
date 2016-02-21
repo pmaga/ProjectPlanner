@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNet.Http;
+using ProjectPlanner.Cqrs.Base.DDD.Application;
 using System.Security.Claims;
-using ProjectPlannerASP5.Base.Cqrs.Base.DDD.Application;
 
 namespace ProjectPlannerASP5.Application
 {

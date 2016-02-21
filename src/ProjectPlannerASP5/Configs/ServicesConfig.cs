@@ -10,22 +10,22 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using NHibernate;
+using ProjectPlanner.Cqrs.Base.DDD.Application;
+using ProjectPlanner.Cqrs.Base.DDD.Domain.Annotations;
+using ProjectPlanner.Infrastructure.Orm;
+using ProjectPlanner.Infrastructure.Orm.Conventions;
 using ProjectPlannerASP5.Application;
+using Project = ProjectPlanner.Projects.Domain.Project;
 using Microsoft.AspNet.Identity.EntityFramework;
-using ProjectPlannerASP5.Base.Cqrs.Base.CQRS.Commands.Handler;
-using ProjectPlannerASP5.Base.Cqrs.Base.CQRS.Query.Attributes;
-using ProjectPlannerASP5.Base.Cqrs.Base.DDD.Application;
-using ProjectPlannerASP5.Base.Cqrs.Base.DDD.Domain.Annotations;
-using ProjectPlannerASP5.Base.Cqrs.Base.DDD.Infrastructure.Events.Implementation;
-using ProjectPlannerASP5.Base.Cqrs.Base.Infrastructure.Attributes;
-using ProjectPlannerASP5.Base.Infrastructure.Orm;
-using ProjectPlannerASP5.Base.Infrastructure.Orm.Conventions;
+using ProjectPlanner.Cqrs.Base.CQRS.Commands.Handler;
+using ProjectPlanner.Cqrs.Base.CQRS.Query.Attributes;
+using ProjectPlanner.Cqrs.Base.DDD.Infrastructure.Events.Implementation;
+using ProjectPlanner.Cqrs.Base.Infrastructure.Attributes;
+using ProjectPlanner.Projects.Interfaces.Application.Commands;
+using ProjectPlanner.Projects.Interfaces.Presentation;
+using ProjectPlanner.Projects.Presentation.Implementation;
 using ProjectPlannerASP5.Models;
 using ProjectPlannerASP5.Models.Seeders;
-using ProjectPlannerASP5.Projects.Abstract.Application.Commands;
-using ProjectPlannerASP5.Projects.Abstract.Presentation;
-using ProjectPlannerASP5.Projects.Concrete.Domain;
-using ProjectPlannerASP5.Projects.Concrete.Presentation.Implementation;
 
 namespace ProjectPlannerASP5.Configs
 {

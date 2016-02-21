@@ -3,10 +3,10 @@ using Microsoft.Extensions.Logging;
 using ProjectPlannerASP5.ViewModels;
 using System;
 using System.Net;
+using ProjectPlanner.Projects.Interfaces.Presentation;
 using System.Linq;
-using ProjectPlannerASP5.Base.Cqrs.Base.CQRS.Commands;
-using ProjectPlannerASP5.Projects.Abstract.Application.Commands;
-using ProjectPlannerASP5.Projects.Abstract.Presentation;
+using ProjectPlanner.Cqrs.Base.CQRS.Commands;
+using ProjectPlanner.Projects.Interfaces.Application.Commands;
 
 namespace ProjectPlannerASP5.Controllers.Api
 {

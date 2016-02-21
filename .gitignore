@@ -4,5 +4,3 @@
 *.dll
 bin
 obj
-packages
-.vs

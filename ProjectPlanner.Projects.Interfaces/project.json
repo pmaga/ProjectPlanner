@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0-*",
+  "description": "ProjectPlanner.Projects.Interfaces Class Library",
+  "authors": [ "Pawel" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "dnx451": {
+  
+    }
+  },
+  "dependencies": {
+    "dnx-clr-win-x86": "1.0.0-rc1-final",
+    "ProjectPlanner.Cqrs.Base": "1.0.0-*"
+  }
+}

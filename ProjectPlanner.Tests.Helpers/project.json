@@ -1,0 +1,18 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "ProjectPlanner.Tests.Helpers Class Library",
+  "authors": [ "Pawel" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "dnx451": {
+  
+    }
+  },
+  "dependencies": {
+    "ProjectPlanner.Projects": "1.0.0-*",
+    "ProjectPlanner.Projects.Interfaces": "1.0.0-*",
+    "dnx-clr-win-x86": "1.0.0-rc1-final"
+  }
+}

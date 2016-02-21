@@ -1,6 +1,6 @@
 using System;
 using NHibernate;
-using ProjectPlannerASP5.Projects.Concrete.Domain;
+using ProjectPlanner.Projects.Domain;
 
 namespace ProjectPlannerASP5.Models.Seeders
 {
