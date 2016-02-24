@@ -5,17 +5,25 @@ using Microsoft.AspNet.Mvc;
 using ProjectPlannerASP5.Controllers.Web;
 using ProjectPlannerASP5.Models;
 using ProjectPlannerASP5.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace ProjectPlannerASP5.Controllers
 {
     [Authorize]
     public class AuthController : Controller
     {
+        private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly ILogger<AuthController> _logger;
 
-        public AuthController(SignInManager<AppUser> signInManager)
+        public AuthController(
+            UserManager<AppUser> userManager, 
+            SignInManager<AppUser> signInManager,
+            ILogger<AuthController> logger)
         {
+            _userManager = userManager;
             _signInManager = signInManager;
+            _logger = logger;
         }
 
         [AllowAnonymous]
@@ -55,10 +63,33 @@ namespace ProjectPlannerASP5.Controllers
             return View(vm);
         }
 
+        [HttpGet]
         [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new AppUser { UserName = model.Email, Email = model.Email };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    _logger.LogInformation(3, "User created a new account with password.");
+                    return RedirectToAction(nameof(AppController.Index), "App");
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
         }
 
         public IActionResult Manage()
@@ -88,5 +119,17 @@ namespace ProjectPlannerASP5.Controllers
                 return RedirectToAction(nameof(AppController.Index), "App");
             }
         }
+
+        #region Helpers
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+        }
+
+        #endregion
     }
 }
