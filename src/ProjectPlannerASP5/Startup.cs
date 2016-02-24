@@ -8,6 +8,8 @@ using ProjectPlannerASP5.Configs;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.PlatformAbstractions;
 using ProjectPlannerASP5.Models.Seeders;
+using Microsoft.AspNet.Authentication.Cookies;
+using Microsoft.AspNet.Identity;
 
 namespace ProjectPlannerASP5
 {
@@ -32,6 +34,11 @@ namespace ProjectPlannerASP5
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Cookies.ApplicationCookie.LoginPath = new PathString("/Auth/Login");
+            });
+
             return ServicesConfig.Configure(services, _env);
         }
 
@@ -65,12 +72,12 @@ namespace ProjectPlannerASP5
                     );
             });
 
-            app.UseCookieAuthentication(options =>
-            {
-                options.AccessDeniedPath = new PathString("/Home/AccessDenied");
-                options.LoginPath = new PathString("/Auth/Login");
-            });
-
+            //app.UseCookieAuthentication(options =>
+            //{
+            //    options.AccessDeniedPath = new PathString("/Home/AccessDenied");
+            //    options.LoginPath = new PathString("/Auth/Login");
+            //});
+         
             await seeder.EnsureSeedDataAsync();
         }
     }

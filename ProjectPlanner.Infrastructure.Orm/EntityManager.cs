@@ -45,12 +45,11 @@ namespace ProjectPlanner.Infrastructure.Orm
             var config = Fluently.Configure()
                 .Database(() =>
                 {
-                    return
-                        MsSqlConfiguration.MsSql2012.ConnectionString(
-                            c =>
-                            {
-                                c.Server(".").Database("ProjectPlannerDb").TrustedConnection();
-                            });
+                    return MsSqlConfiguration.MsSql2012.ConnectionString(
+                        c =>
+                        {
+                            c.Server(@"(localdb)\\ProjectsV12").Database("ProjectPlannerDb").TrustedConnection();
+                        });
                 })
                 .Mappings(m =>
                 {
