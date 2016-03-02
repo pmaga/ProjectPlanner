@@ -48,7 +48,9 @@ namespace ProjectPlanner.Infrastructure.Orm
                     return MsSqlConfiguration.MsSql2012.ConnectionString(
                         c =>
                         {
-                            c.Server(@"(localdb)\\ProjectsV12").Database("ProjectPlannerDb").TrustedConnection();
+                            c.Server(".").Database("ProjectPlannerDb")
+                                .Username("pawel")
+                                .Password("sa");
                         });
                 })
                 .Mappings(m =>

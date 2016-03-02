@@ -14,5 +14,4 @@
             templateUrl: "/views/waitCursor.html"
         };
     }
-    
 })();

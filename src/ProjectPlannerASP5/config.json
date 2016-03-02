@@ -3,7 +3,7 @@
     "SiteEmailAddress": "pawel.p.maga@gmail.com"
   },
   "Data": {
-    "ProjectPlannerContextConnection": "Server=(localdb)\\ProjectsV12;Database=ProjectPlannerDb;Trusted_Connection=True;MultipleActiveResultSets=True;",
-    "ProjectPlannerIdentityConnection": "Server=(localdb)\\ProjectsV12;Database=ProjectPlannerIdentity;Trusted_Connection=True;MultipleActiveResultSets=True;"
+    "ProjectPlannerContextConnection": "Server=.;Database=ProjectPlannerDb;Trusted_Connection=True;MultipleActiveResultSets=True;",
+    "ProjectPlannerIdentityConnection": "Server=.;Database=ProjectPlannerIdentity;Trusted_Connection=True;MultipleActiveResultSets=True;"
   }
 }

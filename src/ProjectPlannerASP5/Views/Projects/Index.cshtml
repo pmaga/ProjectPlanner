@@ -12,7 +12,7 @@
             <h2>Projects</h2>
             <ol class="breadcrumb">
                 <li>
-                    <a asp-controller="Project" asp-action="Index">Home</a>
+                    <a asp-controller="App" asp-action="Index">Home</a>
                 </li>
                 <li class="active">
                     <strong>Projects</strong>
@@ -77,8 +77,8 @@
                                         <a href=""><img alt="image" class="img-circle" src="{{user.image}}"></a>
                                     </td>
                                     <td class="project-actions">
-                                        <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-                                        <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                                        <a asp-controller="Projects" asp-action="Details" asp-route-id="{{project.id}}" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                        <a asp-controller="Projects" asp-action="Edit" asp-route-id="{{project.id}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
                                     </td>
                                 </tr>
                             </tbody>

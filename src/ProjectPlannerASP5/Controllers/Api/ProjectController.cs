@@ -7,10 +7,11 @@ using ProjectPlanner.Projects.Interfaces.Presentation;
 using System.Linq;
 using ProjectPlanner.Cqrs.Base.CQRS.Commands;
 using ProjectPlanner.Projects.Interfaces.Application.Commands;
+using Microsoft.AspNet.Authorization;
 
 namespace ProjectPlannerASP5.Controllers.Api
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/projects")]
     public class ProjectController : Controller
     {
@@ -66,5 +67,12 @@ namespace ProjectPlannerASP5.Controllers.Api
             Response.StatusCode = (int)HttpStatusCode.BadRequest;
             return Json(new { Message = "Failed", ModelState = ModelState });
         }
+
+        [HttpGet("{projectId}/details")]
+        public JsonResult Details([FromBody]int id)
+        {
+            return Json(10);
+        }
+
     }
 }

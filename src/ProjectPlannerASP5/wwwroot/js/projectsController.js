@@ -3,7 +3,7 @@
 (function () {
     "use strict";
 
-    angular.module("projectsModule")
+    angular.module("app")
 		.controller("projectsController", projectsController);
 
     function projectsController($http) {
