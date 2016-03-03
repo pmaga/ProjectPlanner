@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="row">
-        <div ng-init="vm.setProjectId(@Model)"></div>
+        <div ng-init="vm.loadProject(@Model)"></div>
         <div class="col-lg-9">
             <div class="wrapper wrapper-content animated fadeInUp">
                 <div class="ibox">
@@ -35,7 +35,7 @@
                             <div class="col-lg-12">
                                 <div class="m-b-md">
                                     <a href="#" class="btn btn-white btn-xs pull-right">Edit project</a>
-                                    <h2>Contract with Zender Company</h2>
+                                    <h2>Contract with {{vm.project.customerName}}</h2>
                                 </div>
                                 <dl class="dl-horizontal">
                                     <dt>Status:</dt>
@@ -52,7 +52,7 @@
                                     <dt>Messages:</dt>
                                     <dd>  162</dd>
                                     <dt>Client:</dt>
-                                    <dd><a href="#" class="text-navy"> Zender Company</a> </dd>
+                                    <dd><a href="#" class="text-navy"> {{vm.project.customerName}}</a> </dd>
                                     <dt>Version:</dt>
                                     <dd> 	v1.4.2 </dd>
                                 </dl>

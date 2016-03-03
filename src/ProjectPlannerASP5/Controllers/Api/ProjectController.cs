@@ -12,14 +12,14 @@ using Microsoft.AspNet.Authorization;
 namespace ProjectPlannerASP5.Controllers.Api
 {
     [Authorize]
-    [Route("api/projects")]
-    public class ProjectController : Controller
+    [Route("api/[controller]")]
+    public class ProjectsController : Controller
     {
-        private readonly ILogger<ProjectController> _logger;
+        private readonly ILogger<ProjectsController> _logger;
         private readonly IGate _gate;
         private readonly IProjectFinder _projectFinder;
 
-        public ProjectController(IProjectFinder projectsService, ILogger<ProjectController> logger,
+        public ProjectsController(IProjectFinder projectsService, ILogger<ProjectsController> logger,
             IGate gate)
         {
             _projectFinder = projectsService;
@@ -30,14 +30,15 @@ namespace ProjectPlannerASP5.Controllers.Api
         [HttpGet("")]
         public JsonResult Get()
         {
-            var projects = _projectFinder.FindProjects();
+            var projects = _projectFinder.FindProjects().ToList();
 
             if (projects == null)
             {
                 //Response.StatusCode = (int)HttpStatusCode.NoContent;
                 return Json(null);
             }
-
+            var first = projects.First();
+            first.PercentageCompleteness = 10;
             return Json(projects.ToList());
         }
 
@@ -66,12 +67,20 @@ namespace ProjectPlannerASP5.Controllers.Api
 
             Response.StatusCode = (int)HttpStatusCode.BadRequest;
             return Json(new { Message = "Failed", ModelState = ModelState });
-        }
+        }   
 
-        [HttpGet("{projectId}/details")]
-        public JsonResult Details([FromBody]int id)
+        [HttpGet("{projectId}/[action]")]
+        public JsonResult Details(int projectId)
         {
-            return Json(10);
+            var project = _projectFinder.FindProject(projectId);
+
+            if (project == null)
+            {
+                //Response.StatusCode = (int)HttpStatusCode.NoContent;
+                return Json(null);
+            }
+
+            return Json(project);
         }
 
     }

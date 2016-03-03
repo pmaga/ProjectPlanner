@@ -70,15 +70,15 @@
                                     <td class="project-completion">
                                         <small>Completion with: {{ project.percentageCompleteness }}%</small>
                                         <div class="progress progress-mini">
-                                            <div ng-style="width: {{ project.percentageCompleteness }}%" class="progress-bar"></div>
+                                            <div ng-style="{ width: project.percentageCompleteness + '%' }" class="progress-bar"></div>
                                         </div>
                                     </td>
                                     <td class="project-people" ng-repeat="user in project.users">
                                         <a href=""><img alt="image" class="img-circle" src="{{user.image}}"></a>
                                     </td>
                                     <td class="project-actions">
-                                        <a asp-controller="Projects" asp-action="Details" asp-route-id="{{project.id}}" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-                                        <a asp-controller="Projects" asp-action="Edit" asp-route-id="{{project.id}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                                        <a ng-href="/Projects/Details/{{project.id}}" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                        <a ng-href="/Projects/Edit/{{project.id}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
                                     </td>
                                 </tr>
                             </tbody>
