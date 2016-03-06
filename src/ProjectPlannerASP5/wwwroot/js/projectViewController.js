@@ -14,7 +14,6 @@
 
         vm.loadProject = function(id) {
             vm.project.id = id;
-            vm.project.id = 1;
             $http.get("/api/projects/" + vm.project.id + "/details")
               .then(function (response) {
                   angular.copy(response.data, vm.project);
@@ -25,6 +24,14 @@
               .finally(function () {
 
               });
+        };
+
+        vm.getProjectStatusClass = function () {
+            if (vm.project.status === "Active") {
+                return "label label-primary";
+            } else {
+                return "label label-danger";
+            }
         };
     };
 })();

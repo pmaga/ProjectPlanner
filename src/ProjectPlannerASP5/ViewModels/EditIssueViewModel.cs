@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNet.Mvc;
 using System;
 using System.ComponentModel.DataAnnotations;
-using ProjectPlanner.Projects.Domain;
-using ProjectPlanner.Projects.Interfaces.Domain;
+using ProjectPlanner.Projects.Domain.Interfaces;
 
 namespace ProjectPlannerASP5.ViewModels
 {

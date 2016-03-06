@@ -28,9 +28,10 @@ namespace ProjectPlanner.Projects.Presentation.Implementation
         {
             var project = _entityManager.CurrentSession.Query<Project>()
                 .SingleOrDefault(p => p.Id == projectId);
-
+            
             return project == null ? null :
-                new ProjectDetailsDto(project.Id, "Zender Company");
+                new ProjectDetailsDto(project.Id, "Customer", project.Code,
+                    project.Name, project.Status);
         }
     }
 }

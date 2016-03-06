@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using ProjectPlanner.Cqrs.Base.DDD.Domain;
-using ProjectPlanner.Projects.Interfaces.Domain;
 using ProjectPlanner.Projects.Interfaces.Domain.Events;
 using ProjectPlanner.Projects.Interfaces.Domain.Exceptions;
+using ProjectPlanner.Projects.Domain.Interfaces;
 
 namespace ProjectPlanner.Projects.Domain
 {

@@ -10,7 +10,7 @@ namespace ProjectPlannerASP5.Models.Seeders
         {
             if (session.QueryOver<Project>().SingleOrDefault() == null)
             {
-                var project = new Project(new Guid(), "JRS", "Name");
+                var project = new Project(new Guid(), "ATH", "University of Bielsko-Biala");
 
                 session.Save(project);
                 session.Flush();
