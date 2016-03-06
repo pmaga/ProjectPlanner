@@ -8,6 +8,7 @@ using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using ProjectPlanner.Infrastructure.Orm.Conventions;
+using ProjectPlanner.Infrastructure.Orm.Interceptors;
 
 namespace ProjectPlanner.Infrastructure.Orm
 {//TODO: Zweryfikowac mapowania (na bazie)
@@ -21,7 +22,7 @@ namespace ProjectPlanner.Infrastructure.Orm
                 var config = Configure();
                 var factory = config.BuildSessionFactory();
 
-                using (var session = factory.OpenSession())
+                using (var session = factory.OpenSession(new CreateAndModifiedDateInterceptor()))
                 {
                     SeedData(session);
                     session.Flush();

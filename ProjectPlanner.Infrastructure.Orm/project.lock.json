@@ -241,7 +241,8 @@
     ],
     "DNX,Version=v4.5.1": [
       "NHibernate >= 4.0.4.4000",
-      "FluentNHibernate >= 2.0.3"
+      "FluentNHibernate >= 2.0.3",
+      "fx/System.Data >= 4.0.0"
     ]
   }
 }

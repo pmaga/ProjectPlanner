@@ -10,6 +10,9 @@
       "dependencies": {
         "NHibernate": "4.0.4.4000",
         "FluentNHibernate": "2.0.3"
+      },
+      "frameworkAssemblies": {
+        "System.Data": "4.0.0.0"
       }
     }
   },

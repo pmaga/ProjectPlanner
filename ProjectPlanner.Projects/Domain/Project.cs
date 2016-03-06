@@ -13,7 +13,8 @@ namespace ProjectPlanner.Projects.Domain
         public string Code { get; private set; }
         public string Name { get; private set; }
 
-        public DateTime CreateDate { get; private set; } = DateTime.UtcNow;
+        public DateTime CreateTimeStamp { get; private set; } // nHibernate interceptor
+        public DateTime LastUpdateTimeStamp { get; private set; } // nHibernate interceptor
         public ProjectStatus Status { get; private set; } //TODO: Zmiana statusu na Modified po zapisie
 
         public Guid CreatorUserId { get; private set; }

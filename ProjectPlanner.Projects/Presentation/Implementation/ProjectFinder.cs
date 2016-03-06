@@ -21,7 +21,7 @@ namespace ProjectPlanner.Projects.Presentation.Implementation
         public IQueryable<ProjectListDto> FindProjects()
         {
             return _entityManager.CurrentSession.Query<Project>() //TODO: Pozbyc sie referencji do NHibernate?
-                .Select(n => new ProjectListDto(n.Id, n.Code, n.Name, n.Status, 0, n.CreateDate));
+                .Select(n => new ProjectListDto(n.Id, n.Code, n.Name, n.Status, 0, n.CreateTimeStamp));
         }
 
         public ProjectDetailsDto FindProject(int projectId)
@@ -31,7 +31,7 @@ namespace ProjectPlanner.Projects.Presentation.Implementation
             
             return project == null ? null :
                 new ProjectDetailsDto(project.Id, "Customer", project.Code,
-                    project.Name, project.Status);
+                    project.Name, project.CreateTimeStamp, project.LastUpdateTimeStamp, project.Status);
         }
     }
 }

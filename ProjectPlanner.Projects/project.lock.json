@@ -54,7 +54,10 @@
           "FluentNHibernate": "2.0.3",
           "NHibernate": "4.0.4.4000",
           "ProjectPlanner.Cqrs.Base": "1.0.0"
-        }
+        },
+        "frameworkAssemblies": [
+          "System.Data"
+        ]
       },
       "ProjectPlanner.Projects.Interfaces/1.0.0": {
         "type": "project",
@@ -117,7 +120,10 @@
           "FluentNHibernate": "2.0.3",
           "NHibernate": "4.0.4.4000",
           "ProjectPlanner.Cqrs.Base": "1.0.0"
-        }
+        },
+        "frameworkAssemblies": [
+          "System.Data"
+        ]
       },
       "ProjectPlanner.Projects.Interfaces/1.0.0": {
         "type": "project",
@@ -180,7 +186,10 @@
           "FluentNHibernate": "2.0.3",
           "NHibernate": "4.0.4.4000",
           "ProjectPlanner.Cqrs.Base": "1.0.0"
-        }
+        },
+        "frameworkAssemblies": [
+          "System.Data"
+        ]
       },
       "ProjectPlanner.Projects.Interfaces/1.0.0": {
         "type": "project",
