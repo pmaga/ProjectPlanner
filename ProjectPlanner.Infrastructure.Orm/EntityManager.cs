@@ -62,6 +62,7 @@ namespace ProjectPlanner.Infrastructure.Orm
                     autoPersistenceModel.Conventions.Add(new CollectionAccessConvention());
                     autoPersistenceModel.Conventions.Add(new SqlTimestampConvention());
                     autoPersistenceModel.Conventions.Add(new SqlTableNameConvention());
+                    autoPersistenceModel.Conventions.Add(new DefaultStringLengthConvention());
                     autoPersistenceModel.Conventions.Add(DefaultLazy.Never());
                     
                     m.AutoMappings.Add(autoPersistenceModel);

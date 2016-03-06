@@ -307,11 +307,11 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "ProjectPlanner.Cqrs.Base >= 1.0.0-*",
-      "ProjectPlanner.Projects.Interfaces >= 1.0.0-*",
       "dnx-clr-win-x86 >= 1.0.0-rc1-final",
       "NHibernate >= 4.0.4.4000",
-      "ProjectPlanner.Infrastructure.Orm >= 1.0.0-*"
+      "ProjectPlanner.Cqrs.Base >= 1.0.0-*",
+      "ProjectPlanner.Infrastructure.Orm >= 1.0.0-*",
+      "ProjectPlanner.Projects.Interfaces >= 1.0.0-*"
     ],
     "DNX,Version=v4.5.1": []
   }

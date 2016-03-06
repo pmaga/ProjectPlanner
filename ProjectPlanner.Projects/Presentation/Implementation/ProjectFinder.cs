@@ -31,7 +31,8 @@ namespace ProjectPlanner.Projects.Presentation.Implementation
             
             return project == null ? null :
                 new ProjectDetailsDto(project.Id, "Customer", project.Code,
-                    project.Name, project.CreateTimeStamp, project.LastUpdateTimeStamp, project.Status);
+                    project.Name, project.Description, 
+                    project.CreateTimeStamp, project.LastUpdateTimeStamp, project.Status);
         }
     }
 }

@@ -4,3 +4,4 @@
 *.dll
 bin
 obj
+project.lock.json

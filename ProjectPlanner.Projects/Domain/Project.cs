@@ -12,6 +12,8 @@ namespace ProjectPlanner.Projects.Domain
     {
         public string Code { get; private set; }
         public string Name { get; private set; }
+        //TODO: StringLength
+        public string Description { get; private set; }
 
         public DateTime CreateTimeStamp { get; private set; } // nHibernate interceptor
         public DateTime LastUpdateTimeStamp { get; private set; } // nHibernate interceptor
@@ -34,6 +36,16 @@ namespace ProjectPlanner.Projects.Domain
             CreatorUserId = creatorUserId;
             Code = code;
             Name = name;
+        }
+
+        public void SetDescription(string description)
+        {
+            if (Description != null && Description.Equals(description))
+            {
+                return;
+            }
+
+            Description = description;
         }
 
         public void AddUser(Guid userId)

@@ -11,10 +11,10 @@ namespace ProjectPlanner.Infrastructure.Orm.Interceptors
 
         public override bool OnFlushDirty(object entity,
                                           object id,
-                          object[] currentState,
-                          object[] previousState,
-                          string[] propertyNames,
-                          IType[] types)
+                                          object[] currentState,
+                                          object[] previousState,
+                                          string[] propertyNames,
+                                          IType[] types)
         {
             for (int i = 0; i < propertyNames.Length; i++)
             {
@@ -29,9 +29,9 @@ namespace ProjectPlanner.Infrastructure.Orm.Interceptors
 
         public override bool OnSave(object entity,
                                     object id,
-                    object[] state,
-                    string[] propertyNames,
-                    IType[] types)
+                                    object[] state,
+                                    string[] propertyNames,
+                                    IType[] types)
         {
             var createDateModified = false;
             var lastUpdateDateModified = false;

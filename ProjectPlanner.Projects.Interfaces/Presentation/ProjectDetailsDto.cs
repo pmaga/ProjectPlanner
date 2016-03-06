@@ -7,19 +7,23 @@ namespace ProjectPlanner.Projects.Interfaces.Presentation
     {
         public int Id { get; private set; }
         public string CustomerName { get; private set; }
-        public string ProjectCode { get; private set; }
-        public string ProjectName { get; private set; }
+        public string Code { get; private set; }
+        public string Name { get; private set; }
+        public string Description { get; set; }
+
         public DateTime CreateDate { get; set; }
         public DateTime LastUpdateDate { get; private set; } // nHibernate interceptor
         public ProjectStateStatus Status { get; private set; }
 
         public ProjectDetailsDto(int id, string customerName, string code,
-            string name, DateTime createDate, DateTime lastUpdate, ProjectStatus status)
+            string name, string description,
+            DateTime createDate, DateTime lastUpdate, ProjectStatus status)
         {
             Id = id;
             CustomerName = customerName;
-            ProjectCode = code;
-            ProjectName = name;
+            Code = code;
+            Name = name;
+            Description = description;
             CreateDate = createDate;
             LastUpdateDate = lastUpdate;
             Status = status == ProjectStatus.Closed ? ProjectStateStatus.Closed
