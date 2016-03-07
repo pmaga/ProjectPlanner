@@ -18,7 +18,6 @@
 
     <form name="issueForm" role="form" ng-submit="vm.saveIssue()">
         <input name="Id" id="Id" type="hidden" value="{{issue.id}}" />
-        @*<div asp-validation-summary="ValidationSummary.ModelOnly"></div>*@
 
         <div class="modal-body">
             <div class="form-group">
@@ -30,14 +29,12 @@
                 <span ng-show="issueForm.summary.$error.required" class="text=warning">Summary field is required.</span>
                 <span ng-show="issueForm.summary.$error.minlength" class="text=warning">Summary must be atleast 5 characters.</span>
                 <span ng-show="issueForm.summary.$error.maxlength" class="text=warning">Summary may have a maximum of 255 characters.</span>
-                @*<span asp-validation-for="Summary"></span>*@
             </div>
             <div class="form-group">
                 <label for="dueDate" class="col-sm-2 control-label">Due date</label>
                 <div class="input-group date">
                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                     <input name="dueDate" id="dueDatePickup" ng-model="vm.issue.dueDate" class="form-control" data-provide="datepicker" />
-                    @* @Html.TextBoxWithFormatFor(n => n.DueDate, new { @class = "form-control", id = "dueDatePickup", data_provide = "datepicker" })*@
                 </div>
             </div>
             <div class="form-group">
