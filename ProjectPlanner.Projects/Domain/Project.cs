@@ -12,7 +12,6 @@ namespace ProjectPlanner.Projects.Domain
     {
         public string Code { get; private set; }
         public string Name { get; private set; }
-        //TODO: StringLength
         public string Description { get; private set; }
 
         public DateTime CreateTimeStamp { get; private set; } // nHibernate interceptor

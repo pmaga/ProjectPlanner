@@ -16,7 +16,7 @@ namespace ProjectPlanner.Infrastructure.Orm.Conventions
 
         public void Apply(IPropertyInstance instance)
         {
-            instance.Length(100);
+            instance.Length(10000);
         }
     }
 }
