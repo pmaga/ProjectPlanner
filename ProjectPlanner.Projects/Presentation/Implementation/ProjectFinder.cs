@@ -24,7 +24,7 @@ namespace ProjectPlanner.Projects.Presentation.Implementation
                 .Select(n => new ProjectListDto(n.Id, n.Code, n.Name, n.Status, 0, n.CreateTimeStamp));
         }
 
-        public ProjectDetailsDto FindProject(int projectId)
+        public ProjectDetailsDto GetProjectDetails(int projectId)
         {
             var project = _entityManager.CurrentSession.Query<Project>()
                 .SingleOrDefault(p => p.Id == projectId);
@@ -34,6 +34,24 @@ namespace ProjectPlanner.Projects.Presentation.Implementation
                     project.Name, project.Description, 
                     project.CreateTimeStamp, project.LastUpdateTimeStamp,
                     40, project.Status);
+        }
+
+        public ProjectEditDto GetProject(int projectId)
+        {
+            var project = _entityManager.CurrentSession.Query<Project>()
+                .SingleOrDefault(p => p.Id == projectId);
+
+            return project == null ? null :
+                new ProjectEditDto
+                {
+                    Id = project.Id,
+                    Code = project.Code,
+                    Name = project.Name,
+                    Description = project.Description,
+                    CreateTimeStamp = project.CreateTimeStamp,
+                    LastUpdateTimeStamp = project.LastUpdateTimeStamp,
+                    Status = project.Status
+                };
         }
     }
 }

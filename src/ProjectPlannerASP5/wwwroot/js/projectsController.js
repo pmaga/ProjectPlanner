@@ -16,7 +16,7 @@
         vm.isBusy = true;
         vm.searchText = "";
 
-        $http.get("/api/projects")
+        $http.get("/api/projects/all")
 			.then(function (response) {
 			    angular.copy(response.data, vm.projects);
 			},

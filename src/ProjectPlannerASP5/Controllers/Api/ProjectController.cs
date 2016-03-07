@@ -28,8 +28,8 @@ namespace ProjectPlannerASP5.Controllers.Api
             _gate = gate;
         }
 
-        [HttpGet("")]
-        public JsonResult Get()
+        [HttpGet("all")]
+        public JsonResult All()
         {
             var projects = _projectFinder.FindProjects().ToList();
 
@@ -41,6 +41,14 @@ namespace ProjectPlannerASP5.Controllers.Api
             var first = projects.First();
             first.PercentageCompleteness = 10;
             return Json(projects.ToList());
+        }
+
+        [HttpGet("{projectId}")]
+        public JsonResult Get(int projectId)
+        {
+            var project = _projectFinder.GetProject(projectId);
+
+            return Json(project);
         }
 
         [HttpPost("")]
@@ -73,7 +81,7 @@ namespace ProjectPlannerASP5.Controllers.Api
         [HttpGet("{projectId}/[action]")]
         public JsonResult Details(int projectId)
         {
-            var project = _projectFinder.FindProject(projectId);
+            var project = _projectFinder.GetProjectDetails(projectId);
 
             if (project == null)
             {
