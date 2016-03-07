@@ -4,5 +4,5 @@
     angular.module("app", []);
 
     angular.module("app-projectPlanner", ["app",
-        "simpleControls"])
+        "simpleControls", 'summernote'])
 })();

@@ -32,5 +32,19 @@
                 return "label label-primary";
             return "label";
         };
+
+        vm.editedProject = {};
+
+        vm.loadProjectToEdit = function (id) {
+            $http.get("/api/projects/" + id)
+                .then(function (response) {
+                    angular.copy(response.data, vm.editedProject);
+                }, function (error) {
+
+                })
+                .finally(function () {
+
+                });
+        }
     }
 })();
