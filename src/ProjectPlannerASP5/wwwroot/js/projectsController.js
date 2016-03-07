@@ -46,5 +46,9 @@
 
                 });
         }
+
+        vm.saveProject = function () {
+
+        }
     }
 })();

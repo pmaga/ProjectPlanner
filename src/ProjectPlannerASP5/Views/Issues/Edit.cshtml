@@ -26,9 +26,9 @@
                     <input name="summary" ng-model="vm.issue.summary" class="form-control" required ng-minlength="5" ng-maxlength="255" />
                     <span class="help-block m-b-none">Summary here</span>
                 </div>
-                <span ng-show="issueForm.summary.$error.required" class="text=warning">Summary field is required.</span>
-                <span ng-show="issueForm.summary.$error.minlength" class="text=warning">Summary must be atleast 5 characters.</span>
-                <span ng-show="issueForm.summary.$error.maxlength" class="text=warning">Summary may have a maximum of 255 characters.</span>
+                <span ng-show="issueForm.summary.$error.required" class="text-warning">Summary field is required.</span>
+                <span ng-show="issueForm.summary.$error.minlength" class="text-warning">Summary must be atleast 5 characters.</span>
+                <span ng-show="issueForm.summary.$error.maxlength" class="text-warning">Summary may have a maximum of 255 characters.</span>
             </div>
             <div class="form-group">
                 <label for="dueDate" class="col-sm-2 control-label">Due date</label>

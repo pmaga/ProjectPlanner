@@ -5,7 +5,7 @@
 }
 
 @section Styles {
-    <link rel="stylesheet" href="~/lib/summernote/dist/summernote.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/summernote/dist/summernote.css"/>
 }
 
 <div ng-controller="projectsController as vm">
@@ -37,38 +37,51 @@
                         <div id="tab-1" class="tab-pane active">
                             <div class="panel-body">
                                 <fieldset class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Code:</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" ng-model="vm.editedProject.code" class="form-control" placeholder="Project code">
+                                    <form name="projectForm" role="form" ng-submit="vm.saveProject()">
+                                        <input name="Id" id="Id" type="hidden" value="{{vm.editedProject.id}}" />
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Code:</label>
+                                            <div class="col-sm-10">
+                                                <input name="code" type="text" ng-model="vm.editedProject.code" class="form-control"
+                                                       placeholder="Project code" required ng-minlength="3" ng-maxlength="9">
+                                            </div>
+                                            <span ng-show="projectForm.code.$error.required" class="text-warning">Code field is required.</span>
+                                            <span ng-show="projectForm.code.$error.minlength" class="text-warning">Code must be atleast 5 characters.</span>
+                                            <span ng-show="projectForm.code.$error.maxlength" class="text-warning">Code may have a maximum of 10 characters.</span>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Name:</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" ng-model="vm.editedProject.name" class="form-control" placeholder="Project name">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Name:</label>
+                                            <div class="col-sm-10">
+                                                <input name="name" type="text" ng-model="vm.editedProject.name" class="form-control"
+                                                       placeholder="Project name" required ng-minlength="5" ng-maxlength="200">
+                                            </div>
+                                            <span ng-show="projectForm.name.$error.required" class="text-warning">Name field is required.</span>
+                                            <span ng-show="projectForm.name.$error.minlength" class="text-warning">Name must be atleast 5 characters.</span>
+                                            <span ng-show="projectForm.name.$error.maxlength" class="text-warning">Name may have a maximum of 200 characters.</span>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Description:</label>
-                                        <div class="col-sm-10">
-                                            <summernote ng-model="vm.editedProject.description"></summernote>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Description:</label>
+                                            <div class="col-sm-10">
+                                                <summernote ng-model="vm.editedProject.description"></summernote>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="createDate" class="col-sm-2 control-label">Created:</label>
-                                        <div class="input-group date">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input name="createDate" ng-model="vm.editedProject.createTimeStamp" class="form-control" readonly="readonly" />
+                                        <div class="form-group">
+                                            <label for="createDate" class="col-sm-2 control-label">Created:</label>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input name="createDate" ng-model="vm.editedProject.createTimeStamp" class="form-control" readonly="readonly" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="createDate" class="col-sm-2 control-label">Last update:</label>
-                                        <div class="input-group date">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input name="lastUpdateDate" ng-model="vm.editedProject.lastUpdateTimeStamp" class="form-control" readonly="readonly" />
+                                        <div class="form-group">
+                                            <label for="createDate" class="col-sm-2 control-label">Last update:</label>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input name="lastUpdateDate" ng-model="vm.editedProject.lastUpdateTimeStamp" class="form-control" readonly="readonly" />
+                                            </div>
                                         </div>
-                                    </div>
+                                        <button type="submit" class="btn btn-primary" ng-disabled="projectForm.$invalid">Save changes</button>
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                    </form>
                                 </fieldset>
                             </div>
                         </div>
