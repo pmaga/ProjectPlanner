@@ -15,9 +15,10 @@ namespace ProjectPlanner.Projects.Infrastructure.Repositories
     {
         public IDomainEventPublisher DomainEventPublisher { get; set; }
 
-        public ProjectRepository(IEntityManager entityManager)
+        public ProjectRepository(IEntityManager entityManager, IDomainEventPublisher domainEventPublisher)
             : base(entityManager)
         {
+            DomainEventPublisher = domainEventPublisher;
         }
 
         public Project FindByCode(string code, Guid userId)
