@@ -25,12 +25,13 @@ namespace ProjectPlanner.Projects.Tests.Domain
         [Fact]
         public void CreateProject_CanCreateProject()
         {
-            var project = _projectFactory.CreateProject("projectCode", "projectName");
+            var project = _projectFactory.CreateProject("projectCode", "projectName", "description");
 
             Assert.NotNull(project);
             Assert.Equal(_defaultUserId, project.CreatorUserId);
             Assert.Equal("projectCode", project.Code);
             Assert.Equal("projectName", project.Name);
+            Assert.Equal("description", project.Description);
         }
 
         [Fact]
@@ -38,7 +39,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
         {
             Assert.Throws<ProjectCreationException>(() =>
             {
-                _projectFactory.CreateProject("code", "projectName");
+                _projectFactory.CreateProject("code", "projectName", "description");
             });
         }
 
@@ -52,12 +53,13 @@ namespace ProjectPlanner.Projects.Tests.Domain
             var injectorHelper = new TestInjectorHelper();
             _projectFactory = new ProjectFactory(systemUser, projectRepository, injectorHelper);
 
-            var project = _projectFactory.CreateProject("code", "projectName");
+            var project = _projectFactory.CreateProject("code", "projectName", "description");
 
             Assert.NotNull(project);
             Assert.Equal(newId, project.CreatorUserId);
             Assert.Equal("code", project.Code);
             Assert.Equal("projectName", project.Name);
+            Assert.Equal("description", project.Description);
         }
     }
 }

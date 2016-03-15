@@ -17,6 +17,12 @@ namespace ProjectPlannerASP5.Controllers.Web
             return View();
         }
 
+        [Route("[action]")]
+        public IActionResult Create()
+        {
+            return View("Edit");
+        }
+
         [Route("[action]/{id}")]
         public IActionResult Details(int id)
         {

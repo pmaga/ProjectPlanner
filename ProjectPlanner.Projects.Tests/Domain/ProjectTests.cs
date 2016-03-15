@@ -25,7 +25,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
         [Fact]
         public void AddUser_CannotAddIfClosed()
         {
-            var project = _projectFactory.CreateProject("Code", "Name");
+            var project = _projectFactory.CreateProject("Code", "Name", "description");
 
             project.Close();
 
@@ -38,7 +38,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
         [Fact]
         public void AddUser_CanAddUser()
         {
-            var project = _projectFactory.CreateProject("Code", "Name");
+            var project = _projectFactory.CreateProject("Code", "Name", "description");
             var userId = new Guid();
             project.AddUser(userId);
 
@@ -49,7 +49,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
         [Fact]
         public void AddUser_CannotAddDuplicateUser()
         {
-            var project = _projectFactory.CreateProject("Code", "Name");
+            var project = _projectFactory.CreateProject("Code", "Name", "description");
 
             project.AddUser(_defaultUserId);
 
@@ -59,7 +59,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
         [Fact]
         public void RemoveUser_CannotRemoveIfClosed()
         {
-            var project = _projectFactory.CreateProject("Code", "Name");
+            var project = _projectFactory.CreateProject("Code", "Name", "description");
 
             project.Close();
 
@@ -72,7 +72,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
         [Fact]
         public void RemoveUser_CanRemoveUser()
         {
-            var project = _projectFactory.CreateProject("Code", "Name");
+            var project = _projectFactory.CreateProject("Code", "Name", "description");
             var userId = new Guid();
             project.AddUser(userId);
             project.RemoveUser(userId);
@@ -84,7 +84,7 @@ namespace ProjectPlanner.Projects.Tests.Domain
         [Fact]
         public void RemoveUser_CannotRemoveCreator()
         {
-            var project = _projectFactory.CreateProject("Code", "Name");
+            var project = _projectFactory.CreateProject("Code", "Name", "description");
 
             Assert.Throws<ProjectOperationException>(() =>
             {

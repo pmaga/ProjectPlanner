@@ -31,7 +31,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="m-b-md">
-                                    <a href="#" class="btn btn-white btn-xs pull-right">Edit project</a>    
+                                    <a ng-href="/Projects/Edit/{{vm.project.id}}" class="btn btn-white btn-xs pull-right">Edit project</a>    
                                     <h2>Project: [{{vm.project.code}}] {{vm.project.name}}</h2>
                                 </div>
                                 <dl class="dl-horizontal">
@@ -53,19 +53,10 @@
                             </div>
                             <div class="col-lg-7" id="cluster_info">
                                 <dl class="dl-horizontal">
-
                                     <dt>Last Updated:</dt>
                                     <dd>{{vm.project.lastUpdateDate | date:'dd-MM-yyyy H:mm'}}</dd>
                                     <dt>Created:</dt>
                                     <dd>{{vm.project.createDate | date:'dd-MM-yyyy H:mm'}}</dd>
-                                    <dt>Participants:</dt>
-                                    <dd class="project-people">
-                                        <a href=""><img alt="image" class="img-circle" src="~/Images/a3.jpg"></a>
-                                        <a href=""><img alt="image" class="img-circle" src="~/Images/a1.jpg"></a>
-                                        <a href=""><img alt="image" class="img-circle" src="~/Images/a2.jpg"></a>
-                                        <a href=""><img alt="image" class="img-circle" src="~/Images/a4.jpg"></a>
-                                        <a href=""><img alt="image" class="img-circle" src="~/Images/a5.jpg"></a>
-                                    </dd>
                                 </dl>
                             </div>
                         </div>
@@ -82,17 +73,16 @@
                                 </dl>
                             </div>
                         </div>
+                       <div class="row">
+                           <div class="col-lg-12">
+                               <h4>Project description</h4>
+                               <p class="small">
+                                   {{vm.project.description}}
+                               </p>
+                           </div>
+                       </div>  
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="wrapper wrapper-content project-manager">
-                <h4>Project description</h4>
-                <img src="~/Images/zender_logo.png" class="img-responsive">
-                <p class="small">
-                    {{vm.project.description}}
-                 </p>
             </div>
         </div>
     </div>

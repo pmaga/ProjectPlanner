@@ -60,11 +60,17 @@ namespace ProjectPlannerASP5.Controllers.Api
                 {
                     _logger.LogInformation("Attempting to saving a new project.");
 
-                    var createProjectCommand = new CreateProjectCommand(vm.Code, vm.Name);
-                    _gate.Dispatch(createProjectCommand);
-
-                    Response.StatusCode = (int)HttpStatusCode.Created;
-                    return Json(new {id = createProjectCommand.ProjectId});
+                    if (vm.Id == 0)
+                    {
+                        var createProjectCommand = new CreateProjectCommand(vm.Code, vm.Name, vm.Description);
+                        _gate.Dispatch(createProjectCommand);
+                        Response.StatusCode = (int)HttpStatusCode.Created;
+                        return Json(new { id = createProjectCommand.ProjectId });
+                    }
+                    else
+                    {
+                        //edit
+                    }
                 }
             }
             catch (Exception ex)
@@ -76,7 +82,7 @@ namespace ProjectPlannerASP5.Controllers.Api
 
             Response.StatusCode = (int)HttpStatusCode.BadRequest;
             return Json(new { Message = "Failed", ModelState = ModelState });
-        }   
+        }
 
         [HttpGet("{projectId}/[action]")]
         public JsonResult Details(int projectId)

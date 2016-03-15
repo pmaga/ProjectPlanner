@@ -38,11 +38,9 @@
             }
         };
 
-        vm.saveIssue = function ($window) {
-            $window.alert(vm.issue.summary);
+       vm.saveIssue = function () {
 
-
-
+           
         };
     }
 })();

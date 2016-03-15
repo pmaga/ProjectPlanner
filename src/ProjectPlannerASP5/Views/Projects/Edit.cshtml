@@ -69,14 +69,14 @@
                                             <label for="createDate" class="col-sm-2 control-label">Created:</label>
                                             <div class="input-group date">
                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                <input name="createDate" ng-model="vm.editedProject.createTimeStamp" class="form-control" readonly="readonly" />
+                                                <input name="createDate" ng-model="vm.editedProject.createTimeStamp | date:'yyyy-MM-dd HH-mm'" class="form-control" readonly="readonly" />
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="createDate" class="col-sm-2 control-label">Last update:</label>
                                             <div class="input-group date">
                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                <input name="lastUpdateDate" ng-model="vm.editedProject.lastUpdateTimeStamp" class="form-control" readonly="readonly" />
+                                                <input name="lastUpdateDate" ng-model="vm.editedProject.lastUpdateTimeStamp | date:'yyyy-MM-dd HH-mm'" class="form-control" readonly="readonly" />
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary" ng-disabled="projectForm.$invalid">Save changes</button>

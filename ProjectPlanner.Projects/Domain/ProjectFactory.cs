@@ -20,11 +20,11 @@ namespace ProjectPlanner.Projects.Domain
             _injectorHelper = injectorHelper;
         }
 
-        public Project CreateProject(string code, string name)
+        public Project CreateProject(string code, string name, string description)
         {
             CheckIfProjectExists(code);
 
-            var project = new Project(_user.UserId, code, name); 
+            var project = new Project(_user.UserId, code, name, description); 
             _injectorHelper.InjectDependencies(project);
 
             project.AddUser(_user.UserId);

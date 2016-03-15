@@ -17,7 +17,7 @@ namespace ProjectPlanner.Projects.Application.Commands.Handlers
 
         public void Handle(CreateProjectCommand command)
         {
-            var project = ProjectFactory.CreateProject(command.Code, command.Name);
+            var project = ProjectFactory.CreateProject(command.Code, command.Name, command.Description);
 
             ProjectRepository.Save(project);
             command.ProjectId = project.Id;

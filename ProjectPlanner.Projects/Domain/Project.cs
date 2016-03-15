@@ -30,11 +30,17 @@ namespace ProjectPlanner.Projects.Domain
         }
 
         public Project(Guid creatorUserId, string code, string name)
+            : this(creatorUserId, code, name, null)
+        {
+        }
+
+        public Project(Guid creatorUserId, string code, string name, string description)
             : this()
         {
             CreatorUserId = creatorUserId;
             Code = code;
             Name = name;
+            Description = description;
         }
 
         public void SetDescription(string description)
