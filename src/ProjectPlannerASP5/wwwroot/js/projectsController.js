@@ -6,8 +6,8 @@
     angular.module("app")
 		.controller("projectsController", projectsController);
 
-    function projectsController($http) {
-
+    function projectsController($http, $location) {
+        
         var vm = this;
 
         vm.projects = [];
@@ -34,15 +34,15 @@
         };
 
         vm.editedProject = {};
-
+        
         vm.loadProjectToEdit = function (id) {
-
+            
             if (id === 0) {
                 vm.editedProject.createTimeStamp = new Date();
                 vm.editedProject.lastUpdateTimeStamp = new Date();
                 return;
             }
-
+            
             $http.get("/api/projects/" + id)
                 .then(function (response) {
                     angular.copy(response.data, vm.editedProject);
@@ -50,14 +50,14 @@
 
                 })
                 .finally(function () {
-
+                     
                 });
         }
 
         vm.saveProject = function () {
             $http.post('/api/projects', vm.editedProject)
                .then(function (response) {
-
+                   $location.path('/Projects');
                }, function (error) {
 
                });

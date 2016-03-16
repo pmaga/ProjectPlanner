@@ -33,7 +33,7 @@ namespace ProjectPlanner.Infrastructure.Orm
         public static Action<ISession> SeedData = s => { };
         public static Func<Assembly[]> GetAssemblies = () => new Assembly[0];
 
-        public ISession CurrentSession => _perRequestSessionFactory.CreateSession();
+        public ISession CurrentSession => SessionFactory.OpenSession(new CreateAndModifiedDateInterceptor());
         public static ISessionFactory SessionFactory => NHibernateSessionFactory.Value;
 
         public EntityManager(IPerRequestSessionFactory perRequestSessionFactory)
