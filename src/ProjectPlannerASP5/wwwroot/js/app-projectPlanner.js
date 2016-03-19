@@ -22,7 +22,19 @@
             .when('/Projects/Details/:id', {
                 templateUrl: '/views/projectDetails.html',
                 controller: 'projectDetailsController'
-            });
+            })
+            .when('/Projects/Create/', {
+                templateUrl: '/views/projectEdit.html',
+                controller: 'projectEditController'
+            })
+            .when('/Projects/Edit/:id', {
+                templateUrl: '/views/projectEdit.html',
+                controller: 'projectEditController'
+            })
+        .otherwise({
+            templateUrl: '/views/index.html',
+            controller: 'appController'
+        });;
 
         $locationProvider.html5Mode(true);
     };

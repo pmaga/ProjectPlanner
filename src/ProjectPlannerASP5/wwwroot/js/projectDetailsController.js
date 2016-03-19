@@ -6,10 +6,11 @@
     angular.module("app")
         .controller("projectDetailsController", projectDetailsController);
 
-    function projectDetailsController($http, $routeParams) {
+    projectDetailsController.$inject = ['$scope', '$http', '$routeParams'];
 
-        var vm = this;
-
+    function projectDetailsController($scope, $http, $routeParams) {
+        var vm = $scope;
+        
         vm.project = {};
 
         $http.get("/api/projects/" + $routeParams.id + "/details")
@@ -22,7 +23,7 @@
           .finally(function () {
 
           });
-
+        
         vm.getProjectStatusClass = function () {
             if (vm.project.status === "Active") {
                 return "label label-primary";

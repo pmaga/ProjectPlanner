@@ -6,63 +6,31 @@
     angular.module("app")
 		.controller("projectsListController", projectsListController);
 
-    function projectsListController($http, $location) {
-        
-        var vm = this;
+    projectsListController.$inject = ['$scope', '$http'];
 
-        vm.projects = [];
-        vm.filteredProjects = [];
-        vm.errorMessage = "";
-        vm.isBusy = true;
-        vm.searchText = "";
+    function projectsListController($scope, $http) {
+        
+        $scope.projects = [];
+        $scope.filteredProjects = [];
+        $scope.errorMessage = "";
+        $scope.isBusy = true;
+        $scope.searchText = "";
 
         $http.get("/api/projects/all")
 			.then(function (response) {
-			    angular.copy(response.data, vm.projects);
+			    angular.copy(response.data, $scope.projects);
 			},
 			function (error) {
-			    vm.errorMessage = "Failed to load data: " + error;
+			    $scope.errorMessage = "Failed to load data: " + error;
 			})
             .finally(function () {
-                vm.isBusy = false;
+                $scope.isBusy = false;
             });
 
-        vm.getStatusClass = function (status) {
+        $scope.getStatusClass = function (status) {
             if (status === "Added")
                 return "label label-primary";
             return "label";
         };
-
-        vm.editedProject =
-            {
-                createTimeStamp: new Date(),
-                lastUpdateTimeStamp: new Date()
-            };
-        
-        vm.loadProjectToEdit = function (id) {
-            
-            if (id === 0) {
-                return;
-            }
-            
-            $http.get("/api/projects/" + id)
-                .then(function (response) {
-                    angular.copy(response.data, vm.editedProject);
-                }, function (error) {
-
-                })
-                .finally(function () {
-                     
-                });
-        }
-
-        vm.saveProject = function () {
-            $http.post('/api/projects', vm.editedProject)
-               .then(function (response) {
-                   $http.get("/projects/index");
-                       //$location.path("/projects/index2");
-               }, function (error) {
-               });
-        }
     }
 })();

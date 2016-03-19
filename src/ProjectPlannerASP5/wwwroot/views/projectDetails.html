@@ -23,12 +23,12 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="m-b-md">
-                                    <a ng-href="/Projects/Edit/{{vm.project.id}}" class="btn btn-white btn-xs pull-right">Edit project</a>    
-                                    <h2>Project: [{{vm.project.code}}] {{vm.project.name}}</h2>
+                                    <a ng-href="/Projects/Edit/{{project.id}}" class="btn btn-white btn-xs pull-right">Edit project</a>    
+                                    <h2>Project: [{{project.code}}] {{project.name}}</h2>
                                 </div>
                                 <dl class="dl-horizontal">
                                     <dt>Status:</dt>
-                                    <dd><span ng-class="vm.getProjectStatusClass()">{{vm.project.status}}</span></dd>
+                                    <dd><span ng-class="getProjectStatusClass()">{{project.status}}</span></dd>
                                 </dl>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                                     <dt>Created by:</dt>
                                     <dd>Alex Smith</dd>
                                     <dt>Client:</dt>
-                                    <dd><a href="#" class="text-navy"> {{vm.project.customerName}}</a> </dd>
+                                    <dd><a href="#" class="text-navy"> {{project.customerName}}</a> </dd>
                                     <dt>Version:</dt>
                                     <dd> 	v1.4.2 </dd>
                                 </dl>
@@ -46,9 +46,9 @@
                             <div class="col-lg-7" id="cluster_info">
                                 <dl class="dl-horizontal">
                                     <dt>Last Updated:</dt>
-                                    <dd>{{vm.project.lastUpdateDate | date:'dd-MM-yyyy H:mm'}}</dd>
+                                    <dd>{{project.lastUpdateDate | date:'dd-MM-yyyy H:mm'}}</dd>
                                     <dt>Created:</dt>
-                                    <dd>{{vm.project.createDate | date:'dd-MM-yyyy H:mm'}}</dd>
+                                    <dd>{{project.createDate | date:'dd-MM-yyyy H:mm'}}</dd>
                                 </dl>
                             </div>
                         </div>
@@ -58,9 +58,9 @@
                                     <dt>Completed:</dt>
                                     <dd>
                                         <div class="progress progress-striped active m-b-sm">
-                                            <div ng-style="{ width: vm.project.percentageCompleteness + '%' }" class="progress-bar"></div>
+                                            <div ng-style="{ width: project.percentageCompleteness + '%' }" class="progress-bar"></div>
                                         </div>
-                                        <small>Project completed in <strong>{{vm.project.percentageCompleteness}}%</strong>. Remaining close the project, sign a contract and invoice.</small>
+                                        <small>Project completed in <strong>{{project.percentageCompleteness}}%</strong>. Remaining close the project, sign a contract and invoice.</small>
                                     </dd>
                                 </dl>
                             </div>
@@ -69,7 +69,7 @@
                            <div class="col-lg-12">
                                <h4>Project description</h4>
                                <p class="small">
-                                   {{vm.project.description}}
+                                   {{project.description}}
                                </p>
                            </div>
                        </div>  
