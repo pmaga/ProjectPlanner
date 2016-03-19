@@ -7,27 +7,30 @@
 
 
     projectEditController.$inject = ['$scope', '$http', '$location', '$routeParams',
-        'projectsService'];
+        'Project'];
 
-    function projectEditController($scope, $http, $location, $routeParams, projectsService) {
+    function projectEditController($scope, $http, $location, $routeParams, Project) {
         
-        $scope.project = {
-            createTimeStamp: new Date(),
-            lastUpdateTimeStamp: new Date()
-        };
-
-        if ($routeParams.id !== 0)
-        {
-            $scope.project = projectsService.get({ id: $routeParams.id });
+        if ($routeParams.id !== 0) {
+            $scope.project = Project.get({ id: $routeParams.id });
+        } else {
+            $scope.project = new Project();
+            $scope.project.createTimeStamp = new Date();
+            $scope.project.lastUpdateTimeStamp = new Date();
         }
 
         $scope.saveProject = function () {
-            $http.post('/api/projects', $scope.project)
-               .then(function (response) {
-                   $location.path('/Projects/');
-               }, function (error) {
-                   alert('An error occurred');
-               });
+            $scope.project.$save(function () {
+                $location.path('/Projects/');
+            });
+
+
+            //$http.post('/api/projects', $scope.project)
+            //   .then(function (response) {
+            //       $location.path('/Projects/');
+            //   }, function (error) {
+            //       alert('An error occurred');
+            //   });
         };
     };
 })();

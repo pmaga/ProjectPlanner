@@ -3,11 +3,11 @@
     "use strict";
 
     angular.module('projectsServices', ['ngResource'])
-        .factory('projectsService', ProjectsService);
+        .factory('Project', Project);
 
-    ProjectsService.$inject = ['$resource'];
+    Project.$inject = ['$resource'];
 
-    function ProjectsService($resource) {
+    function Project($resource) {
         return $resource('/api/projects/:id', {}, {
             get: {
                 method: 'GET',

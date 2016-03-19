@@ -6,9 +6,9 @@
     angular.module("app")
 		.controller("projectsListController", projectsListController);
 
-    projectsListController.$inject = ['$scope', '$http', 'projectsService'];
+    projectsListController.$inject = ['$scope', '$http', 'Project'];
 
-    function projectsListController($scope, $http, projectsService) {
+    function projectsListController($scope, $http, Project) {
         
         $scope.projects = [];
         $scope.filteredProjects = [];
@@ -16,7 +16,7 @@
         $scope.isBusy = true;
         $scope.searchText = "";
 
-        projectsService.query().$promise
+        Project.query().$promise
             .then(function (response) {
                 angular.copy(response, $scope.projects);
             },
