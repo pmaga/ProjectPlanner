@@ -27,9 +27,9 @@
                 $scope.isBusy = false;
             });
 
-        $scope.deleteProject = function (project) {
+        $scope.deleteProject = function (project, index) {
             project.$delete(function () {
-                $scope.projects.splice(project, 1);
+                $scope.projects.splice(index, 1);
             });
         };
 
