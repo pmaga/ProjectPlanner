@@ -33,13 +33,15 @@
             return "label";
         };
 
-        vm.editedProject = {};
+        vm.editedProject =
+            {
+                createTimeStamp: new Date(),
+                lastUpdateTimeStamp: new Date()
+            };
         
         vm.loadProjectToEdit = function (id) {
             
             if (id === 0) {
-                vm.editedProject.createTimeStamp = new Date();
-                vm.editedProject.lastUpdateTimeStamp = new Date();
                 return;
             }
             
@@ -57,9 +59,9 @@
         vm.saveProject = function () {
             $http.post('/api/projects', vm.editedProject)
                .then(function (response) {
-                   $location.path('/Projects');
+                   $http.get("/projects/index");
+                       //$location.path("/projects/index2");
                }, function (error) {
-
                });
         }
     }
