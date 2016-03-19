@@ -6,9 +6,9 @@
     angular.module("app")
 		.controller("projectsListController", projectsListController);
 
-    projectsListController.$inject = ['$scope', '$http'];
+    projectsListController.$inject = ['$scope', '$http', 'projectsService'];
 
-    function projectsListController($scope, $http) {
+    function projectsListController($scope, $http, projectsService) {
         
         $scope.projects = [];
         $scope.filteredProjects = [];
@@ -16,14 +16,14 @@
         $scope.isBusy = true;
         $scope.searchText = "";
 
-        $http.get("/api/projects/all")
-			.then(function (response) {
-			    angular.copy(response.data, $scope.projects);
-			},
-			function (error) {
-			    $scope.errorMessage = "Failed to load data: " + error;
-			})
-            .finally(function () {
+        projectsService.query().$promise
+            .then(function (response) {
+                angular.copy(response, $scope.projects);
+            },
+            function (error) {
+                $scope.errorMessage = "Failed to load data: " + error;
+            })
+            .finally(function() {
                 $scope.isBusy = false;
             });
 

@@ -28,7 +28,7 @@ namespace ProjectPlannerASP5.Controllers.Api
             _gate = gate;
         }
 
-        [HttpGet("all")]
+        [HttpGet("")]
         public JsonResult All()
         {
             var projects = _projectFinder.FindProjects().ToList();

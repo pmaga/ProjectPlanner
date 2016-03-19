@@ -6,9 +6,10 @@
         .controller('projectEditController', projectEditController);
 
 
-    projectEditController.$inject = ['$scope', '$http', '$location', '$routeParams'];
+    projectEditController.$inject = ['$scope', '$http', '$location', '$routeParams',
+        'projectsService'];
 
-    function projectEditController($scope, $http, $location, $routeParams) {
+    function projectEditController($scope, $http, $location, $routeParams, projectsService) {
         
         $scope.project = {
             createTimeStamp: new Date(),
@@ -17,11 +18,7 @@
 
         if ($routeParams.id !== 0)
         {
-            $http.get('/api/projects/' + $routeParams.id)
-              .then(function (response) {
-                  angular.copy(response.data, $scope.project);
-              }, function (error) {
-          });
+            $scope.project = projectsService.get({ id: $routeParams.id });
         }
 
         $scope.saveProject = function () {

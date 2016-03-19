@@ -16,6 +16,7 @@
     "animate.css": "~3.4.0",
     "angular": "~1.4.7",
     "angular-route": "~1.4.7",
+    "angular-resource": "~1.4.7",
     "angular-summernote": "~0.8.0"
   },
   "resolutions": {

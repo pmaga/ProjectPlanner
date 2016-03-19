@@ -15,7 +15,6 @@
 
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row text-danger" ng-show="errorMessage">{{errorMessage}}</div>
-
         <div class="row" ng-show="!errorMessage">
             <div class="ibox">
                 <div class="ibox-title">
@@ -55,7 +54,7 @@
                                         <span ng-class="getStatusClass(project.status)">{{ project.status }}</span>
                                     </td>
                                     <td class="project-title">
-                                        <a asp-controller="Project" asp-action="ProjectDetail">{{ project.code }}</a>
+                                        <a ng-href='/Projects/Details/{{project.id}}'>{{ project.code }}</a>
                                         <br />
                                         <small>Created {{ project.createDate | date}}</small>
                                     </td>
