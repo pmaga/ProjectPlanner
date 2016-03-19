@@ -1,20 +1,13 @@
-﻿@model int
-
-@section Scripts {
-    <script src="~/js/projectViewController.js" type="text/javascript"></script>
-}
-
-<div ng-controller="projectViewController as vm">
-
+﻿<div>
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
             <h2>Project detail</h2>
             <ol class="breadcrumb">
                 <li>
-                    <a asp-controller="App" asp-action="Index">Home</a>
+                    <a ng-href='/'>Home</a>
                 </li>
                 <li>
-                    <a asp-controller="Projects" asp-action="Index">Projects</a>
+                    <a ng-href="/Projects/">Projects</a>
                 </li>
                 <li class="active">
                     <strong>Project detail</strong>
@@ -22,8 +15,7 @@
             </ol>
         </div>
     </div>
-    <div class="row">
-        <div ng-init="vm.loadProject(@Model)"></div>
+    <div class="row"">
         <div class="col-lg-9">
             <div class="wrapper wrapper-content animated fadeInUp">
                 <div class="ibox">

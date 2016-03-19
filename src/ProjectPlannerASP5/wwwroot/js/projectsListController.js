@@ -1,12 +1,12 @@
-// projectsController.js
+// projectsListController.js
 
 (function () {
     "use strict";
 
     angular.module("app")
-		.controller("projectsController", projectsController);
+		.controller("projectsListController", projectsListController);
 
-    function projectsController($http, $location) {
+    function projectsListController($http, $location) {
         
         var vm = this;
 
