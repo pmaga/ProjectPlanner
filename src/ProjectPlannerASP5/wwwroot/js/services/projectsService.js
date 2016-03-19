@@ -21,6 +21,10 @@
                 method: 'POST',
                 isArray: false
             },
+            update: {
+                method: 'PUT',
+                isArray: false
+            },
             getDetails: {
                 url: '/api/projects/:id/details',
                 method: 'GET',

@@ -52,7 +52,7 @@ namespace ProjectPlannerASP5.Controllers.Api
         }
 
         [HttpPost("")]
-        public JsonResult Post([FromBody]EditProjectViewModel vm)
+        public JsonResult Create([FromBody]EditProjectViewModel vm)
         {
             try
             {
@@ -60,22 +60,41 @@ namespace ProjectPlannerASP5.Controllers.Api
                 {
                     _logger.LogInformation("Attempting to saving a new project.");
 
-                    if (vm.Id == 0)
-                    {
-                        var createProjectCommand = new CreateProjectCommand(vm.Code, vm.Name, vm.Description);
-                        _gate.Dispatch(createProjectCommand);
-                        Response.StatusCode = (int)HttpStatusCode.Created;
-                        return Json(new { id = createProjectCommand.ProjectId });
-                    }
-                    else
-                    {
-                        //edit
-                    }
+                    var createProjectCommand = new CreateProjectCommand(vm.Code, vm.Name, vm.Description);
+                    _gate.Dispatch(createProjectCommand);
+                    Response.StatusCode = (int)HttpStatusCode.Created;
+                    return Json(new { id = createProjectCommand.ProjectId });
                 }
             }
             catch (Exception ex)
             {
                 _logger.LogError("Failed to save new project", ex);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(new { Message = ex.Message });
+            }
+
+            Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            return Json(new { Message = "Failed", ModelState = ModelState });
+        }
+
+        [HttpPut("")]
+        public JsonResult Update([FromBody]EditProjectViewModel vm)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _logger.LogInformation($"Attempting to updating a project with code: {vm.Code}.");
+
+                    //var createProjectCommand = new UpdateProjectCommand(vm.Code, vm.Name, vm.Description);
+                    //_gate.Dispatch(createProjectCommand);
+                    Response.StatusCode = (int)HttpStatusCode.OK;
+                    return Json(new { id = vm.Id });
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Failed to update project", ex);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return Json(new { Message = ex.Message });
             }

@@ -20,9 +20,17 @@
         }
 
         $scope.saveProject = function () {
-            $scope.project.$save(function () {
-                $location.path('/Projects/');
-            });
+
+            if ($scope.project.id === 0) {
+                $scope.project.$save(function () {
+                    $location.path('/Projects/');
+                });
+            } else {
+                $scope.project.$update(function () {
+                    $location.path('/Projects/');
+                });
+            }
+            
 
 
             //$http.post('/api/projects', $scope.project)
