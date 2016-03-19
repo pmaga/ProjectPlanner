@@ -8,7 +8,7 @@
     Project.$inject = ['$resource'];
 
     function Project($resource) {
-        return $resource('/api/projects/:id', {}, {
+        return $resource('/api/projects/:id', { id: '@id' }, {
             get: {
                 method: 'GET',
                 isArray: false
@@ -18,6 +18,7 @@
                 isArray: true
             },
             save: {
+                url: '/api/projects/',
                 method: 'POST',
                 isArray: false
             },

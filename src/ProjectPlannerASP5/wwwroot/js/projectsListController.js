@@ -27,6 +27,12 @@
                 $scope.isBusy = false;
             });
 
+        $scope.deleteProject = function (project) {
+            project.$delete(function () {
+                $scope.projects.splice(project, 1);
+            });
+        };
+
         $scope.getStatusClass = function (status) {
             if (status === "Added")
                 return "label label-primary";

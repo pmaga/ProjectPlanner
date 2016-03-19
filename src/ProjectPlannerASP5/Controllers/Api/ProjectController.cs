@@ -103,6 +103,32 @@ namespace ProjectPlannerASP5.Controllers.Api
             return Json(new { Message = "Failed", ModelState = ModelState });
         }
 
+        [HttpDelete("{id}")]
+        public JsonResult Delete(int id)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _logger.LogInformation($"Attempting to delete a project with id: {id}.");
+
+                    //var createProjectCommand = new UpdateProjectCommand(vm.Code, vm.Name, vm.Description);
+                    //_gate.Dispatch(createProjectCommand);
+                    Response.StatusCode = (int)HttpStatusCode.OK;
+                    return Json("");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Failed to delete project", ex);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(new { Message = ex.Message });
+            }
+
+            Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            return Json(new { Message = "Failed", ModelState = ModelState });
+        }
+
         [HttpGet("{projectId}/[action]")]
         public JsonResult Details(int projectId)
         {
