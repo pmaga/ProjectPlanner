@@ -13,7 +13,7 @@
         $routeProvider
             .when('/', {
                 templateUrl: '/views/index.html',
-                controller: 'appController'
+                controller: 'mainController'
             })
             .when('/Projects', {
                 templateUrl: '/views/projectsList.html',
@@ -33,7 +33,7 @@
             })
         .otherwise({
             templateUrl: '/views/index.html',
-            controller: 'appController'
+            controller: 'mainController'
         });;
 
         $locationProvider.html5Mode(true);
