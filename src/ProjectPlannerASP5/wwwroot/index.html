@@ -43,18 +43,16 @@
 
 <body ng-cloak>
     <div id="wrapper">
+
+        <div ng-include="'views/partials/_navigation.html'"></div>
+
         <div id="page-wrapper" class="gray-bg">
+
+            <div ng-include="'views/partials/_topNavBar.html'"></div>
 
             <ng-view></ng-view>
 
-            <div class="footer">
-                <div class="pull-right">
-                    text
-                </div>
-                <div>
-                    <strong>Copyright</strong> Paweł Maga &copy; 2015
-                </div>
-            </div>
+            <div ng-include="'views/partials/_footer.html'"></div>
         </div>
     </div>
 </body>

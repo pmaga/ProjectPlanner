@@ -5,7 +5,6 @@
     angular.module('app')
         .controller('projectEditController', projectEditController);
 
-
     projectEditController.$inject = ['$scope', '$http', '$location', '$routeParams',
         'Project'];
 
@@ -30,15 +29,6 @@
                     $location.path('/Projects/');
                 });
             }
-            
-
-
-            //$http.post('/api/projects', $scope.project)
-            //   .then(function (response) {
-            //       $location.path('/Projects/');
-            //   }, function (error) {
-            //       alert('An error occurred');
-            //   });
         };
     };
 })();
