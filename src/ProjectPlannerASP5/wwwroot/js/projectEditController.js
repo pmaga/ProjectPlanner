@@ -30,5 +30,9 @@
                 });
             }
         };
+
+        $scope.cancelEdit = function () {
+            $location.path('/Projects/');
+        };
     };
 })();

@@ -12,8 +12,7 @@
     function config($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: '/views/index.html',
-                controller: 'mainController'
+                templateUrl: '/views/index.html'
             })
             .when('/Projects', {
                 templateUrl: '/views/projectsList.html',
@@ -32,9 +31,8 @@
                 controller: 'projectEditController'
             })
         .otherwise({
-            templateUrl: '/views/index.html',
-            controller: 'mainController'
-        });;
+            templateUrl: '/views/index.html'
+        });
 
         $locationProvider.html5Mode(true);
     };

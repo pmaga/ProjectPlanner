@@ -23,6 +23,7 @@
                 isArray: false
             },
             update: {
+                url: '/api/projects/',
                 method: 'PUT',
                 isArray: false
             },
