@@ -1,6 +1,7 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="../gulpfile.js" />
 /// <reference path="js/app-projectplanner.js" />
+/// <reference path="js/customselect.js" />
 /// <reference path="js/issuescontroller.js" />
 /// <reference path="js/maincontroller.js" />
 /// <reference path="js/modalwindows.js" />
