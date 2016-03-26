@@ -7,7 +7,7 @@
     Issue.$inject = ['$resource'];
 
     function Issue($resource) {
-        return $resource('/api/projects/:projectCode/issues', { projectCode: '@projectCode' }, {
+        return $resource('/api/projects/:projectCode/issues/:id', { projectCode: '@projectCode', id: '@id' }, {
             get: {
                 url: '/api/issues/:id',
                 method: 'GET',
@@ -18,12 +18,18 @@
                 isArray: true
             },
             save: {
+                url: '/api/projects/:projectCode/issues',
                 method: 'POST',
                 isArray: false
             },
             update: {
-                url: '/api/issues',
+                url: '/api/projects/:projectCode/issues',
                 method: 'PUT',
+                isArray: false
+            },
+            test: {
+                url: '/api/projects/:projectCode/issues/:id',
+                method: 'DELETE',
                 isArray: false
             }
         });

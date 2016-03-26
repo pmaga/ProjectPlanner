@@ -70,5 +70,31 @@ namespace ProjectPlannerASP5.Controllers.Api
             Response.StatusCode = (int)HttpStatusCode.BadRequest;
             return Json("Validation failed on new issue");
         }
+
+        [HttpDelete("{id}")]
+        public JsonResult Delete(int id, string projectCode)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _logger.LogInformation($"Attempting to delete a issue with id: {id}.");
+
+                    //var deleteProjectCommand = new DeleteIssueCommand(id);
+                    //_gate.Dispatch(deleteProjectCommand);
+                    Response.StatusCode = (int)HttpStatusCode.OK;
+                    return Json("");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Failed to delete issue", ex);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(new { Message = ex.Message });
+            }
+
+            Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            return Json(new { Message = "Failed", ModelState = ModelState });
+        }
     }
 }

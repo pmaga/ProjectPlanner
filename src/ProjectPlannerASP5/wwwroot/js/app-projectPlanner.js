@@ -32,7 +32,7 @@
                 controller: 'projectEditController'
             })
             .when('/Issues', {
-                templateUrl: '/views/issue/index.html',
+                templateUrl: '/views/issue/issuesList.html',
                 controller: 'issueListController'
             })
         .otherwise({
