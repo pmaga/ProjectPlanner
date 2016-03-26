@@ -14,7 +14,7 @@ namespace ProjectPlanner.Cqrs.Base.DDD.Domain.Helpers
 
         public void InjectDependencies(AggregateRoot aggregateRoot)
         {
-            if (aggregateRoot != null)
+            if (aggregateRoot != null && aggregateRoot.EventPublisher == null)
             {
                 aggregateRoot.EventPublisher = EventPublisher;
             }

@@ -20,6 +20,7 @@
         }
 
         $scope.saveProject = function () {
+            alert($scope.project.id);
             if ($scope.project.id === 0) {
                 $scope.project.$save(function () {
                     $location.path('/Projects/');

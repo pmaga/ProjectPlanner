@@ -17,11 +17,13 @@
         public virtual void Delete(TKey id)
         {
             EntityManager.CurrentSession.Delete(Load(id));
+            EntityManager.CurrentSession.Flush();
         }
 
         public virtual void Save(TEntity entity)
         {
             EntityManager.CurrentSession.SaveOrUpdate(entity);
+            EntityManager.CurrentSession.Flush();
         }
     }
 }
