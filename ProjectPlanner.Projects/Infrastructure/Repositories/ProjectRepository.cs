@@ -7,6 +7,7 @@ using ProjectPlanner.Infrastructure.Orm;
 using ProjectPlanner.Infrastructure.Orm.Repositories;
 using ProjectPlanner.Projects.Domain;
 using ProjectPlanner.Projects.Interfaces.Domain.Events;
+using ProjectPlanner.Cqrs.Base.DDD.Domain.Helpers;
 
 namespace ProjectPlanner.Projects.Infrastructure.Repositories
 {
@@ -15,8 +16,9 @@ namespace ProjectPlanner.Projects.Infrastructure.Repositories
     {
         public IDomainEventPublisher DomainEventPublisher { get; set; }
 
-        public ProjectRepository(IEntityManager entityManager, IDomainEventPublisher domainEventPublisher)
-            : base(entityManager)
+        public ProjectRepository(IEntityManager entityManager, InjectorHelper injectorHelper,
+            IDomainEventPublisher domainEventPublisher)
+            : base(entityManager, injectorHelper)
         {
             DomainEventPublisher = domainEventPublisher;
         }
@@ -37,6 +39,14 @@ namespace ProjectPlanner.Projects.Infrastructure.Repositories
             {
                 DomainEventPublisher.Publish(new ProjectCreatedEvent(project.Id));
             }
+        }
+
+        public override void Delete(int id)
+        {
+            base.Delete(id);
+            EntityManager.CurrentSession.Flush();
+
+            DomainEventPublisher.Publish(new ProjectDeletedEvent(id));
         }
     }
 }

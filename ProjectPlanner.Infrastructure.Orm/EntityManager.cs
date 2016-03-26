@@ -15,6 +15,7 @@ namespace ProjectPlanner.Infrastructure.Orm
     public class EntityManager : IEntityManager
     {
         private readonly IPerRequestSessionFactory _perRequestSessionFactory;
+        private ISession _currentSession;
 
         private static readonly Lazy<ISessionFactory> NHibernateSessionFactory =
             new Lazy<ISessionFactory>(() =>
@@ -29,11 +30,22 @@ namespace ProjectPlanner.Infrastructure.Orm
                 }
                 return factory;
             });
-        
+
         public static Action<ISession> SeedData = s => { };
         public static Func<Assembly[]> GetAssemblies = () => new Assembly[0];
 
-        public ISession CurrentSession => SessionFactory.OpenSession(new CreateAndModifiedDateInterceptor());
+        public ISession CurrentSession
+        {
+            get
+            {
+                if (_currentSession == null)
+                {
+                    _currentSession = SessionFactory.OpenSession(new CreateAndModifiedDateInterceptor());
+                }
+                return _currentSession;
+            }
+        }
+
         public static ISessionFactory SessionFactory => NHibernateSessionFactory.Value;
 
         public EntityManager(IPerRequestSessionFactory perRequestSessionFactory)

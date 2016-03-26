@@ -8,10 +8,10 @@ namespace ProjectPlanner.Infrastructure.Orm.Repositories
     {
         public InjectorHelper InjectorHelper { get; set; }
 
-        public RepositoryForBaseEntity(IEntityManager entityManager)
+        public RepositoryForBaseEntity(IEntityManager entityManager, InjectorHelper injectorHelper)
             : base(entityManager)
         {
-            
+            InjectorHelper = injectorHelper;
         }
 
         public override TEntity Load(int id)
@@ -34,6 +34,7 @@ namespace ProjectPlanner.Infrastructure.Orm.Repositories
         {
             TEntity entity = Load(id);
             entity.MarkAsArchived();
+            
         }
     }
 }

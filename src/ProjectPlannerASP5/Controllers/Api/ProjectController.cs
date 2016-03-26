@@ -38,8 +38,6 @@ namespace ProjectPlannerASP5.Controllers.Api
                 //Response.StatusCode = (int)HttpStatusCode.NoContent;
                 return Json(null);
             }
-            var first = projects.First();
-            first.PercentageCompleteness = 10;
             return Json(projects.ToList());
         }
 
@@ -112,8 +110,8 @@ namespace ProjectPlannerASP5.Controllers.Api
                 {
                     _logger.LogInformation($"Attempting to delete a project with id: {id}.");
 
-                    //var createProjectCommand = new UpdateProjectCommand(vm.Code, vm.Name, vm.Description);
-                    //_gate.Dispatch(createProjectCommand);
+                    var deleteProjectCommand = new DeleteProjectCommand(id);
+                    _gate.Dispatch(deleteProjectCommand);
                     Response.StatusCode = (int)HttpStatusCode.OK;
                     return Json("");
                 }

@@ -24,5 +24,10 @@ namespace ProjectPlanner.Projects.Tests.Mocks
         {
             throw new NotImplementedException();
         }
+
+        public void Delete(int entityId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

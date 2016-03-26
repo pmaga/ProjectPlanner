@@ -21,6 +21,7 @@ namespace ProjectPlanner.Projects.Presentation.Implementation
         public IQueryable<ProjectListDto> FindProjects()
         {
             return _entityManager.CurrentSession.Query<Project>() //TODO: Pozbyc sie referencji do NHibernate?
+                .Where(n => n.EntityStatus == Cqrs.Base.DDD.Domain.EntityStatus.Active)
                 .Select(n => new ProjectListDto(n.Id, n.Code, n.Name, n.Status, 0, n.CreateTimeStamp));
         }
 

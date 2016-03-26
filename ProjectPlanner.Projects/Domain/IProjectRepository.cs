@@ -7,6 +7,7 @@ namespace ProjectPlanner.Projects.Domain
         Project FindByCode(string code, Guid userId);
 
         void Save(Project project);
+        void Delete(int entityId);
         Project Load(int projectId);
     }
 }
