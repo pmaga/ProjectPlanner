@@ -43,6 +43,22 @@ namespace ProjectPlanner.Projects.Domain
             Description = description;
         }
 
+        public void ChangeProjectInformation(string code, string name, string description)
+        {
+            if (!Code.Equals(code))
+            {
+                Code = code;
+            }
+            if (!Name.Equals(name))
+            {
+                Name = name;
+            }
+            if (Description != null && !Description.Equals(description))
+            {
+                Description = description;
+            }
+        }
+
         public void SetDescription(string description)
         {
             if (Description != null && Description.Equals(description))

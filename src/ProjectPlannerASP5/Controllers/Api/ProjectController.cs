@@ -84,10 +84,10 @@ namespace ProjectPlannerASP5.Controllers.Api
                 {
                     _logger.LogInformation($"Attempting to updating a project with code: {vm.Code}.");
 
-                    //var createProjectCommand = new UpdateProjectCommand(vm.Code, vm.Name, vm.Description);
-                    //_gate.Dispatch(createProjectCommand);
+                    var changeProjectInformationCommand = new ChangeProjectInformationCommand(vm.Id, vm.Code, vm.Name, vm.Description);
+                    _gate.Dispatch(changeProjectInformationCommand);
                     Response.StatusCode = (int)HttpStatusCode.OK;
-                    return Json(new { id = vm.Id });
+                    return Json(true);
                 }
             }
             catch (Exception ex)
