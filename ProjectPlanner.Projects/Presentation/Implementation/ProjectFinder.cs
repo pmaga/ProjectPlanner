@@ -20,9 +20,20 @@ namespace ProjectPlanner.Projects.Presentation.Implementation
 
         public IQueryable<ProjectListDto> FindProjects()
         {
-            return _entityManager.CurrentSession.Query<Project>() //TODO: Pozbyc sie referencji do NHibernate?
-                .Where(n => n.EntityStatus == Cqrs.Base.DDD.Domain.EntityStatus.Active)
+            return GetProjects()
                 .Select(n => new ProjectListDto(n.Id, n.Code, n.Name, n.Status, 0, n.CreateTimeStamp));
+        }
+
+        public IQueryable<ProjectLookup> GetProjectLookups()
+        {
+            return GetProjects()
+                .Select(n => new ProjectLookup(n.Id, n.Code, n.Name));
+        }
+
+        private IQueryable<Project> GetProjects()
+        {
+            return _entityManager.CurrentSession.Query<Project>() //TODO: Pozbyc sie referencji do NHibernate?
+                .Where(n => n.EntityStatus == Cqrs.Base.DDD.Domain.EntityStatus.Active);
         }
 
         public ProjectDetailsDto GetProjectDetails(int projectId)

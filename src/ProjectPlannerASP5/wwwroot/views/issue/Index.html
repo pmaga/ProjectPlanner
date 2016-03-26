@@ -3,7 +3,7 @@
         <h2><span ng-bind="project.code"></span> Issues</h2>
         <ol class="breadcrumb">
             <li>
-                <a asp-controller="App" asp-action="Index">Home</a>
+                <a ng-href="/Index">Home</a>
             </li>
             <li class="active">
                 <strong>Issues</strong>
@@ -66,8 +66,8 @@
                                 <span ng-class="getStatusClass(issue.status)">{{issue.status}}</span>
                             </td>
                             <td class="issue-info">
-                                <a asp-controller="Issues" asp-action="Edit" asp-route-id="{{ issue.id }}" class="modal-link">
-                                    {{ issue.issueFullNumber }}
+                                <a ng-href="/Issues/Edit/{{issue.id}}" class="modal-link">
+                                    {{ issue.fullNumber }}
                                 </a>
                                 <small>
                                     {{ issue.summary }}
@@ -87,9 +87,9 @@
                                 2d
                             </td>
                             <td class="text-right">
-                                <a asp-controller="Issues" asp-action="Edit" asp-route-id="{{ issue.id }}" class="btn btn-white btn-xs modal-link">Edit</a>
+                                <a ng-href="/Issues/Edit/{{issue.id}}" class="btn btn-white btn-xs modal-link">Edit</a>
 
-                                <form method="post" asp-controller="Issues" asp-action="Delete" class="inline-form">
+                                <form method="post" ng-submit="deleteIssue()" class="inline-form">
                                     <input id="Id" name="Id" type="hidden" value="{{ issue.id }}"/>
                                     <button type="submit" class="btn btn-white btn-xs" onclick="return confirm('Are you sure you wish to delete this issue?');"> Delete</button>
                                 </form>

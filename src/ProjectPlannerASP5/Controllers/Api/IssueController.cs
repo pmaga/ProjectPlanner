@@ -4,7 +4,9 @@ using ProjectPlanner.Cqrs.Base.CQRS.Commands;
 using ProjectPlannerASP5.Services;
 using ProjectPlannerASP5.ViewModels;
 using System;
+using System.Linq;
 using System.Net;
+using ProjectPlanner.Projects.Domain.Interfaces;
 using ProjectPlanner.Projects.Interfaces.Presentation;
 
 namespace ProjectPlannerASP5.Controllers.Api
@@ -25,11 +27,12 @@ namespace ProjectPlannerASP5.Controllers.Api
         }
 
         [HttpGet("")]
-        public JsonResult Get(string projectCode)
+        public JsonResult GetAll(string projectCode)
         {
             try
             {
-                var results = _issueFinder.FindIssues(projectCode);
+                var results = _issueFinder.FindIssues(projectCode).ToList();
+                results.Add(new IssueListDto(1, IssueStatus.Added, "ATH-1", DateTime.Now, DateTime.Now.AddDays(20)));
 
                 return Json(results);
             }

@@ -31,6 +31,11 @@
                 url: '/api/projects/:id/details',
                 method: 'GET',
                 isArray: false
+            },
+            getLookups: {
+                url: '/api/projects/getlookups',
+                method: 'GET',
+                isArray: true
             }
         });
     };

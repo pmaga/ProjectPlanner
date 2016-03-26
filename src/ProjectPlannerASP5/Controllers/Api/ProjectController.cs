@@ -31,22 +31,35 @@ namespace ProjectPlannerASP5.Controllers.Api
         [HttpGet("")]
         public JsonResult All()
         {
-            var projects = _projectFinder.FindProjects().ToList();
-
-            if (projects == null)
+            try
             {
-                //Response.StatusCode = (int)HttpStatusCode.NoContent;
-                return Json(null);
+                var projects = _projectFinder.FindProjects().ToList();
+
+                return Json(projects.ToList());
             }
-            return Json(projects.ToList());
+            catch (Exception ex)
+            {
+                _logger.LogError("Failed to get projects", ex);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json("Error occured finding the projects");
+            }
         }
 
         [HttpGet("{projectId}")]
         public JsonResult Get(int projectId)
         {
-            var project = _projectFinder.GetProject(projectId);
+            try
+            {
+                var project = _projectFinder.GetProject(projectId);
 
-            return Json(project);
+                return Json(project);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get details for project with id: {projectId}", ex);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json("Error occured finding the project");
+            }
         }
 
         [HttpPost("")]
@@ -141,5 +154,12 @@ namespace ProjectPlannerASP5.Controllers.Api
             return Json(project);
         }
 
+        [HttpGet("getlookups")]
+        public JsonResult GetProjectLookups()
+        {
+            var projects = _projectFinder.GetProjectLookups();
+
+            return Json(projects);
+        }
     }
 }
