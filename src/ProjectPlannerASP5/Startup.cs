@@ -8,7 +8,6 @@ using ProjectPlannerASP5.Configs;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.PlatformAbstractions;
 using ProjectPlannerASP5.Models.Seeders;
-using Microsoft.AspNet.Authentication.Cookies;
 using Microsoft.AspNet.Identity;
 
 namespace ProjectPlannerASP5

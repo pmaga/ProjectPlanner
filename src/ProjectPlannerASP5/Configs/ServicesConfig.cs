@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Net;
-using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Autofac.Extras.AggregateService;

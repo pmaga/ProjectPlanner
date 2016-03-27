@@ -1,5 +1,5 @@
-﻿using ProjectPlanner.Projects.Domain.Interfaces;
-using System;
+﻿using System;
+using ProjectPlanner.Projects.Interfaces.Domain;
 
 namespace ProjectPlanner.Projects.Interfaces.Presentation
 {
@@ -12,6 +12,6 @@ namespace ProjectPlanner.Projects.Interfaces.Presentation
 
         public DateTime CreateTimeStamp { get; set; }
         public DateTime LastUpdateTimeStamp { get; set; }
-        public ProjectStatus Status { get; set; }
+        public ObjectStatus Status { get; set; }
     }
 }

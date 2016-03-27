@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices.ComTypes;
-
-namespace ProjectPlanner.Cqrs.Base.CQRS.Commands.Handler
+﻿namespace ProjectPlanner.Cqrs.Base.CQRS.Commands.Handler
 {
     public interface ICommandHandlerFactory
     {

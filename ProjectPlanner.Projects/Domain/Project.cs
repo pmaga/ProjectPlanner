@@ -4,7 +4,7 @@ using System.Linq;
 using ProjectPlanner.Cqrs.Base.DDD.Domain;
 using ProjectPlanner.Projects.Interfaces.Domain.Events;
 using ProjectPlanner.Projects.Interfaces.Domain.Exceptions;
-using ProjectPlanner.Projects.Domain.Interfaces;
+using ProjectPlanner.Projects.Interfaces.Domain;
 
 namespace ProjectPlanner.Projects.Domain
 {
@@ -16,7 +16,7 @@ namespace ProjectPlanner.Projects.Domain
 
         public DateTime CreateTimeStamp { get; private set; } // nHibernate interceptor
         public DateTime LastUpdateTimeStamp { get; private set; } // nHibernate interceptor
-        public ProjectStatus Status { get; private set; }
+        public ObjectStatus Status { get; private set; }
 
         public Guid CreatorUserId { get; private set; }
 
@@ -100,7 +100,7 @@ namespace ProjectPlanner.Projects.Domain
 
         public void Close()
         {
-            Status = ProjectStatus.Closed;
+            Status = ObjectStatus.Closed;
 
             EventPublisher.Publish(new ProjectClosedEvent(Id));
         }
@@ -117,7 +117,7 @@ namespace ProjectPlanner.Projects.Domain
 
         private void CheckIfActive()
         {
-            if (Status == ProjectStatus.Closed)
+            if (Status == ObjectStatus.Closed)
             {
                 throw new ProjectOperationException("Operation is not allowed in closed project.");
             }

@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNet.Mvc;
-using System;
-using System.ComponentModel.DataAnnotations;
-using ProjectPlanner.Projects.Domain.Interfaces;
+﻿using System;
+using ProjectPlanner.Projects.Interfaces.Domain;
 
 namespace ProjectPlannerASP5.ViewModels
 {
@@ -19,6 +17,6 @@ namespace ProjectPlannerASP5.ViewModels
 
         public int EstimatedTime { get; set; }
 
-        public IssueStatus Status { get; private set; }
+        public ObjectStatus Status { get; private set; }
     }
 }

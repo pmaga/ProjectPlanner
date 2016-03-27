@@ -3,10 +3,7 @@ using ProjectPlanner.Cqrs.Base.CQRS.Query.Attributes;
 using ProjectPlanner.Infrastructure.Orm;
 using ProjectPlanner.Projects.Domain;
 using ProjectPlanner.Projects.Interfaces.Presentation;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ProjectPlanner.Projects.Presentation.Implementation
 {
@@ -24,7 +21,7 @@ namespace ProjectPlanner.Projects.Presentation.Implementation
         {
             return _entityManager.CurrentSession.Query<Issue>()
                 .Select(n => new IssueListDto(n.Id, n.Status, n.IssueNumber.ToString(), 
-                    n.CreateDate, n.DueDate));
+                    n.CreateTimeStamp, n.DueDate));
         }
     }
 }

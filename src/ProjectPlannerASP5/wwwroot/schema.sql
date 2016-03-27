@@ -15,11 +15,10 @@ alter table Users  drop constraint FK2C1C7FE5F894640E
 
     create table Issues (
         Id INT IDENTITY NOT NULL,
-       Version DATETIME not null,
        IssueNumber INT null,
-       CreateDate datetime2 null,
+       CreateTimeStamp datetime2 null,
        DueDate DATETIME null,
-       LastChangeDate datetime2 null,
+       LastUpdateTimeStamp datetime2 null,
        Summary NVARCHAR(MAX) null,
        Description NVARCHAR(MAX) null,
        Status INT null,

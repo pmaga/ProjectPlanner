@@ -32,10 +32,10 @@
                                             <label class="col-sm-2 control-label">Summary:</label>
                                             <div class="col-sm-10">
                                                 <input name="code" type="text" ng-model="issue.summary" class="form-control"
-                                                       placeholder="Summary" required ng-minlength="5" ng-maxlength="40">
+                                                       placeholder="Summary" required ng-minlength="3" ng-maxlength="40">
                                             </div>
                                             <span ng-show="issueForm.summary.$error.required" class="text-warning">Summary field is required.</span>
-                                            <span ng-show="issueForm.summary.$error.minlength" class="text-warning">Summary must be atleast 5 characters.</span>
+                                            <span ng-show="issueForm.summary.$error.minlength" class="text-warning">Summary must be atleast 3 characters.</span>
                                             <span ng-show="issueForm.summary.$error.maxlength" class="text-warning">Summary may have a maximum of 40 characters.</span>
                                         </div>
                                         <div class="form-group">

@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Logging;
 using ProjectPlanner.Cqrs.Base.CQRS.Commands;
-using ProjectPlannerASP5.Services;
 using ProjectPlannerASP5.ViewModels;
 using System;
 using System.Linq;
 using System.Net;
-using ProjectPlanner.Projects.Domain.Interfaces;
 using ProjectPlanner.Projects.Interfaces.Application.Commands;
 using ProjectPlanner.Projects.Interfaces.Presentation;
 

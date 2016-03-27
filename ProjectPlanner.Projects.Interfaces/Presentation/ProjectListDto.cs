@@ -1,5 +1,5 @@
 ﻿using System;
-using ProjectPlanner.Projects.Domain.Interfaces;
+using ProjectPlanner.Projects.Interfaces.Domain;
 
 namespace ProjectPlanner.Projects.Interfaces.Presentation
 {
@@ -8,7 +8,7 @@ namespace ProjectPlanner.Projects.Interfaces.Presentation
         public int Id { get; private set; }
         public string Code { get; private set; }
         public string Name { get; private set; }
-        public ProjectStatus Status { get; set; }
+        public ObjectStatus Status { get; set; }
 
         public int PercentageCompleteness { get; set; }
 
@@ -20,7 +20,7 @@ namespace ProjectPlanner.Projects.Interfaces.Presentation
         }
 
         public ProjectListDto(int id, string code, string name, 
-            ProjectStatus status, int percentageCompleteness, DateTime createDate)
+            ObjectStatus status, int percentageCompleteness, DateTime createDate)
         {
             Id = id;
             Code = code;

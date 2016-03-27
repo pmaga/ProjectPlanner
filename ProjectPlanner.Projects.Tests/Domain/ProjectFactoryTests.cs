@@ -1,5 +1,4 @@
 ﻿using System;
-using ProjectPlanner.Cqrs.Base.DDD.Domain.Helpers;
 using ProjectPlanner.Projects.Domain;
 using ProjectPlanner.Projects.Interfaces.Domain.Exceptions;
 using ProjectPlanner.Projects.Tests.Mocks;

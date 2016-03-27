@@ -1,5 +1,5 @@
 ﻿using System;
-using ProjectPlanner.Projects.Domain.Interfaces;
+using ProjectPlanner.Projects.Interfaces.Domain;
 
 namespace ProjectPlanner.Projects.Interfaces.Presentation
 {
@@ -11,14 +11,14 @@ namespace ProjectPlanner.Projects.Interfaces.Presentation
         public DateTime CreateDate { get; private set; }
         public DateTime? DueDate { get; private set; }
 
-        public IssueStatus Status { get; private set; }
+        public ObjectStatus Status { get; private set; }
 
         private IssueListDto()
         {
             
         }
 
-        public IssueListDto(int id, IssueStatus status, string fullNumber, DateTime createDate, DateTime? dueDate)
+        public IssueListDto(int id, ObjectStatus status, string fullNumber, DateTime createDate, DateTime? dueDate)
         {
             Id = id;
             Status = status;

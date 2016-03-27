@@ -1,5 +1,6 @@
 ﻿using ProjectPlanner.Projects.Domain.Interfaces;
 using System;
+using ProjectPlanner.Projects.Interfaces.Domain;
 
 namespace ProjectPlanner.Projects.Interfaces.Presentation
 {
@@ -19,7 +20,7 @@ namespace ProjectPlanner.Projects.Interfaces.Presentation
         public ProjectDetailsDto(int id, string customerName, string code,
             string name, string description,
             DateTime createDate, DateTime lastUpdate, 
-            int percentageCompleteness, ProjectStatus status)
+            int percentageCompleteness, ObjectStatus status)
         {
             Id = id;
             CustomerName = customerName;
@@ -29,7 +30,7 @@ namespace ProjectPlanner.Projects.Interfaces.Presentation
             CreateDate = createDate;
             LastUpdateDate = lastUpdate;
             PercentageCompleteness = percentageCompleteness;
-            Status = status == ProjectStatus.Closed ? ProjectStateStatus.Closed
+            Status = status == ObjectStatus.Closed ? ProjectStateStatus.Closed
                 : ProjectStateStatus.Active;
         }
     }
