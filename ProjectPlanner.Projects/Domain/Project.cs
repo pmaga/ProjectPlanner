@@ -136,15 +136,32 @@ namespace ProjectPlanner.Projects.Domain
         {
             CheckIfActive();
 
+            var issue = FindIssue(issueId);
+
+            Issues.Remove(issue);
+
+            EventPublisher.Publish(new IssueDeletedFromProjectEvent(Code, issueId));
+        }
+
+        public void ChangeIssueInfo(int issueId, string summary, string description, DateTime? dueDate)
+        {
+            CheckIfActive();
+
+            var issue = FindIssue(issueId);
+
+            issue.Summary = summary;
+            issue.Description = description;
+            issue.DueDate = dueDate;
+        }
+
+        private Issue FindIssue(int issueId)
+        {
             var issue = Issues.FirstOrDefault(n => n.Id == issueId);
             if (issue == null)
             {
                 throw new ProjectOperationException("Specified issue does not exist.");
             }
-
-            Issues.Remove(issue);
-
-            EventPublisher.Publish(new IssueDeletedFromProjectEvent(Code, issueId));
+            return issue;
         }
     }
 }

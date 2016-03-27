@@ -24,5 +24,13 @@ namespace ProjectPlanner.Projects.Presentation.Implementation
                 .Select(n => new IssueListDto(n.Id, n.Status, n.IssueStateStatus, n.IssueNumber.ToString(), 
                     n.CreateTimeStamp, n.DueDate));
         }
+
+        public IssueEditDto FindIssue(string projectCode, int issueId)
+        {
+            return _entityManager.CurrentSession.Query<Issue>()
+                .Where(n => n.Project.Code == projectCode && n.Id == issueId)
+                .Select(n => new IssueEditDto(n.Id, n.Summary, n.Description, n.CreateTimeStamp, n.LastUpdateTimeStamp,
+                    n.DueDate)).FirstOrDefault();
+        }
     }
 }

@@ -9,7 +9,6 @@
     function Issue($resource) {
         return $resource('/api/projects/:projectCode/issues/:id', { projectCode: '@projectCode', id: '@id' }, {
             get: {
-                url: '/api/issues/:id',
                 method: 'GET',
                 isArray: false
             },

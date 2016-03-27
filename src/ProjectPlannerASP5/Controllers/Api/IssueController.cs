@@ -42,6 +42,23 @@ namespace ProjectPlannerASP5.Controllers.Api
             }
         }
 
+        [HttpGet("{issueId}")]
+        public JsonResult Get(string projectCode, int issueId)
+        {
+            try
+            {
+                var issue = _issueFinder.FindIssue(projectCode, issueId);
+
+                return Json(issue);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get the issue: {issueId} for project: {projectCode}", ex);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json("Error occured finding the issues");
+            }
+        }
+
         [HttpPost("")]
         public JsonResult Create(string projectCode, [FromBody]EditIssueViewModel vm)
         {
@@ -77,8 +94,9 @@ namespace ProjectPlannerASP5.Controllers.Api
                 {
                     _logger.LogInformation($"Attempting to updating issue: {vm.IssueNumber}.");
 
-                    //var changeProjectInformationCommand = new ChangeProjectInformationCommand(vm.Id, vm.Code, vm.Name, vm.Description);
-                    //_gate.Dispatch(changeProjectInformationCommand);
+                    var changeIssuenformationCommand = new ChangeIssueBasicInfoCommand(projectCode, vm.Id, vm.Summary, vm.Description, 
+                        vm.DueDate);
+                    _gate.Dispatch(changeIssuenformationCommand);
                     Response.StatusCode = (int)HttpStatusCode.OK;
                     return Json(true);
                 }
