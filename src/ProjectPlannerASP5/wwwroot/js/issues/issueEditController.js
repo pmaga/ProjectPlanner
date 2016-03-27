@@ -36,7 +36,7 @@
         };
 
         $scope.goToIssuesList = function() {
-            $location.path('/Issues');
+            $location.path('/Issues/' + $scope.projectCode);
         };
     };
 })();

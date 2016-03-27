@@ -8,9 +8,9 @@
     angular.module("app")
         .controller("issueListController", issueListController);
 
-    issueListController.$inject = ['$http', '$scope', 'Project', 'Issue'];
+    issueListController.$inject = ['$http', '$scope', 'Project', 'Issue', '$routeParams'];
 
-    function issueListController($http, $scope, Project, Issue) {
+    function issueListController($http, $scope, Project, Issue, $routeParams) {
 
         $scope.issues = [];
         $scope.errorMessage = "";
@@ -57,6 +57,12 @@
             } else if (status === "Modified") {
                 return "label label-warning";
             }
+        };
+
+        if ($routeParams.projectCode) {
+            $scope.project.code = $routeParams.projectCode;
+            $scope.loadIssues($routeParams.projectCode);
+            $scope.isProjectChoosen = true;
         };
     }
 })();

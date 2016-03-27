@@ -22,6 +22,7 @@ alter table Users  drop constraint FK2C1C7FE5F894640E
        Summary NVARCHAR(MAX) null,
        Description NVARCHAR(MAX) null,
        Status INT null,
+       IssueStateStatus INT null,
        UserName NVARCHAR(MAX) null,
        EntityStatus INT null,
        Project_id INT null,

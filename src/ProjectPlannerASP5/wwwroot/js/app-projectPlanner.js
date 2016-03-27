@@ -34,7 +34,7 @@
                 templateUrl: '/views/project/projectEdit.html',
                 controller: 'projectEditController'
             })
-            .when('/Issues', {
+            .when('/Issues/:projectCode?', {
                 templateUrl: '/views/issue/issuesList.html',
                 controller: 'issueListController'
             })
