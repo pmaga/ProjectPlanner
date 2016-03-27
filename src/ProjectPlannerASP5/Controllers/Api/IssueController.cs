@@ -42,18 +42,18 @@ namespace ProjectPlannerASP5.Controllers.Api
             }
         }
 
-        [HttpGet("{issueId}")]
-        public JsonResult Get(string projectCode, int issueId)
+        [HttpGet("{id}")]
+        public JsonResult Get(string projectCode, int id)
         {
             try
             {
-                var issue = _issueFinder.FindIssue(projectCode, issueId);
+                var issue = _issueFinder.FindIssue(projectCode, id);
 
                 return Json(issue);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Failed to get the issue: {issueId} for project: {projectCode}", ex);
+                _logger.LogError($"Failed to get the issue: {id} for project: {projectCode}", ex);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return Json("Error occured finding the issues");
             }

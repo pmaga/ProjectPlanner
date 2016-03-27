@@ -25,7 +25,7 @@
                     $scope.goToIssuesList();
                 });
             } else {
-                $scope.issue.$updateClass({ projectCode: $scope.project }).then(function() {
+                $scope.issue.$update({ projectCode: $scope.projectCode }).then(function () {
                     $scope.goToIssuesList();
                 });
             }
