@@ -59,6 +59,17 @@
             }
         };
 
+        $scope.getIssueStateClass = function(issueState) {
+            var result = "label ";
+
+            if (issueState === "InProgress") {
+                result += "label-warning";
+            } else if (issueState === "Completed") {
+                result += "label-success";
+            }
+            return result;
+        };
+
         if ($routeParams.projectCode) {
             $scope.project.code = $routeParams.projectCode;
             $scope.loadIssues($routeParams.projectCode);

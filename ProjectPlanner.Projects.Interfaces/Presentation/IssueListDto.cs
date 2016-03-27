@@ -12,16 +12,19 @@ namespace ProjectPlanner.Projects.Interfaces.Presentation
         public DateTime? DueDate { get; private set; }
 
         public ObjectStatus Status { get; private set; }
+        public IssueStateStatus IssueStatus { get; set; }
 
         private IssueListDto()
         {
             
         }
 
-        public IssueListDto(int id, ObjectStatus status, string fullNumber, DateTime createDate, DateTime? dueDate)
+        public IssueListDto(int id, ObjectStatus status, IssueStateStatus issueStatus,
+            string fullNumber, DateTime createDate, DateTime? dueDate)
         {
             Id = id;
             Status = status;
+            IssueStatus = issueStatus;
             FullNumber = fullNumber;
             CreateDate = createDate;
             DueDate = dueDate;

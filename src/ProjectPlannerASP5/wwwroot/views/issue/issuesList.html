@@ -54,6 +54,7 @@
                         <thead>
                         <tr>
                             <th>State</th>
+                            <th>Status</th>
                             <th>Number</th>
                             <th/>
                             <th>Create date</th>
@@ -64,6 +65,9 @@
                         <tr>
                             <td>
                                 <span ng-class="getStatusClass(issue.status)">{{issue.status}}</span>
+                            </td>
+                            <td>
+                                <span ng-class="getIssueStateClass(issue.issueStatus)">{{issue.issueStatus}}</span>
                             </td>
                             <td class="issue-info">
                                 <a ng-href="/Issues/Edit/{{issue.id}}" class="modal-link">

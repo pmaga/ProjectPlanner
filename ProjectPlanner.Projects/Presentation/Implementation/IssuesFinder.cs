@@ -20,7 +20,7 @@ namespace ProjectPlanner.Projects.Presentation.Implementation
         public IQueryable<IssueListDto> FindIssues(string projectCode)
         {
             return _entityManager.CurrentSession.Query<Issue>()
-                .Select(n => new IssueListDto(n.Id, n.Status, n.IssueNumber.ToString(), 
+                .Select(n => new IssueListDto(n.Id, n.Status, n.IssueStateStatus, n.IssueNumber.ToString(), 
                     n.CreateTimeStamp, n.DueDate));
         }
     }
