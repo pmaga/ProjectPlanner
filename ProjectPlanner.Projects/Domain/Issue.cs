@@ -19,6 +19,7 @@ namespace ProjectPlanner.Projects.Domain
         public string Description { get; set; }
 
         public ObjectStatus Status { get; set; }
+        public IssueStateStatus IssueStateStatus { get; set; }
 
         public string UserName { get; set; }
 
@@ -34,6 +35,8 @@ namespace ProjectPlanner.Projects.Domain
             Summary = summary;
             Description = description;
             DueDate = dueDate;
+
+            IssueStateStatus = IssueStateStatus.ToDO;
         }
     }
 }

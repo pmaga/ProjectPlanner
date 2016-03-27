@@ -6,6 +6,7 @@ using ProjectPlannerASP5.Controllers.Web;
 using ProjectPlannerASP5.Models;
 using ProjectPlannerASP5.ViewModels;
 using Microsoft.Extensions.Logging;
+using ProjectPlannerASP5.ViewModels.Auth;
 
 namespace ProjectPlannerASP5.Controllers
 {

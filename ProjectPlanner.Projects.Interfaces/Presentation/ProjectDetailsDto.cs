@@ -1,5 +1,4 @@
-﻿using ProjectPlanner.Projects.Domain.Interfaces;
-using System;
+﻿using System;
 using ProjectPlanner.Projects.Interfaces.Domain;
 
 namespace ProjectPlanner.Projects.Interfaces.Presentation

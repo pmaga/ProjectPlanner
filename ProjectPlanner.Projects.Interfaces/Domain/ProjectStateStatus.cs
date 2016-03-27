@@ -1,4 +1,4 @@
-﻿namespace ProjectPlanner.Projects.Domain.Interfaces
+﻿namespace ProjectPlanner.Projects.Interfaces.Domain
 {
     public enum ProjectStateStatus
     {

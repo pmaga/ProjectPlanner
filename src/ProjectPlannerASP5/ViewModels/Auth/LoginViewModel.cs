@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ProjectPlannerASP5.ViewModels
+namespace ProjectPlannerASP5.ViewModels.Auth
 {
     public class LoginViewModel
     {
