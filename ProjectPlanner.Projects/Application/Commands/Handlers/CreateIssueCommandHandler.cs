@@ -26,7 +26,7 @@ namespace ProjectPlanner.Projects.Application.Commands.Handlers
 
             if (project == null)
             {
-                throw new InvalidOperationException($"Cannot find project {command.ProjectCode}");
+                throw new InvalidOperationException($"Cannot find project: {command.ProjectCode}");
             }
 
             _injectorHelper.InjectDependencies(project);

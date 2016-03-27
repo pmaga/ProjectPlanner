@@ -125,9 +125,26 @@ namespace ProjectPlanner.Projects.Domain
 
         public void AddIssue(string summary, string description, DateTime? dueDate)
         {
+            CheckIfActive();
+
             Issues.Add(new Issue(summary, description, dueDate));
 
             EventPublisher.Publish(new IssueAddedToProjectEvent());
+        }
+
+        public void DeleteIssue(int issueId)
+        {
+            CheckIfActive();
+
+            var issue = Issues.FirstOrDefault(n => n.Id == issueId);
+            if (issue == null)
+            {
+                throw new ProjectOperationException("Specified issue does not exist.");
+            }
+
+            Issues.Remove(issue);
+
+            EventPublisher.Publish(new IssueDeletedFromProjectEvent(Code, issueId));
         }
     }
 }

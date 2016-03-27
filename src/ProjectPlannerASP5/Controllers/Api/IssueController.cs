@@ -103,8 +103,8 @@ namespace ProjectPlannerASP5.Controllers.Api
                 {
                     _logger.LogInformation($"Attempting to delete a issue with id: {id}.");
 
-                    //var deleteProjectCommand = new DeleteIssueCommand(id);
-                    //_gate.Dispatch(deleteProjectCommand);
+                    var deleteIssuetCommand = new DeleteIssueCommand(projectCode, id);
+                    _gate.Dispatch(deleteIssuetCommand);
                     Response.StatusCode = (int)HttpStatusCode.OK;
                     return Json("");
                 }

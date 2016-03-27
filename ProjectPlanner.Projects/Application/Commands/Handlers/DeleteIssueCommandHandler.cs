@@ -7,28 +7,13 @@ using ProjectPlanner.Projects.Interfaces.Application.Commands;
 
 namespace ProjectPlanner.Projects.Application.Commands.Handlers
 {
-    public class DeleteProjectCommandHandler : ICommandHandler<DeleteProjectCommand>
-    {
-        private readonly IProjectRepository _repository;
-
-        public DeleteProjectCommandHandler(IProjectRepository repository)
-        {
-            _repository = repository;
-        }
-
-        public void Handle(DeleteProjectCommand command)
-        {
-            _repository.Delete(command.ProjectId);
-        }
-    }
-
-    public class DeleteIssueCOmmandHandler : ICommandHandler<DeleteIssueCommand>
+    public class DeleteIssueCommandHandler : ICommandHandler<DeleteIssueCommand>
     {
         private readonly IProjectRepository _projectRepository;
         private readonly InjectorHelper _injectorHelper;
         private readonly ISystemUser _systemUser;
 
-        public DeleteIssueCOmmandHandler(IProjectRepository projectRepository, InjectorHelper injectorHelper, 
+        public DeleteIssueCommandHandler(IProjectRepository projectRepository, InjectorHelper injectorHelper, 
             ISystemUser systemUser)
         {
             _projectRepository = projectRepository;
