@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using System.Net;
 using ProjectPlanner.Projects.Domain.Interfaces;
+using ProjectPlanner.Projects.Interfaces.Application.Commands;
 using ProjectPlanner.Projects.Interfaces.Presentation;
 
 namespace ProjectPlannerASP5.Controllers.Api
@@ -52,11 +53,10 @@ namespace ProjectPlannerASP5.Controllers.Api
                 {
                     _logger.LogInformation($"Attempting to saving a new issue for project: {projectCode}");
 
-                    //var createIssueCommand = new CreateIssueommand(vm.Code, vm.Name, vm.Description);
-                    //_gate.Dispatch(createIssueCommand);
+                    var createIssueCommand = new CreateIssueCommand(projectCode, vm.Summary, vm.Description, vm.DueDate);
+                    _gate.Dispatch(createIssueCommand);
                     Response.StatusCode = (int)HttpStatusCode.Created;
-                    return Json(true);
-                    //return Json(new { id = createIssueCommand.IssueId });
+                    return Json(new { id = createIssueCommand.IssueId });
                 }
             }
             catch (Exception ex)

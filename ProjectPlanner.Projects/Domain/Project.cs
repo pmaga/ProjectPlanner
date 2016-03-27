@@ -16,7 +16,7 @@ namespace ProjectPlanner.Projects.Domain
 
         public DateTime CreateTimeStamp { get; private set; } // nHibernate interceptor
         public DateTime LastUpdateTimeStamp { get; private set; } // nHibernate interceptor
-        public ProjectStatus Status { get; private set; } //TODO: Zmiana statusu na Modified po zapisie
+        public ProjectStatus Status { get; private set; }
 
         public Guid CreatorUserId { get; private set; }
 
@@ -121,6 +121,13 @@ namespace ProjectPlanner.Projects.Domain
             {
                 throw new ProjectOperationException("Operation is not allowed in closed project.");
             }
+        }
+
+        public void AddIssue(string summary, string description, DateTime? dueDate)
+        {
+            Issues.Add(new Issue(summary, description, dueDate));
+
+            EventPublisher.Publish(new IssueAddedToProjectEvent());
         }
     }
 }
