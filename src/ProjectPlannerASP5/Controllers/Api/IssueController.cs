@@ -56,7 +56,7 @@ namespace ProjectPlannerASP5.Controllers.Api
                     //_gate.Dispatch(createIssueCommand);
                     Response.StatusCode = (int)HttpStatusCode.Created;
                     return Json(true);
-                    //return Json(new { id = createIssueCommand.ProjectId });
+                    //return Json(new { id = createIssueCommand.IssueId });
                 }
             }
             catch (Exception ex)

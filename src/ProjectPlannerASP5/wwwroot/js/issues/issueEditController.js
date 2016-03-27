@@ -21,11 +21,11 @@
 
         $scope.saveIssue = function() {
             if ($scope.issue.id === 0) {
-                $scope.issue.$save({ projectCode: $scope.projectCode })(function() {
+                $scope.issue.$save({ projectCode: $scope.projectCode }).then(function() {
                     $scope.goToIssuesList();
                 });
             } else {
-                $scope.issue.$updateClass(function() {
+                $scope.issue.$updateClass({ projectCode: $scope.project }).then(function() {
                     $scope.goToIssuesList();
                 });
             }

@@ -32,7 +32,7 @@
                                             <label class="col-sm-2 control-label">Summary:</label>
                                             <div class="col-sm-10">
                                                 <input name="code" type="text" ng-model="issue.summary" class="form-control"
-                                                       placeholder="Summary" required ng-minlength="3" ng-maxlength="9">
+                                                       placeholder="Summary" required ng-minlength="5" ng-maxlength="40">
                                             </div>
                                             <span ng-show="issueForm.summary.$error.required" class="text-warning">Summary field is required.</span>
                                             <span ng-show="issueForm.summary.$error.minlength" class="text-warning">Summary must be atleast 5 characters.</span>
@@ -48,14 +48,14 @@
                                             <label class="col-sm-2 control-label">Created:</label>
                                             <div class="input-group date">
                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                <input name="createDate" ng-model="issue.createTimeStamp" class="form-control" readonly="readonly" />
+                                                <input name="createDate" ng-model="issue.createTimeStamp" class="form-control" readonly="readonly"/>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group date" data-provide="datepicker" readonly>
                                             <label class="col-sm-2 control-label">Due date:</label>
                                             <div class="input-group date">
                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                <input name="createDate" ng-model="issue.dueDate" class="form-control" />
+                                                <input onkeydown="return false" class="form-control" ng-model="issue.dueDate">
                                             </div>
                                         </div>
                                         <div class="form-group">
