@@ -1,3 +1,6 @@
+/// <reference path="../views/issue/issueedit.html" />
+/// <reference path="../views/issue/issueedit.html" />
+/// <reference path="../views/issue/issueedit.html" />
 // app-projects.js
 (function () {
 
@@ -34,6 +37,14 @@
             .when('/Issues', {
                 templateUrl: '/views/issue/issuesList.html',
                 controller: 'issueListController'
+            })
+            .when('/Issues/Create/:projectCode', {
+                templateUrl: '/views/issue/issueEdit.html',
+                controller: 'issueEditController'
+            })
+            .when('/Issues/Edit/:projectCode/:id', {
+                templateUrl: '/views/issue/issueEdit.html',
+                controller: 'issueEditController'
             })
         .otherwise({
             templateUrl: '/views/index.html'

@@ -29,7 +29,7 @@
             <div class="ibox-title">
                 <h5>Issue list</h5>
                 <div class="ibox-tools">
-                    <a ng-href="/Issues/Create/{{projectId}}" class="btn btn-primary btn-xs modal-link ng-class: {'disabled': !isProjectChoosen}">Add new issue</a>
+                    <a ng-href="/Issues/Create/{{project.code}}" class="btn btn-primary btn-xs ng-class: {'disabled': !isProjectChoosen}">Add new issue</a>
                 </div>
             </div>
             <div class="ibox-content">
@@ -87,7 +87,7 @@
                                 2d
                             </td>
                             <td class="text-right">
-                                <a ng-href="/Issues/Edit/{{issue.id}}" class="btn btn-white btn-xs modal-link">Edit</a>
+                                <a ng-href="/Issues/Edit/{{project.code}}/{{issue.id}}" class="btn btn-white btn-xs modal-link">Edit</a>
 
                                 <form method="post" ng-submit="deleteIssue(issue, $index)" class="inline-form">
                                     <button type="submit" class="btn btn-white btn-xs" onclick="return confirm('Are you sure you wish to delete this issue?');"> Delete</button>

@@ -2,6 +2,7 @@
 /// <reference path="../gulpfile.js" />
 /// <reference path="js/app-projectplanner.js" />
 /// <reference path="js/customselect.js" />
+/// <reference path="js/issues/issueeditcontroller.js" />
 /// <reference path="js/issues/issuelistcontroller.js" />
 /// <reference path="js/maincontroller.js" />
 /// <reference path="js/modalwindows.js" />

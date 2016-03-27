@@ -32,7 +32,6 @@ namespace ProjectPlannerASP5.Controllers.Api
             try
             {
                 var results = _issueFinder.FindIssues(projectCode).ToList();
-                results.Add(new IssueListDto(1, IssueStatus.Added, "ATH-1", DateTime.Now, DateTime.Now.AddDays(20)));
 
                 return Json(results);
             }
@@ -45,30 +44,56 @@ namespace ProjectPlannerASP5.Controllers.Api
         }
 
         [HttpPost("")]
-        public JsonResult Post(string projectCode, [FromBody]EditIssueViewModel vm)
+        public JsonResult Create(string projectCode, [FromBody]EditIssueViewModel vm)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _logger.LogInformation("Attempting to saving new issue.");
+                    _logger.LogInformation($"Attempting to saving a new issue for project: {projectCode}");
 
-                    //if (_issueService.Insert(projectCode, vm))
-                    //{
-                    //    Response.StatusCode = (int)HttpStatusCode.Created;
-                    //    return Json(new { id = vm.Id });
-                    //}
+                    //var createIssueCommand = new CreateIssueommand(vm.Code, vm.Name, vm.Description);
+                    //_gate.Dispatch(createIssueCommand);
+                    Response.StatusCode = (int)HttpStatusCode.Created;
+                    return Json(true);
+                    //return Json(new { id = createIssueCommand.ProjectId });
                 }
             }
             catch (Exception ex)
             {
                 _logger.LogError("Failed to save new issue", ex);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                return Json("Failed to save new issue");
+                return Json(new { Message = ex.Message });
             }
 
             Response.StatusCode = (int)HttpStatusCode.BadRequest;
-            return Json("Validation failed on new issue");
+            return Json(new { Message = "Failed", ModelState = ModelState });
+        }
+
+        [HttpPut("")]
+        public JsonResult Update(string projectCode, [FromBody]EditIssueViewModel vm)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _logger.LogInformation($"Attempting to updating issue: {vm.IssueNumber}.");
+
+                    //var changeProjectInformationCommand = new ChangeProjectInformationCommand(vm.Id, vm.Code, vm.Name, vm.Description);
+                    //_gate.Dispatch(changeProjectInformationCommand);
+                    Response.StatusCode = (int)HttpStatusCode.OK;
+                    return Json(true);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Failed to update issue information", ex);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(new { Message = ex.Message });
+            }
+
+            Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            return Json(new { Message = "Failed", ModelState = ModelState });
         }
 
         [HttpDelete("{id}")]
