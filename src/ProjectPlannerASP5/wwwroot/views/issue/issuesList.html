@@ -22,7 +22,7 @@
                 <div custom-select="p.id as p.code for p in projects | filter: { code: $searchTerm }" ng-model="project"
                      custom-select-options="selectOptions">
                     <div class="pull-left">
-                        <strong>{{ p.code }}</strong><br />
+                        <strong>{{ p.code }}</strong><br/>
                         <span>{{ p.name }}</span>
                     </div>
                     <div class="clearfix"></div>
@@ -104,3 +104,4 @@
             </div>
         </div>
     </div>
+</div>

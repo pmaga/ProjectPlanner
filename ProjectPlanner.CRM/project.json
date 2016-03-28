@@ -1,0 +1,21 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "ProjectPlanner.Projects Class Library",
+  "authors": [ "Pawel" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "dnx451": {
+      "dependencies": {
+      }
+    }
+  },
+  "dependencies": {
+    "dnx-clr-win-x86": "1.0.0-rc1-final",
+    "NHibernate": "4.0.4.4000",
+    "ProjectPlanner.Cqrs.Base": "1.0.0-*",
+    "ProjectPlanner.Infrastructure.Orm": "1.0.0-*",
+    "ProjectPlanner.CRM.Interfaces": "1.0.0-*"
+  }
+}

@@ -15,6 +15,8 @@
     "ProjectPlanner.Projects.Interfaces": "1.0.0-*",
     "ProjectPlanner.Projects": "1.0.0-*",
     "ProjectPlanner.Infrastructure.Orm": "1.0.0-*",
+    "ProjectPlanner.CRM": "1.0.0-*",
+    "ProjectPlanner.CRM.Interfaces": "1.0.0-*",
     "Autofac": "4.0.0-rc1-177",
     "Autofac.Extras.AggregateService": "4.0.0",
     "Autofac.Extensions.DependencyInjection": "4.0.0-rc1-177",
