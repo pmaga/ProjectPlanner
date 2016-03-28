@@ -17,6 +17,7 @@
         $scope.isBusy = true;
 
         $scope.project = {};
+        $scope.issueStatuses = ['ToDo', 'InProgress', 'Completed'];
         $scope.projects = Project.getLookups();
         $scope.isProjectChoosen = false;
 

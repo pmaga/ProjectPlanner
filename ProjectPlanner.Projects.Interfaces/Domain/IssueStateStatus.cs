@@ -2,7 +2,7 @@
 {
     public enum IssueStateStatus
     {
-        ToDO,
+        ToDo,
         InProgress,
         Completed
     }

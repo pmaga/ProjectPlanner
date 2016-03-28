@@ -17,15 +17,19 @@
 
     <div class="row" ng-show="!errorMessage">
         <div class="ibox">
-            <span>Choose project:</span>
-            <div custom-select="p.id as p.code for p in projects | filter: { code: $searchTerm }" ng-model="project"
-                 custom-select-options="selectOptions" >
-                <div class="pull-left">
-                    <strong>{{ p.code }}</strong><br />
-                    <span>{{ p.name }}</span>
+            <div class="search-criteria">
+                <span>Choose project:</span>
+                <div custom-select="p.id as p.code for p in projects | filter: { code: $searchTerm }" ng-model="project"
+                     custom-select-options="selectOptions">
+                    <div class="pull-left">
+                        <strong>{{ p.code }}</strong><br/>
+                        <span>{{ p.name }}</span>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="clearfix"></div>
-            </div>
+                <span>Status:</span>
+                <div custom-select="s for s in issueStatuses | filter: $searchTerm" ng-model="search.status">
+                </div>
             <div class="ibox-title">
                 <h5>Issue list</h5>
                 <div class="ibox-tools">
@@ -56,12 +60,12 @@
                             <th>State</th>
                             <th>Status</th>
                             <th>Number</th>
-                            <th/>
+                            <th/>   
                             <th>Create date</th>
                             <th>Due date</th>
                         </tr>
                         </thead>
-                        <tbody ng-repeat="issue in issues">
+                        <tbody ng-repeat="issue in issues | filter:search">
                         <tr>
                             <td>
                                 <span ng-class="getStatusClass(issue.status)">{{issue.status}}</span>

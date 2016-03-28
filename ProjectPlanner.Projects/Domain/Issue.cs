@@ -36,7 +36,7 @@ namespace ProjectPlanner.Projects.Domain
             Description = description;
             DueDate = dueDate;
 
-            IssueStateStatus = IssueStateStatus.ToDO;
+            IssueStateStatus = IssueStateStatus.ToDo;
         }
     }
 }
