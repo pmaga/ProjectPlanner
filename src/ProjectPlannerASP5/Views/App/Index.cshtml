@@ -1,4 +1,4 @@
-@{
+﻿@{
     Layout = null; 
 }
 <!DOCTYPE html>
@@ -35,7 +35,7 @@
     <script type="text/javascript" src="~/js/simpleControls.js"></script>
     <script type="text/javascript" src="~/js/customselect.js"></script>
                                         
-    <script type="text/javascript" src="~/js/topNavbar/topNavbarController.js"></script>
+    <script type="text/javascript" src="~/js/home/homeController.js"></script>
     <script type="text/javascript" src="~/js/issues/issueListController.js"></script>
     <script type="text/javascript" src="~/js/issues/issueEditController.js"></script>
     <script type="text/javascript" src="~/js/projects/projectsListController.js"></script>
@@ -52,6 +52,12 @@
     <script type="text/javascript" src="~/lib/slimScroll/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="~/js/site.js"></script>
     <script type="text/javascript" src="~/js/modalWindows.js"></script>
+
+    <script>
+		angular.module("app").value("identityInfo", {
+		    username: '@ViewBag.Username'
+		});
+    </script>
 </head>
 
 <body ng-cloak>

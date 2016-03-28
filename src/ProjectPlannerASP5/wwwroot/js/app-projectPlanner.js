@@ -15,7 +15,8 @@
     function config($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: '/views/index.html'
+                templateUrl: '/views/index.html',
+                controller: 'homeController'
             })
             .when('/Projects', {
                 templateUrl: '/views/project/projectsList.html',
