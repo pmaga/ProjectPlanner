@@ -16,6 +16,7 @@
 /// <reference path="js/services/projectsservice.js" />
 /// <reference path="js/simplecontrols.js" />
 /// <reference path="js/site.js" />
+/// <reference path="js/topnavbar/topnavbarcontroller.js" />
 /// <reference path="lib/angular/angular.js" />
 /// <reference path="lib/angular-resource/angular-resource.js" />
 /// <reference path="lib/angular-route/angular-route.js" />

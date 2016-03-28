@@ -1,13 +1,32 @@
-﻿<div class="row border-bottom">
-    <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-            <form role="search" class="navbar-form-custom" method="post" action="">
-                <div class="form-group">
-                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
-                </div>
+﻿<div ng-controller="topNavbarController">
+    <div class="row border-bottom">
+        <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                <form role="search" class="navbar-form-custom" method="post" action="">
+                    <div class="form-group">
+                        <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                    </div>
+                </form>
+            </div>
+            <ul class="nav navbar-top-links navbar-right" ng-show="!isAuthenticated">
+                <li>
+                    <a asp-controller="Auth" asp-action="Register" id="register-link">Register</a>
+                </li>
+                <li>
+                    <a asp-controller="Auth" asp-action="Login" id="loginLink">Log in</a>
+                </li>
+            </ul>
+            <form method="post" ng-href="/Logout" role="form" id="logoutForm" class="navbar-right" ng-show="isAuthenticated">
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <a asp-controller="Auth" asp-action="Manage" title="Manage">Hello @(User.Identity.Name)!</a>
+                    </li>
+                    <li>
+                        <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                    </li>
+                </ul>
             </form>
-        </div>
-        <!--@Component.Invoke("LoginPanel")-->
-    </nav>
+        </nav>
+    </div>
 </div>
