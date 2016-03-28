@@ -2,7 +2,7 @@
 
     "use strict";
 
-    angular.module('projectsServices', ['ngResource'])
+    angular.module('appServices', ['ngResource'])
         .factory('Project', Project);
 
     Project.$inject = ['$resource'];

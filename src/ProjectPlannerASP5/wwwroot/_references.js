@@ -9,6 +9,7 @@
 /// <reference path="js/projects/projectdetailscontroller.js" />
 /// <reference path="js/projects/projecteditcontroller.js" />
 /// <reference path="js/projects/projectslistcontroller.js" />
+/// <reference path="js/services/clientservice.js" />
 /// <reference path="js/services/issueservice.js" />
 /// <reference path="js/services/projectsservice.js" />
 /// <reference path="js/simplecontrols.js" />

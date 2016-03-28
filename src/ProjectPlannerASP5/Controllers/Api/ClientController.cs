@@ -5,8 +5,6 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Logging;
 using ProjectPlanner.Cqrs.Base.CQRS.Commands;
 using ProjectPlanner.CRM.Interfaces.Presentation;
-using ProjectPlanner.Projects.Interfaces.Application.Commands;
-using ProjectPlanner.Projects.Interfaces.Presentation;
 using ProjectPlannerASP5.ViewModels;
 using System.Linq;
 using ProjectPlanner.CRM.Interfaces.Application.Commands;
@@ -138,6 +136,14 @@ namespace ProjectPlannerASP5.Controllers.Api
 
             Response.StatusCode = (int)HttpStatusCode.BadRequest;
             return Json(new { Message = "Failed", ModelState = ModelState });
+        }
+
+        [HttpGet("getLookups")]
+        public JsonResult GetClientLookups()
+        {
+            var projects = _clientFinder.GetLookups();
+
+            return Json(projects);
         }
     }
 }

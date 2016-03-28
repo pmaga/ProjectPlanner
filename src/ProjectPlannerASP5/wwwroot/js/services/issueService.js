@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('issueServices', ['ngResource'])
+    angular.module('appServices', ['ngResource'])
         .factory('Issue', Issue);
 
     Issue.$inject = ['$resource'];
