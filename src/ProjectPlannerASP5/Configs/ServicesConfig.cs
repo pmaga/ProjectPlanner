@@ -70,12 +70,12 @@ namespace ProjectPlannerASP5.Configs
                 .AddSqlServer()
                 .AddDbContext<IdentityContext>();
 
-            services.Configure<IdentityOptions>(options =>
-            {
-                options.Cookies.ApplicationCookie.CookieName = "authCookie";
-                options.Cookies.ApplicationCookie.LoginPath = new Microsoft.AspNet.Http.PathString("/Auth/Login");
-                options.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents();
-            });
+            //services.Configure<IdentityOptions>(options =>
+            //{
+            //    options.Cookies.ApplicationCookie.CookieName = "authCookie";
+            //    options.Cookies.ApplicationCookie.LoginPath = new Microsoft.AspNet.Http.PathString("/Auth/Login");
+            //    options.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents();
+            //});
 
             services.AddTransient<IdentityContextSeedData>();
         }
