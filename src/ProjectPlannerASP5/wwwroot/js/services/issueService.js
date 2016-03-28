@@ -26,7 +26,7 @@
                 method: 'PUT',
                 isArray: false
             },
-            test: {
+            remove: {
                 url: '/api/projects/:projectCode/issues/:id',
                 method: 'DELETE',
                 isArray: false

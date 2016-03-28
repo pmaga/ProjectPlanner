@@ -42,13 +42,15 @@
                 });
         };
 
-        $scope.deleteIssue = function (issue, index) {
-            Issue.test({ id: issue.id, projectCode: $scope.project.code }).$promise
+        $scope.deleteIssue = function (issue) {
+            Issue.remove({ id: issue.id, projectCode: $scope.project.code })
+                .$promise
                 .then(function () {
-                $scope.issues.splice(index, 1);
-            }, function(error) {
+                    var index = $scope.issues.indexOf(issue);
+                    $scope.issues.splice(index, 1);
+                }, function(error) {
 
-            });
+                });
         };
 
         $scope.getStatusClass = function (status) {
