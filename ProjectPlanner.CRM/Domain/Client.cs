@@ -26,5 +26,12 @@ namespace ProjectPlanner.CRM.Domain
 
             Status = ClientStatus.InActive;
         }
+
+        public void ChangeBasicInfo(string name, string phone, string emailAddress)
+        {
+            Name = name;
+            Phone = phone;
+            EmailAddress = emailAddress;
+        }
     }
 }

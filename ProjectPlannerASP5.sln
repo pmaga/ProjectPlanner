@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5CEABCD2-5C86-4405-98D3-4790AD5F2715}"
 EndProject
@@ -35,6 +35,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helpers", "Helpers", "{B320D20A-F120-4674-B7F7-3EA21BE30895}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ProjectPlanner.Tests.Helpers", "ProjectPlanner.Tests.Helpers\ProjectPlanner.Tests.Helpers.xproj", "{286BC400-A3FF-46B5-9B84-B3DCD9A5C835}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CRM", "CRM", "{ABC0720F-FC28-4392-9A1E-40FC71F6C301}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ProjectPlanner.CRM.Interfaces", "ProjectPlanner.CRM.Interfaces\ProjectPlanner.CRM.Interfaces.xproj", "{9AA047DB-A70C-43E5-8534-953424C7F01C}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ProjectPlanner.CRM", "ProjectPlanner.CRM\ProjectPlanner.CRM.xproj", "{C3E1B718-1C13-4AF3-8AAD-CF48BE547EED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +76,14 @@ Global
 		{286BC400-A3FF-46B5-9B84-B3DCD9A5C835}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{286BC400-A3FF-46B5-9B84-B3DCD9A5C835}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{286BC400-A3FF-46B5-9B84-B3DCD9A5C835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AA047DB-A70C-43E5-8534-953424C7F01C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AA047DB-A70C-43E5-8534-953424C7F01C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AA047DB-A70C-43E5-8534-953424C7F01C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AA047DB-A70C-43E5-8534-953424C7F01C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3E1B718-1C13-4AF3-8AAD-CF48BE547EED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3E1B718-1C13-4AF3-8AAD-CF48BE547EED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3E1B718-1C13-4AF3-8AAD-CF48BE547EED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3E1B718-1C13-4AF3-8AAD-CF48BE547EED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,5 +101,8 @@ Global
 		{1E7BA0C6-BB14-4F48-9DBB-ABADC83052F6} = {1B3F398E-89FF-4727-8F3D-7BA1B670A219}
 		{B320D20A-F120-4674-B7F7-3EA21BE30895} = {1B3F398E-89FF-4727-8F3D-7BA1B670A219}
 		{286BC400-A3FF-46B5-9B84-B3DCD9A5C835} = {B320D20A-F120-4674-B7F7-3EA21BE30895}
+		{ABC0720F-FC28-4392-9A1E-40FC71F6C301} = {5CEABCD2-5C86-4405-98D3-4790AD5F2715}
+		{9AA047DB-A70C-43E5-8534-953424C7F01C} = {ABC0720F-FC28-4392-9A1E-40FC71F6C301}
+		{C3E1B718-1C13-4AF3-8AAD-CF48BE547EED} = {ABC0720F-FC28-4392-9A1E-40FC71F6C301}
 	EndGlobalSection
 EndGlobal
