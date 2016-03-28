@@ -70,12 +70,6 @@ namespace ProjectPlannerASP5
                     defaults: new { controller = "App", action = "Index" }
                     );
             });
-
-            //app.UseCookieAuthentication(options =>
-            //{
-            //    options.AccessDeniedPath = new PathString("/Home/AccessDenied");
-            //    options.LoginPath = new PathString("/Auth/Login");
-            //});
          
             await seeder.EnsureSeedDataAsync();
         }

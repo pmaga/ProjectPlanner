@@ -2,7 +2,7 @@
 (function () {
     "use strict";
 
-    angular.module('appServices', ['ngResource'])
+    angular.module('clientService', ['ngResource'])
         .factory('Client', Client);
 
     Client.$inject = ['$resource'];

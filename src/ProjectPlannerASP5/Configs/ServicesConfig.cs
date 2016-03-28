@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Net;
+using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Autofac.Extras.AggregateService;
+using Microsoft.AspNet.Authentication.Cookies;
 using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Converters;
@@ -59,34 +63,19 @@ namespace ProjectPlannerASP5.Configs
                 config.Password.RequiredLength = 8;
             })
             .AddEntityFrameworkStores<IdentityContext>();
-
+            
             services.AddLogging();
 
             services.AddEntityFramework()
                 .AddSqlServer()
                 .AddDbContext<IdentityContext>();
 
-            //services.Configure<IdentityOptions>(options =>
-            //{
-            //    options.Cookies.ApplicationCookie.CookieName = "authCookie";
-            //    options.Cookies.ApplicationCookie.LoginPath = new Microsoft.AspNet.Http.PathString("/Auth/Login");
-            //    options.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()
-            //    {
-            //        OnRedirect = ctx =>
-            //        {
-            //            if (ctx.Request.Path.StartsWithSegments("/api") && ctx.Response.StatusCode == 200)
-            //            {
-            //                ctx.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-            //            }
-            //            else
-            //            {
-            //                ctx.Response.Redirect(ctx.RedirectUri);
-            //            }
-
-            //            return Task.FromResult<object>(null);
-            //        }
-            //    };
-            //});
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Cookies.ApplicationCookie.CookieName = "authCookie";
+                options.Cookies.ApplicationCookie.LoginPath = new Microsoft.AspNet.Http.PathString("/Auth/Login");
+                options.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents();
+            });
 
             services.AddTransient<IdentityContextSeedData>();
         }

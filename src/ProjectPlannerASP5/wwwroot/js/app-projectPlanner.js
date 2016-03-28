@@ -9,7 +9,7 @@
     config.$inject = ['$routeProvider', '$locationProvider'];
 
     angular.module("app-projectPlanner", ["app", 'ngRoute',
-        "simpleControls", 'summernote', 'appServices'])
+        "simpleControls", 'summernote', 'clientService', 'projectService', 'issueService'])
         .config(config);
 
     function config($routeProvider, $locationProvider) {
