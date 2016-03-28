@@ -22,87 +22,85 @@
                 <div custom-select="p.id as p.code for p in projects | filter: { code: $searchTerm }" ng-model="project"
                      custom-select-options="selectOptions">
                     <div class="pull-left">
-                        <strong>{{ p.code }}</strong><br/>
+                        <strong>{{ p.code }}</strong><br />
                         <span>{{ p.name }}</span>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <span>Status:</span>
-                <div custom-select="s for s in issueStatuses | filter: $searchTerm" ng-model="search.status">
+                <div custom-select="s for s in issueStatuses | filter: $searchTerm" ng-model="search.issueStatus">
                 </div>
-            <div class="ibox-title">
-                <h5>Issue list</h5>
-                <div class="ibox-tools">
-                    <a ng-href="/Issues/Create/{{project.code}}" class="btn btn-primary btn-xs ng-class: {'disabled': !isProjectChoosen}">Add new issue</a>
-                </div>
-            </div>
-            <div class="ibox-content">
-                <div class="row m-b-sm m-t-sm">
-                    <div class="col-md-1">
-                        <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> Refresh</button>
+                <div class="ibox-title">
+                    <h5>Issue list</h5>
+                    <div class="ibox-tools">
+                        <a ng-href="/Issues/Create/{{project.code}}" class="btn btn-primary btn-xs ng-class: {'disabled': !isProjectChoosen}">Add new issue</a>
                     </div>
-                    <div class="col-md-11">
-                        <div class="input-group">
-                            <input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
-                                <button type="button" class="btn btn-sm btn-primary"> Go!</button>
-                            </span>
+                </div>
+                <div class="ibox-content">
+                    <div class="row m-b-sm m-t-sm">
+                        <div class="col-md-1">
+                            <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> Refresh</button>
+                        </div>
+                        <div class="col-md-11">
+                            <div class="input-group">
+                                <input type="text" ng-model="search.$" placeholder="Search" class="input-sm form-control">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row m-t-md m-b-sm">
-                    <strong>Found {{ issues.length }} issues.</strong>
-                </div>
+                    <div class="row m-t-md m-b-sm">
+                        <strong>Found {{ filteredIssues.length }} issues.</strong>
+                    </div>
 
-                <div class="table-responsive">
-                    <table class="table table-hover issue-tracker">
-                        <thead>
-                        <tr>
-                            <th>State</th>
-                            <th>Status</th>
-                            <th>Number</th>
-                            <th/>   
-                            <th>Create date</th>
-                            <th>Due date</th>
-                        </tr>
-                        </thead>
-                        <tbody ng-repeat="issue in issues | filter:search">
-                        <tr>
-                            <td>
-                                <span ng-class="getStatusClass(issue.status)">{{issue.status}}</span>
-                            </td>
-                            <td>
-                                <span ng-class="getIssueStateClass(issue.issueStatus)">{{issue.issueStatus}}</span>
-                            </td>
-                            <td class="issue-info">
-                                <a ng-href="/Issues/Edit/{{project.code}}/{{issue.id}}">
-                                    {{ issue.fullNumber }}
-                                </a>
-                                <small>
-                                    {{ issue.summary }}
-                                </small>
-                            </td>
-                            <td>
-                                {{ issue.reporter }}
-                            </td>
-                            <td>
-                                {{ issue.createDate | date }}
-                            </td>
-                            <td>
-                                {{ issue.dueDate | date }}
-                            </td>
-                            <td class="text-right">
-                                <a ng-href="/Issues/Edit/{{project.code}}/{{issue.id}}" class="btn btn-white btn-xs">Edit</a>
+                    <div class="table-responsive">
+                        <table class="table table-hover issue-tracker">
+                            <thead>
+                                <tr>
+                                    <th>State</th>
+                                    <th>Status</th>
+                                    <th>Number</th>
+                                    <th />
+                                    <th>Create date</th>
+                                    <th>Due date</th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="issue in issues | filter:search as filteredIssues">
+                                <tr>
+                                    <td>
+                                        <span ng-class="getStatusClass(issue.status)">{{issue.status}}</span>
+                                    </td>
+                                    <td>
+                                        <span ng-class="getIssueStateClass(issue.issueStatus)">{{issue.issueStatus}}</span>
+                                    </td>
+                                    <td class="issue-info">
+                                        <a ng-href="/Issues/Edit/{{project.code}}/{{issue.id}}">
+                                            {{ issue.fullNumber }}
+                                        </a>
+                                        <small>
+                                            {{ issue.summary }}
+                                        </small>
+                                    </td>
+                                    <td>
+                                        {{ issue.reporter }}
+                                    </td>
+                                    <td>
+                                        {{ issue.createDate | date }}
+                                    </td>
+                                    <td>
+                                        {{ issue.dueDate | date }}
+                                    </td>
+                                    <td class="text-right">
+                                        <a ng-href="/Issues/Edit/{{project.code}}/{{issue.id}}" class="btn btn-white btn-xs">Edit</a>
 
-                                <form method="post" ng-submit="deleteIssue(issue, $index)" class="inline-form">
-                                    <button type="submit" class="btn btn-white btn-xs" onclick="return confirm('Are you sure you wish to delete this issue?');"> Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <wait-cursor display-when="isBusy"></wait-cursor>
+                                        <form method="post" ng-submit="deleteIssue(issue, $index)" class="inline-form">
+                                            <button type="submit" class="btn btn-white btn-xs" onclick="return confirm('Are you sure you wish to delete this issue?');"> Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <wait-cursor display-when="isBusy"></wait-cursor>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
