@@ -33,10 +33,10 @@ namespace ProjectPlanner.CRM.Presentation.Implementation
                 .Select(n => new ClientLookup(n.Id, n.Code, n.Name));
         }
 
-        public ClientEditDto GetClient(int clientId)
+        public ClientEditDto GetClient(string clientCode)
         {
             var client = GetClients()
-                .SingleOrDefault(n => n.Id == clientId);
+                .SingleOrDefault(n => n.Code == clientCode);
 
             return client == null
                 ? null

@@ -1,6 +1,7 @@
 ﻿using ProjectPlanner.Cqrs.Base.CQRS.Commands.Handler;
 using ProjectPlanner.CRM.Domain;
 using ProjectPlanner.CRM.Interfaces.Application.Commands;
+using ProjectPlanner.CRM.Interfaces.Domain.Exceptions;
 
 namespace ProjectPlanner.CRM.Application.Commands.Handlers
 {
@@ -15,7 +16,13 @@ namespace ProjectPlanner.CRM.Application.Commands.Handlers
 
         public void Handle(DeleteClientCommand command)
         {
-            _clientRepository.Delete(command.ClientId);
+            var storedClient = _clientRepository.FindByCode(command.ClientCode);
+            if (storedClient == null)
+            {
+                throw new ClientOperationException($"Cannot found client: {command.ClientCode}");
+            }
+
+            _clientRepository.Delete(storedClient.Id);
         }
     }
 }

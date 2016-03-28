@@ -1,83 +1,85 @@
-﻿using Microsoft.AspNet.Mvc;
-using Microsoft.Extensions.Logging;
-using ProjectPlanner.Cqrs.Base.CQRS.Commands;
-using ProjectPlannerASP5.ViewModels;
-using System;
-using System.Linq;
+﻿using System;
 using System.Net;
 using Microsoft.AspNet.Authorization;
+using Microsoft.AspNet.Mvc;
+using Microsoft.Extensions.Logging;
+using ProjectPlanner.Cqrs.Base.CQRS.Commands;
+using ProjectPlanner.CRM.Interfaces.Presentation;
 using ProjectPlanner.Projects.Interfaces.Application.Commands;
 using ProjectPlanner.Projects.Interfaces.Presentation;
+using ProjectPlannerASP5.ViewModels;
+using System.Linq;
+using ProjectPlanner.CRM.Interfaces.Application.Commands;
 
 namespace ProjectPlannerASP5.Controllers.Api
 {
     [Authorize]
-    [Route("api/projects/{projectCode}/issues")]
-    public class IssueController : Controller
+    [Route("api/clients")]
+    public class ClientController : Controller
     {
         private readonly IGate _gate;
-        private readonly ILogger<IssueController> _logger;
-        private readonly IIssuesFinder _issueFinder;
+        private readonly ILogger<ClientController> _logger;
+        private readonly IClientFinder _clientFinder;
 
-        public IssueController(IGate gate, ILogger<IssueController> logger, IIssuesFinder issueFinder)
+        public ClientController(IGate gate, ILogger<ClientController> logger, IClientFinder clientFinder)
         {
             _gate = gate;
             _logger = logger;
-            _issueFinder = issueFinder;
+            _clientFinder = clientFinder;
         }
 
         [HttpGet("")]
-        public JsonResult GetAll(string projectCode)
+        public JsonResult GetAll()
         {
             try
             {
-                var results = _issueFinder.FindIssues(projectCode).ToList();
+                var results = _clientFinder.FindClients().ToList();
 
                 return Json(results);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Failed to get issues for project: {projectCode}", ex);
+                _logger.LogError($"Failed to get clients", ex);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                return Json("Error occured finding the issues");
+                return Json("Error occured finding the clients");
             }
         }
 
-        [HttpGet("{id}")]
-        public JsonResult Get(string projectCode, int id)
+        [HttpGet("{clientCode}")]
+        public JsonResult Get(string clientCode)
         {
             try
             {
-                var issue = _issueFinder.FindIssue(projectCode, id);
+                var issue = _clientFinder.GetClient(clientCode);
 
                 return Json(issue);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Failed to get the issue: {id} for project: {projectCode}", ex);
+                _logger.LogError($"Failed to get the client: {clientCode}", ex);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                return Json("Error occured finding the issues");
+                return Json("Error occured finding the client");
             }
         }
 
         [HttpPost("")]
-        public JsonResult Create(string projectCode, [FromBody]EditIssueViewModel vm)
+        public JsonResult Create([FromBody]EditClientViewModel vm)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _logger.LogInformation($"Attempting to saving a new issue for project: {projectCode}");
+                    _logger.LogInformation($"Attempting to saving a new client");
 
-                    var createIssueCommand = new CreateIssueCommand(projectCode, vm.Summary, vm.Description, vm.DueDate);
-                    _gate.Dispatch(createIssueCommand);
+                    var createClientCommand = new CreateClientCommand(vm.Code, vm.Name, vm.Phone, vm.EmailAddress);
+                    _gate.Dispatch(createClientCommand);
                     Response.StatusCode = (int)HttpStatusCode.Created;
-                    return Json(new { id = createIssueCommand.IssueId });
+                    return Json(new { id = createClientCommand.ClientId });
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed to save new issue", ex);
+                _logger.LogError("Failed to save new client", ex);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return Json(new { Message = ex.Message });
             }
@@ -87,24 +89,23 @@ namespace ProjectPlannerASP5.Controllers.Api
         }
 
         [HttpPut("")]
-        public JsonResult Update(string projectCode, [FromBody]EditIssueViewModel vm)
+        public JsonResult Update([FromBody]EditClientViewModel vm)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _logger.LogInformation($"Attempting to updating issue: {vm.IssueNumber}.");
+                    _logger.LogInformation($"Attempting to updating client: {vm.Code}.");
 
-                    var changeIssueInformationCommand = new ChangeIssueBasicInfoCommand(projectCode, vm.Id, vm.Summary, vm.Description, 
-                        vm.DueDate);
-                    _gate.Dispatch(changeIssueInformationCommand);
+                    var changeclientInformationCommand = new ChangeClientInfoCommand(vm.Code, vm.Name, vm.Phone, vm.EmailAddress);
+                    _gate.Dispatch(changeclientInformationCommand);
                     Response.StatusCode = (int)HttpStatusCode.OK;
                     return Json(true);
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed to update issue information", ex);
+                _logger.LogError("Failed to update client information", ex);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return Json(new { Message = ex.Message });
             }
@@ -113,24 +114,24 @@ namespace ProjectPlannerASP5.Controllers.Api
             return Json(new { Message = "Failed", ModelState = ModelState });
         }
 
-        [HttpDelete("{id}")]
-        public JsonResult Delete(int id, string projectCode)
+        [HttpDelete("{clientCode}")]
+        public JsonResult Delete(string clientCode)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _logger.LogInformation($"Attempting to delete a issue with id: {id}.");
+                    _logger.LogInformation($"Attempting to delete a client {clientCode}.");
 
-                    var deleteIssueCommand = new DeleteIssueCommand(projectCode, id);
-                    _gate.Dispatch(deleteIssueCommand);
+                    var deleteClientCommand = new DeleteClientCommand(clientCode);
+                    _gate.Dispatch(deleteClientCommand);
                     Response.StatusCode = (int)HttpStatusCode.OK;
                     return Json("");
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed to delete issue", ex);
+                _logger.LogError("Failed to delete client", ex);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return Json(new { Message = ex.Message });
             }

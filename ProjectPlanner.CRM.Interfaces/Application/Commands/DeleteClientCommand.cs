@@ -2,11 +2,11 @@
 {
     public class DeleteClientCommand
     {
-        public int ClientId { get; set; }
+        public string ClientCode{ get; set; }
 
-        public DeleteClientCommand(int clientId)
+        public DeleteClientCommand(string clientCode)
         {
-            ClientId = clientId;
+            ClientCode = clientCode;
         }
     }
 }
