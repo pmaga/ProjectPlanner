@@ -8,9 +8,9 @@
     angular.module("app")
         .controller("issueListController", issueListController);
 
-    issueListController.$inject = ['$http', '$scope', 'Project', 'Issue', '$routeParams'];
+    issueListController.$inject = ['$scope', 'Project', 'Issue', '$routeParams'];
 
-    function issueListController($http, $scope, Project, Issue, $routeParams) {
+    function issueListController($scope, Project, Issue, $routeParams) {
 
         $scope.issues = [];
         $scope.errorMessage = "";
