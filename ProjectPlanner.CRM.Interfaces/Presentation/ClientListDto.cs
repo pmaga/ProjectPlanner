@@ -9,5 +9,13 @@ namespace ProjectPlanner.CRM.Interfaces.Presentation
         public string Name { get; set; }
 
         public ClientStatus Status { get; set; }
+
+        public ClientListDto(int id, string code, string name, ClientStatus status)
+        {
+            Id = id;
+            Code = code;
+            Name = name;
+            Status = status;
+        }
     }
 }

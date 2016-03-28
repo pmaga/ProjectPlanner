@@ -34,7 +34,6 @@ namespace ProjectPlanner.Infrastructure.Orm.Repositories
         {
             TEntity entity = Load(id);
             entity.MarkAsArchived();
-            
         }
     }
 }
