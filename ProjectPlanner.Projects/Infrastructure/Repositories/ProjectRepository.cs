@@ -26,6 +26,7 @@ namespace ProjectPlanner.Projects.Infrastructure.Repositories
         public Project FindByCode(string code, Guid userId)
         {
             return EntityManager.CurrentSession.Query<Project>().Fetch(n => n.Issues)
+                .ToList()
                 .FirstOrDefault(p => p.Code == code);
         }
 

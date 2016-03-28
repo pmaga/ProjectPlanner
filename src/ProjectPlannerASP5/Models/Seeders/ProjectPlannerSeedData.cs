@@ -19,21 +19,11 @@ even slightly believable.If you are going to use a passage of Lorem Ipsum, you n
 anything embarrassing', N'2016-03-28 09:18:02', N'2016-03-28 09:18:02', 0, N'00000000-0000-0000-0000-000000000000', 0)
 SET IDENTITY_INSERT [dbo].[Projects] OFF
 
-SET IDENTITY_INSERT [dbo].[Issues] ON
-INSERT INTO [dbo].[Issues] ([Id], [IssueNumber], [CreateTimeStamp], [DueDate], [LastUpdateTimeStamp], [Summary], [Description], [Status], [IssueStateStatus], [UserName], [EntityStatus], [Project_id]) VALUES (1, 0, N'2016-03-28 09:18:02', NULL, N'2016-03-28 09:18:02', N'First Issue', N'Description', 0, 0, NULL, 0, 1)
-SET IDENTITY_INSERT [dbo].[Issues] OFF
-SET IDENTITY_INSERT [dbo].[Issues] ON
-INSERT INTO [dbo].[Issues] ([Id], [IssueNumber], [CreateTimeStamp], [DueDate], [LastUpdateTimeStamp], [Summary], [Description], [Status], [IssueStateStatus], [UserName], [EntityStatus], [Project_id]) VALUES (2, 0, N'2015-03-25 09:18:02', N'2016-04-05 15:18:02', N'2015-03-25 09:18:02', N'Second Issue', N'Description', 0, 1, NULL, 0, 1)
-SET IDENTITY_INSERT [dbo].[Issues] OFF
-SET IDENTITY_INSERT [dbo].[Issues] ON
-INSERT INTO [dbo].[Issues] ([Id], [IssueNumber], [CreateTimeStamp], [DueDate], [LastUpdateTimeStamp], [Summary], [Description], [Status], [IssueStateStatus], [UserName], [EntityStatus], [Project_id]) VALUES (3, 0, N'2015-07-06 09:18:02', N'2016-01-28 09:18:02', N'2015-07-06 09:18:02', N'Third Issue', N'Description', 0, 2, NULL, 0, 1)
-SET IDENTITY_INSERT [dbo].[Issues] OFF
-SET IDENTITY_INSERT [dbo].[Issues] ON
-INSERT INTO [dbo].[Issues] ([Id], [IssueNumber], [CreateTimeStamp], [DueDate], [LastUpdateTimeStamp], [Summary], [Description], [Status], [IssueStateStatus], [UserName], [EntityStatus], [Project_id]) VALUES (4, 0, N'2016-02-15 09:18:02', N'2016-07-06 09:18:02', N'2016-02-15 09:18:02', N'Fourth Issue', N'Description', 0, 1, NULL, 0, 1)
-SET IDENTITY_INSERT [dbo].[Issues] OFF
-SET IDENTITY_INSERT [dbo].[Issues] ON
-INSERT INTO [dbo].[Issues] ([Id], [IssueNumber], [CreateTimeStamp], [DueDate], [LastUpdateTimeStamp], [Summary], [Description], [Status], [IssueStateStatus], [UserName], [EntityStatus], [Project_id]) VALUES (5, 0, N'2016-03-01 09:18:02', NULL, N'2016-03-01 09:18:02', N'Fifth Issue', N'Description', 0, 0, NULL, 0, 1)
-SET IDENTITY_INSERT [dbo].[Issues] OFF
+INSERT INTO [dbo].[Issues] ([IssueNumber], [CreateTimeStamp], [DueDate], [LastUpdateTimeStamp], [Summary], [Description], [Status], [IssueStateStatus], [UserName], [EntityStatus], [Project_id]) VALUES (0, N'2016-03-28 09:18:02', NULL, N'2016-03-28 09:18:02', N'First Issue', N'Description', 0, 0, NULL, 0, 1)
+INSERT INTO [dbo].[Issues] ([IssueNumber], [CreateTimeStamp], [DueDate], [LastUpdateTimeStamp], [Summary], [Description], [Status], [IssueStateStatus], [UserName], [EntityStatus], [Project_id]) VALUES (0, N'2015-03-25 09:18:02', N'2016-04-05 15:18:02', N'2015-03-25 09:18:02', N'Second Issue', N'Description', 0, 1, NULL, 0, 1)
+INSERT INTO [dbo].[Issues] ([IssueNumber], [CreateTimeStamp], [DueDate], [LastUpdateTimeStamp], [Summary], [Description], [Status], [IssueStateStatus], [UserName], [EntityStatus], [Project_id]) VALUES (0, N'2015-07-06 09:18:02', N'2016-01-28 09:18:02', N'2015-07-06 09:18:02', N'Third Issue', N'Description', 0, 2, NULL, 0, 1)
+INSERT INTO [dbo].[Issues] ([IssueNumber], [CreateTimeStamp], [DueDate], [LastUpdateTimeStamp], [Summary], [Description], [Status], [IssueStateStatus], [UserName], [EntityStatus], [Project_id]) VALUES (0, N'2016-02-15 09:18:02', N'2016-07-06 09:18:02', N'2016-02-15 09:18:02', N'Fourth Issue', N'Description', 0, 1, NULL, 0, 1)
+INSERT INTO [dbo].[Issues] ([IssueNumber], [CreateTimeStamp], [DueDate], [LastUpdateTimeStamp], [Summary], [Description], [Status], [IssueStateStatus], [UserName], [EntityStatus], [Project_id]) VALUES (0, N'2016-03-01 09:18:02', NULL, N'2016-03-01 09:18:02', N'Fifth Issue', N'Description', 0, 0, NULL, 0, 1)
 ").ExecuteUpdate();
                 session.Flush();
             }
