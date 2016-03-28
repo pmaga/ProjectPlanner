@@ -64,11 +64,23 @@ namespace ProjectPlannerASP5
 
             app.UseMvc(config =>
             {
+                //http://stackoverflow.com/questions/27706712/routeconfig-triggers-500-error-when-refreshing-page
+
+                //config.Routes.ign
+                //config.IgnoreRoute("{resource}.axd/{*pathInfo}");
+                //config.IgnoreRoute("fonts*.woff");
+                //config.IgnoreRoute("*.js");
+                //config.IgnoreRoute("*.html");
+                //config.IgnoreRoute("*.css");
+                //config.IgnoreRoute("api/*");
+
                 config.MapRoute(
                     name: "Default",
                     template: "{controller}/{action}/{id?}",
                     defaults: new { controller = "App", action = "Index" }
                     );
+
+                config.MapRoute("Clients", "{*url}", new {controller = "App", action = "Index"});
             });
          
             await seeder.EnsureSeedDataAsync();
