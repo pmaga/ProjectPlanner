@@ -20,7 +20,11 @@ namespace ProjectPlanner.CRM.Presentation.Implementation
         public IQueryable<ClientListDto> FindClients()
         {
             return GetClients()
-                .Select(n => new ClientListDto(n.Id, n.Code, n.Name, n.Status));
+                .Select(n => new ClientListDto(n.Id, n.Code, n.Name, n.Status)
+                {
+                    CreateTimeStamp = n.CreateTimeStamp,
+                    LastUpdateTimeStamp = n.LastUpdateTimeStamp
+                });
         }
 
         public IQueryable<ClientLookup> GetLookups()
@@ -43,7 +47,9 @@ namespace ProjectPlanner.CRM.Presentation.Implementation
                     Name = client.Name,
                     Phone = client.Phone,
                     EmailAddress = client.EmailAddress,
-                    Status = client.Status
+                    Status = client.Status,
+                    CreateTimeStamp = client.CreateTimeStamp,
+                    LastUpdateTimeStamp = client.LastUpdateTimeStamp
                 };
         }
 

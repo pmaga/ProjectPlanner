@@ -1,4 +1,5 @@
-﻿using ProjectPlanner.CRM.Interfaces.Domain;
+﻿using System;
+using ProjectPlanner.CRM.Interfaces.Domain;
 
 namespace ProjectPlanner.CRM.Interfaces.Presentation
 {
@@ -12,5 +13,8 @@ namespace ProjectPlanner.CRM.Interfaces.Presentation
         public string EmailAddress { get; set; }
 
         public ClientStatus Status { get; set; }
+
+        public DateTime CreateTimeStamp { get; set; }
+        public DateTime LastUpdateTimeStamp { get; set; }
     }
 }

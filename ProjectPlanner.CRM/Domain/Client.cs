@@ -1,4 +1,5 @@
-﻿using ProjectPlanner.Cqrs.Base.DDD.Domain;
+﻿using System;
+using ProjectPlanner.Cqrs.Base.DDD.Domain;
 using ProjectPlanner.CRM.Interfaces.Domain;
 
 namespace ProjectPlanner.CRM.Domain
@@ -11,7 +12,10 @@ namespace ProjectPlanner.CRM.Domain
         public string Phone { get; private set; }
         public string EmailAddress { get; private set; }
 
-        public ClientStatus Status { get; set; }
+        public ClientStatus Status { get; private set; }
+
+        public DateTime CreateTimeStamp { get; private set; } //nHibernate interceptor
+        public DateTime LastUpdateTimeStamp { get; private set; } //nHibernate interceptor
 
         public Client(string code, string name, string phone, string emailAddress = null)
         {
