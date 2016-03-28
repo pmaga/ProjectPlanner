@@ -2,13 +2,11 @@
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc;
-using ProjectPlannerASP5.Controllers.Web;
-using ProjectPlannerASP5.Models;
-using ProjectPlannerASP5.ViewModels;
 using Microsoft.Extensions.Logging;
+using ProjectPlannerASP5.Models;
 using ProjectPlannerASP5.ViewModels.Auth;
 
-namespace ProjectPlannerASP5.Controllers
+namespace ProjectPlannerASP5.Controllers.Web
 {
     [Authorize]
     public class AuthController : Controller
