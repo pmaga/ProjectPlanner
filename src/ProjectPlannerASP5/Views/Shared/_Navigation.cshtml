@@ -1,4 +1,4 @@
-﻿<form method="post" ng-submit="logout()" role="form" id="logoutForm"></form>
+﻿<form method="post" asp-controller="Auth" asp-action="Logout" role="form" id="logoutForm"></form>
 
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
@@ -8,7 +8,7 @@
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear">
                             <span class="block m-t-xs">
-                                <!--<strong class="font-bold">@User.Identity.Name</strong>-->
+                                <strong class="font-bold">@User.Identity.Name</strong>
                             </span>
                             <span class="text-muted text-xs block">Menu <b class="caret"></b></span>
                         </span>
