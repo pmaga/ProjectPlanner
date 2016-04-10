@@ -1,4 +1,5 @@
 ﻿using ProjectPlanner.Cqrs.Base.DDD.Domain.Helpers;
+using ProjectPlanner.CRM.Interfaces.Domain;
 using ProjectPlanner.CRM.Interfaces.Domain.Exceptions;
 
 namespace ProjectPlanner.CRM.Domain
@@ -14,11 +15,11 @@ namespace ProjectPlanner.CRM.Domain
             _injectorHelper = injectorHelper;
         }
 
-        public Client CreateClient(string code, string name, string phone, string emailAddress = null)
+        public Client CreateClient(ClientType type, string code, string name, string phone, string emailAddress = null)
         {
             CheckIfClientWithSameCodeExists(code);
 
-            var client = new Client(code, name, phone, emailAddress);
+            var client = new Client(type, code, name, phone, emailAddress);
             _injectorHelper.InjectDependencies(client);
 
             return client;

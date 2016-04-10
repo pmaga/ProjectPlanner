@@ -17,7 +17,7 @@ namespace ProjectPlanner.CRM.Application.Commands.Handlers
 
         public void Handle(CreateClientCommand command)
         {
-            var client = _clientFactory.CreateClient(command.Code, command.Name,
+            var client = _clientFactory.CreateClient(command.Type, command.Code, command.Name,
                 command.Phone, command.EmailAddress);
 
             _clientRepository.Save(client);

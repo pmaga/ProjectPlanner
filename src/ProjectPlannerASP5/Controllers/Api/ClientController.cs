@@ -69,7 +69,7 @@ namespace ProjectPlannerASP5.Controllers.Api
                 {
                     _logger.LogInformation($"Attempting to saving a new client");
 
-                    var createClientCommand = new CreateClientCommand(vm.Code, vm.Name, vm.Phone, vm.EmailAddress);
+                    var createClientCommand = new CreateClientCommand(vm.Type, vm.Code, vm.Name, vm.Phone, vm.EmailAddress);
                     _gate.Dispatch(createClientCommand);
                     Response.StatusCode = (int)HttpStatusCode.Created;
                     return Json(new { id = createClientCommand.ClientId });

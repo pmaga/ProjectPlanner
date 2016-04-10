@@ -1,7 +1,10 @@
-﻿namespace ProjectPlannerASP5.ViewModels
+﻿using ProjectPlanner.CRM.Interfaces.Domain;
+
+namespace ProjectPlannerASP5.ViewModels
 {
     public class EditClientViewModel
     {
+        public ClientType Type { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
 

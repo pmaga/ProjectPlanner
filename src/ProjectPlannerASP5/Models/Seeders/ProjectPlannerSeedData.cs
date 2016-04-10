@@ -25,6 +25,9 @@ INSERT INTO [dbo].[Issues] ([IssueNumber], [CreateTimeStamp], [DueDate], [LastUp
 INSERT INTO [dbo].[Issues] ([IssueNumber], [CreateTimeStamp], [DueDate], [LastUpdateTimeStamp], [Summary], [Description], [Status], [IssueStateStatus], [UserName], [EntityStatus], [Project_id]) VALUES (0, N'2016-02-15 09:18:02', N'2016-07-06 09:18:02', N'2016-02-15 09:18:02', N'Fourth Issue', N'Description', 0, 1, NULL, 0, 1)
 INSERT INTO [dbo].[Issues] ([IssueNumber], [CreateTimeStamp], [DueDate], [LastUpdateTimeStamp], [Summary], [Description], [Status], [IssueStateStatus], [UserName], [EntityStatus], [Project_id]) VALUES (0, N'2016-03-01 09:18:02', NULL, N'2016-03-01 09:18:02', N'Fifth Issue', N'Description', 0, 0, NULL, 0, 1)
 
+SET IDENTITY_INSERT [dbo].[Clients] ON
+INSERT INTO [dbo].[Clients] ([Id], [Version], [Code], [Name], [Phone], [EmailAddress], [Status], [CreateTimeStamp], [LastUpdateTimeStamp], [EntityStatus], [Type]) VALUES (3, N'2016-04-10 00:00:00', N'ATH', N'Akademia Techniczno-Humanistyczna', N' ', N' ', 0, N'2016-04-10 00:00:00', N'2016-04-10 00:00:00', 0, 0)
+SET IDENTITY_INSERT [dbo].[Clients] OFF
 
 
 ").ExecuteUpdate();

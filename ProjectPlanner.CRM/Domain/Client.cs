@@ -13,6 +13,7 @@ namespace ProjectPlanner.CRM.Domain
         public string EmailAddress { get; private set; }
 
         public ClientStatus Status { get; private set; }
+        public ClientType Type { get; private set; }
 
         public DateTime CreateTimeStamp { get; private set; } //nHibernate interceptor
         public DateTime LastUpdateTimeStamp { get; private set; } //nHibernate interceptor
@@ -22,8 +23,9 @@ namespace ProjectPlanner.CRM.Domain
             
         }
 
-        public Client(string code, string name, string phone, string emailAddress = null)
+        public Client(ClientType type, string code, string name, string phone, string emailAddress = null)
         {
+            Type = type;
             Code = code;
             Name = name;
             Phone = phone;
