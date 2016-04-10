@@ -24,6 +24,9 @@ INSERT INTO [dbo].[Issues] ([IssueNumber], [CreateTimeStamp], [DueDate], [LastUp
 INSERT INTO [dbo].[Issues] ([IssueNumber], [CreateTimeStamp], [DueDate], [LastUpdateTimeStamp], [Summary], [Description], [Status], [IssueStateStatus], [UserName], [EntityStatus], [Project_id]) VALUES (0, N'2015-07-06 09:18:02', N'2016-01-28 09:18:02', N'2015-07-06 09:18:02', N'Third Issue', N'Description', 0, 2, NULL, 0, 1)
 INSERT INTO [dbo].[Issues] ([IssueNumber], [CreateTimeStamp], [DueDate], [LastUpdateTimeStamp], [Summary], [Description], [Status], [IssueStateStatus], [UserName], [EntityStatus], [Project_id]) VALUES (0, N'2016-02-15 09:18:02', N'2016-07-06 09:18:02', N'2016-02-15 09:18:02', N'Fourth Issue', N'Description', 0, 1, NULL, 0, 1)
 INSERT INTO [dbo].[Issues] ([IssueNumber], [CreateTimeStamp], [DueDate], [LastUpdateTimeStamp], [Summary], [Description], [Status], [IssueStateStatus], [UserName], [EntityStatus], [Project_id]) VALUES (0, N'2016-03-01 09:18:02', NULL, N'2016-03-01 09:18:02', N'Fifth Issue', N'Description', 0, 0, NULL, 0, 1)
+
+
+
 ").ExecuteUpdate();
                 session.Flush();
             }

@@ -13,6 +13,8 @@ alter table Users  drop constraint FK2C1C7FE5F894640E
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Users') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Users
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'Clients') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Clients
+
     create table Issues (
         Id INT IDENTITY NOT NULL,
        IssueNumber INT null,
@@ -46,6 +48,20 @@ alter table Users  drop constraint FK2C1C7FE5F894640E
     create table Users (
         Project_id INT not null,
        Value NVARCHAR(255) null
+    )
+
+    create table Clients (
+        Id INT IDENTITY NOT NULL,
+       Version DATETIME not null,
+       Code NVARCHAR(MAX) null,
+       Name NVARCHAR(MAX) null,
+       Phone NVARCHAR(MAX) null,
+       EmailAddress NVARCHAR(MAX) null,
+       Status INT null,
+       CreateTimeStamp datetime2 null,
+       LastUpdateTimeStamp datetime2 null,
+       EntityStatus INT null,
+       primary key (Id)
     )
 
     alter table Issues 

@@ -17,6 +17,11 @@ namespace ProjectPlanner.CRM.Domain
         public DateTime CreateTimeStamp { get; private set; } //nHibernate interceptor
         public DateTime LastUpdateTimeStamp { get; private set; } //nHibernate interceptor
 
+        private Client()
+        {
+            
+        }
+
         public Client(string code, string name, string phone, string emailAddress = null)
         {
             Code = code;

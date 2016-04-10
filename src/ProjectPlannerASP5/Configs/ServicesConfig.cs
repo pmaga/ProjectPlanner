@@ -23,6 +23,7 @@ using ProjectPlanner.Cqrs.Base.CQRS.Commands.Handler;
 using ProjectPlanner.Cqrs.Base.CQRS.Query.Attributes;
 using ProjectPlanner.Cqrs.Base.DDD.Infrastructure.Events.Implementation;
 using ProjectPlanner.Cqrs.Base.Infrastructure.Attributes;
+using ProjectPlanner.CRM.Domain;
 using ProjectPlanner.CRM.Interfaces.Presentation;
 using ProjectPlanner.CRM.Presentation.Implementation;
 using ProjectPlanner.Projects.Interfaces.Application.Commands;
@@ -139,7 +140,8 @@ namespace ProjectPlannerASP5.Configs
 
             EntityManager.GetAssemblies = () => new[]
             {
-                typeof(Project).Assembly
+                typeof(Project).Assembly,
+                typeof(Client).Assembly
             };
             EntityManager.SeedData = s => new ProjectPlannerSeedData().SeedData(s);
 
