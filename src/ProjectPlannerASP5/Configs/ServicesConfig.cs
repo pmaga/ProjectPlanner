@@ -23,6 +23,8 @@ using ProjectPlanner.Cqrs.Base.CQRS.Commands.Handler;
 using ProjectPlanner.Cqrs.Base.CQRS.Query.Attributes;
 using ProjectPlanner.Cqrs.Base.DDD.Infrastructure.Events.Implementation;
 using ProjectPlanner.Cqrs.Base.Infrastructure.Attributes;
+using ProjectPlanner.CRM.Interfaces.Presentation;
+using ProjectPlanner.CRM.Presentation.Implementation;
 using ProjectPlanner.Projects.Interfaces.Application.Commands;
 using ProjectPlanner.Projects.Interfaces.Presentation;
 using ProjectPlanner.Projects.Presentation.Implementation;
@@ -87,7 +89,9 @@ namespace ProjectPlannerASP5.Configs
             var domainAssemblies = new[]
             {
                 typeof (ProjectFinder).Assembly,
-                typeof (IProjectFinder).Assembly
+                typeof (IProjectFinder).Assembly,
+                typeof (ClientFinder).Assembly,
+                typeof (IClientFinder).Assembly
             };
             builder.RegisterType<SystemUser>().As<ISystemUser>();
             builder.RegisterType<IdentityContextSeedData>().AsSelf();

@@ -16,6 +16,13 @@
         $scope.isBusy = true;
         $scope.searchText = "";
 
+        $scope.client = {
+            name: 'test',
+            description: 'descr'
+        };
+
+
+
         Client.query().$promise
             .then(function (response) {
                 angular.copy(response, $scope.clients);
