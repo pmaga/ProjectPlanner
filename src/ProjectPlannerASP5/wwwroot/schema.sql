@@ -58,6 +58,8 @@ alter table Users  drop constraint FK2C1C7FE5F894640E
        Phone NVARCHAR(MAX) null,
        EmailAddress NVARCHAR(MAX) null,
        Status INT null,
+       Type INT null,
+       Description NVARCHAR(MAX) null,
        CreateTimeStamp datetime2 null,
        LastUpdateTimeStamp datetime2 null,
        EntityStatus INT null,

@@ -30,7 +30,7 @@ namespace ProjectPlannerASP5.Controllers.Api
         public JsonResult GetAll()
         {
             try
-            {
+            {   
                 var results = _clientFinder.FindClients().ToList();
 
                 return Json(results);
@@ -43,21 +43,37 @@ namespace ProjectPlannerASP5.Controllers.Api
             }
         }
 
-        [HttpGet("{clientCode}")]
-        public JsonResult Get(string clientCode)
+        [HttpGet("{clientId}")]
+        public JsonResult Get(int clientId)
         {
             try
             {
-                var issue = _clientFinder.GetClient(clientCode);
+                var issue = _clientFinder.GetClient(clientId);
 
                 return Json(issue);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Failed to get the client: {clientCode}", ex);
+                _logger.LogError($"Failed to get the client", ex);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return Json("Error occured finding the client");
             }
+        }
+
+        [HttpGet("{clientId}/[action]")]
+        public JsonResult Details(int clientId)
+        {
+            var client = _clientFinder.GetClientDetails(clientId);
+
+            if (client == null)
+            {
+                //Response.StatusCode = (int)HttpStatusCode.NoContent;
+                return Json(null);
+            }
+
+            client.Name = "hahahaha";
+            client.Description = "test Description";
+            return Json(client);
         }
 
         [HttpPost("")]
@@ -112,16 +128,16 @@ namespace ProjectPlannerASP5.Controllers.Api
             return Json(new { Message = "Failed", ModelState = ModelState });
         }
 
-        [HttpDelete("{clientCode}")]
-        public JsonResult Delete(string clientCode)
+        [HttpDelete("{clientId}")]
+        public JsonResult Delete(int clientId)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _logger.LogInformation($"Attempting to delete a client {clientCode}.");
+                    _logger.LogInformation($"Attempting to delete a client.");
 
-                    var deleteClientCommand = new DeleteClientCommand(clientCode);
+                    var deleteClientCommand = new DeleteClientCommand(clientId);
                     _gate.Dispatch(deleteClientCommand);
                     Response.StatusCode = (int)HttpStatusCode.OK;
                     return Json("");

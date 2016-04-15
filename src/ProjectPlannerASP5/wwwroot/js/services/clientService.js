@@ -13,7 +13,12 @@
                 url: '/api/clients/getLookups',
                 method: 'GET',
                 isArray: true
-            }   
+            },
+            getDetails: {
+                url: '/api/clients/:id/details',
+                method: 'GET',
+                isArray: false
+            }
         });
     };
 })();

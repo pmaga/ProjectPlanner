@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using ProjectPlanner.CRM.Interfaces.Domain;
 
 namespace ProjectPlanner.CRM.Interfaces.Presentation
 {
-    public class ClientEditDto
+    public class ClientDetailsDto
     {
         public int Id { get; set; }
         public string Code { get; set; }

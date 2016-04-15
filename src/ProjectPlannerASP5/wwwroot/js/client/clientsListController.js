@@ -16,16 +16,15 @@
         $scope.isBusy = true;
         $scope.searchText = "";
 
-        $scope.client = {
-            name: 'test',
-            description: 'descr'
-        };
-
-
+        $scope.selectedClient = {};
 
         Client.query().$promise
             .then(function (response) {
                 angular.copy(response, $scope.clients);
+
+                if ($scope.clients.length > 0) {
+                    $scope.loadClientDetails($scope.clients[0].id);
+                }
             },
             function (error) {
                 $scope.errorMessage = "Failed to load data: " + error;
@@ -35,15 +34,23 @@
             });
 
         $scope.deleteClient = function (client) {
-            project.$delete(function () {
-                var index = $scope.issues.indexOf(issue);
-                $scope.projects.splice(index, 1);
+            client.$delete(function () {
+                var index = $scope.clients.indexOf(client);
+                $scope.clients.splice(index, 1);
             });
         };
 
+        $scope.loadClientDetails = function(clientId) {
+            $scope.selectedClient = Client.getDetails({ id: clientId });
+        };
+
+
         $scope.getStatusClass = function (status) {
-            if (status === "Added")
+            if (status === "Active")
                 return "label label-primary";
+            else if (status === "InActive") {
+                return "label label-danger";
+            }
             return "label";
         };
     };

@@ -20,11 +20,7 @@ namespace ProjectPlanner.CRM.Presentation.Implementation
         public IQueryable<ClientListDto> FindClients()
         {
             return GetClients()
-                .Select(n => new ClientListDto(n.Id, n.Code, n.Name, n.Status)
-                {
-                    CreateTimeStamp = n.CreateTimeStamp,
-                    LastUpdateTimeStamp = n.LastUpdateTimeStamp
-                });
+                .Select(n => new ClientListDto(n.Id, n.Code, n.Name, n.EmailAddress, n.Type, n.Status));
         }
 
         public IQueryable<ClientLookup> GetLookups()
@@ -33,10 +29,10 @@ namespace ProjectPlanner.CRM.Presentation.Implementation
                 .Select(n => new ClientLookup(n.Id, n.Code, n.Name));
         }
 
-        public ClientEditDto GetClient(string clientCode)
+        public ClientEditDto GetClient(int clientId)
         {
             var client = GetClients()
-                .SingleOrDefault(n => n.Code == clientCode);
+                .SingleOrDefault(n => n.Id == clientId);
 
             return client == null
                 ? null
@@ -47,6 +43,28 @@ namespace ProjectPlanner.CRM.Presentation.Implementation
                     Name = client.Name,
                     Phone = client.Phone,
                     EmailAddress = client.EmailAddress,
+                    Description = client.Description,
+                    Status = client.Status,
+                    CreateTimeStamp = client.CreateTimeStamp,
+                    LastUpdateTimeStamp = client.LastUpdateTimeStamp
+                };
+        }
+
+        public ClientDetailsDto GetClientDetails(int clientId)
+        {
+            var client = GetClients()
+                .SingleOrDefault(n => n.Id == clientId);
+
+            return client == null
+                ? null
+                : new ClientDetailsDto
+                {
+                    Id = client.Id,
+                    Code = client.Code,
+                    Name = client.Name,
+                    Phone = client.Phone,
+                    EmailAddress = client.EmailAddress,
+                    Description = client.Description,
                     Status = client.Status,
                     CreateTimeStamp = client.CreateTimeStamp,
                     LastUpdateTimeStamp = client.LastUpdateTimeStamp

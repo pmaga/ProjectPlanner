@@ -16,10 +16,10 @@ namespace ProjectPlanner.CRM.Application.Commands.Handlers
 
         public void Handle(DeleteClientCommand command)
         {
-            var storedClient = _clientRepository.FindByCode(command.ClientCode);
+            var storedClient = _clientRepository.Load(command.ClientId);
             if (storedClient == null)
             {
-                throw new ClientOperationException($"Cannot found client: {command.ClientCode}");
+                throw new ClientOperationException($"Cannot found client: {command.ClientId}");
             }
 
             _clientRepository.Delete(storedClient.Id);

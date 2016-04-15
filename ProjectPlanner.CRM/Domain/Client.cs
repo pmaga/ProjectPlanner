@@ -15,6 +15,8 @@ namespace ProjectPlanner.CRM.Domain
         public ClientStatus Status { get; private set; }
         public ClientType Type { get; private set; }
 
+        public string Description { get; private set; }
+
         public DateTime CreateTimeStamp { get; private set; } //nHibernate interceptor
         public DateTime LastUpdateTimeStamp { get; private set; } //nHibernate interceptor
 

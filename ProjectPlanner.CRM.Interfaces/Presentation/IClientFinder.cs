@@ -6,6 +6,7 @@ namespace ProjectPlanner.CRM.Interfaces.Presentation
     {
         IQueryable<ClientListDto> FindClients();
         IQueryable<ClientLookup> GetLookups();
-        ClientEditDto GetClient(string clientCode);
+        ClientEditDto GetClient(int clientId);
+        ClientDetailsDto GetClientDetails(int clientId);
     }
 }

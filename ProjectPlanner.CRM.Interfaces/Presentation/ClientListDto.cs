@@ -10,15 +10,17 @@ namespace ProjectPlanner.CRM.Interfaces.Presentation
         public string Name { get; set; }
 
         public ClientStatus Status { get; set; }
+        public ClientType Type { get; set; }
 
-        public DateTime CreateTimeStamp { get; set; }
-        public DateTime LastUpdateTimeStamp { get; set; }
+        public string EmailAddress { get; set; }
 
-        public ClientListDto(int id, string code, string name, ClientStatus status)
+        public ClientListDto(int id, string code, string name,  string emailAddress, ClientType type, ClientStatus status)
         {
             Id = id;
             Code = code;
             Name = name;
+            EmailAddress = emailAddress;
+            Type = type;
             Status = status;
         }
     }

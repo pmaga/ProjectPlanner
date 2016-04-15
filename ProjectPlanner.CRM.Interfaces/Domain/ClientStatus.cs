@@ -2,7 +2,7 @@
 {
     public enum ClientStatus
     {
-         Active,
-         InActive
+         Active = 0,
+         InActive = 1
     }
 }
