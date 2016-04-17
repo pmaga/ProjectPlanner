@@ -33,7 +33,7 @@
                                             <label class="col-sm-2 control-label">Code:</label>
                                             <div class="col-sm-10">
                                                 <input name="code" type="text" ng-model="client.code" class="form-control"
-                                                       placeholder="Project code" ng-minlength="3" ng-maxlength="9">
+                                                       placeholder="Client code" ng-minlength="3" ng-maxlength="9">
                                             </div>
                                             <span ng-show="clientForm.code.$error.minlength" class="text-warning">Code must be atleast 3 characters.</span>
                                             <span ng-show="clientForm.code.$error.maxlength" class="text-warning">Code may have a maximum of 10 characters.</span>
@@ -42,7 +42,7 @@
                                             <label class="col-sm-2 control-label">Name:</label>
                                             <div class="col-sm-10">
                                                 <input name="name" type="text" ng-model="client.name" class="form-control"
-                                                       placeholder="Project name" required ng-minlength="5" ng-maxlength="200">
+                                                       placeholder="Client name" required ng-minlength="5" ng-maxlength="200">
                                             </div>
                                             <span ng-show="clientForm.name.$error.required" class="text-warning">Name field is required.</span>
                                             <span ng-show="clientForm.name.$error.minlength" class="text-warning">Name must be atleast 5 characters.</span>
@@ -52,6 +52,21 @@
                                             <label class="col-sm-2 control-label">Description:</label>
                                             <div class="col-sm-10">
                                                 <summernote ng-model="client.description"></summernote>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Email address:</label>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                <input type="email" name="emailAddress" ng-model="client.emailAddress" class="form-control"/>
+                                            </div>
+                                            <span ng-show="clientForm.$error.emailAddress" class="text-warning">Not valid email!</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Phone:</label>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                <input name="phone" ng-model="client.phone" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="form-group">

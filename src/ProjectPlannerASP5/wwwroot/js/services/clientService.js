@@ -23,6 +23,11 @@
                 url: "/api/clients/",
                 method: 'PUT',
                 isArray: false
+            },
+            save: {
+                url: '/api/clients/',
+                method: 'POST',
+                isArray: false
             }
         });
     };
