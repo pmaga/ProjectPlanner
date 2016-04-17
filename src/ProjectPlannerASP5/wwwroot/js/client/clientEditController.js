@@ -6,9 +6,9 @@
 
     clientEditController.$inject = ['Client', '$scope', '$routeParams', '$location'];
 
-    function clientEditController(Client, $scope, $routeParams, $location)
-    {
-        if ($routeParams.id > 0 && $routeParams.projectCode) {
+    function clientEditController(Client, $scope, $routeParams, $location) {
+
+        if ($routeParams.id > 0) {
             $scope.client = Client.get({ id: $routeParams.id });
         } else {
             $scope.client = new Client();
@@ -17,9 +17,7 @@
             $scope.client.lastUpdateTimeStamp = new Date();
         }
 
-        $scope.projectCode = $routeParams.projectCode;
-
-        $scope.saveIssue = function () {
+        $scope.saveClient = function () {
             if ($scope.client.id === 0) {
                 $scope.client.$save().then(function () {
                     $scope.goToClientList();

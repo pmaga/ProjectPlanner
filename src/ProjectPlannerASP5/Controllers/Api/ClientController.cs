@@ -48,9 +48,9 @@ namespace ProjectPlannerASP5.Controllers.Api
         {
             try
             {
-                var issue = _clientFinder.GetClient(clientId);
+                var client = _clientFinder.GetClient(clientId);
 
-                return Json(issue);
+                return Json(client);
             }
             catch (Exception ex)
             {
@@ -109,7 +109,8 @@ namespace ProjectPlannerASP5.Controllers.Api
                 {
                     _logger.LogInformation($"Attempting to updating client: {vm.Code}.");
 
-                    var changeclientInformationCommand = new ChangeClientInfoCommand(vm.Code, vm.Name, vm.Phone, vm.EmailAddress);
+                    var changeclientInformationCommand = new ChangeClientInfoCommand(vm.Code, vm.Name, vm.Description,
+                        vm.Phone, vm.EmailAddress);
                     _gate.Dispatch(changeclientInformationCommand);
                     Response.StatusCode = (int)HttpStatusCode.OK;
                     return Json(true);

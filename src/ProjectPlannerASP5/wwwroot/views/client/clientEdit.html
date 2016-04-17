@@ -1,1 +1,82 @@
-﻿Hello from edit!
+﻿<div>
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2>Client edit</h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a ng-href="/">Home</a>
+                </li>
+                <li>
+                    <a ng-href="/Clients/">Clients</a>
+                </li>
+                <li class="active">
+                    <strong>Client: {{client.name}}</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="wrapper wrapper-content animated fadeInRight ecommerce">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1"> Project info</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="panel-body">
+                                <fieldset class="form-horizontal">
+                                    <form name="clientForm" role="form" ng-submit="saveClient()">
+                                        <input name="Id" id="Id" type="hidden" value="{{client.id}}" />
+                                        <div class="form-group" ng-show="client.type==='Company'">
+                                            <label class="col-sm-2 control-label">Code:</label>
+                                            <div class="col-sm-10">
+                                                <input name="code" type="text" ng-model="client.code" class="form-control"
+                                                       placeholder="Project code" ng-minlength="3" ng-maxlength="9">
+                                            </div>
+                                            <span ng-show="clientForm.code.$error.minlength" class="text-warning">Code must be atleast 3 characters.</span>
+                                            <span ng-show="clientForm.code.$error.maxlength" class="text-warning">Code may have a maximum of 10 characters.</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Name:</label>
+                                            <div class="col-sm-10">
+                                                <input name="name" type="text" ng-model="client.name" class="form-control"
+                                                       placeholder="Project name" required ng-minlength="5" ng-maxlength="200">
+                                            </div>
+                                            <span ng-show="clientForm.name.$error.required" class="text-warning">Name field is required.</span>
+                                            <span ng-show="clientForm.name.$error.minlength" class="text-warning">Name must be atleast 5 characters.</span>
+                                            <span ng-show="clientForm.name.$error.maxlength" class="text-warning">Name may have a maximum of 200 characters.</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Description:</label>
+                                            <div class="col-sm-10">
+                                                <summernote ng-model="client.description"></summernote>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Created:</label>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input name="createDate" ng-model="client.createTimeStamp" class="form-control" readonly="readonly" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Last update:</label>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input name="lastUpdateDate" ng-model="client.lastUpdateTimeStamp" class="form-control" readonly="readonly" />
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" ng-disabled="clientForm.$invalid">Save changes</button>
+                                        <button ng-click="cancelEdit()" type="button" class="btn btn-white">Close</button>
+                                    </form>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

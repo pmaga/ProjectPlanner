@@ -18,6 +18,11 @@
                 url: '/api/clients/:id/details',
                 method: 'GET',
                 isArray: false
+            },
+            update: {
+                url: "/api/clients/",
+                method: 'PUT',
+                isArray: false
             }
         });
     };

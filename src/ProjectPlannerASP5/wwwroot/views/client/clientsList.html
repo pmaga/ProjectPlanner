@@ -26,15 +26,19 @@
                     <p>
                         All clients need to be verified before you can send email and set a project.
                     </p>
-                    <div class="input-group">
-                        <input type="text" placeholder="Search client " class="input form-control">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn btn-primary"> <i class="fa fa-search"></i> Search</button>
-                        </span>
+                    <div class="row m-b-sm m-t-sm">
+                        <div class="col-md-1">
+                            <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> Refresh</button>
+                        </div>
+                        <div class="col-md-11">
+                            <div class="input-group">
+                                <input type="text" ng-model="searchText" placeholder="Search..." class="input-sm form-control">
+                            </div>
+                        </div>
                     </div>
                     <div class="clients-list">
                         <ul class="nav nav-tabs">
-                            <span class="pull-right small text-muted">1406 Elements</span>
+                            <span class="pull-right small text-muted">{{clients.length}} Elements</span>
                             <li ng-class="{'active' : tab == 1}">
                                 <a ng-click="tab = 1" ng-init="tab = 1"><i class="fa fa-user"></i> Contacts</a>
                             </li>
@@ -47,12 +51,17 @@
                                 <div class="full-height-scroll">
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover">
-                                            <tbody ng-repeat="client in clients | filter: { type: 'Individual' }">
+                                            <tbody ng-repeat="client in clients | filter: { type: 'Individual' } | filter: searchText">
                                                 <tr>
                                                     <td><a data-toggle="tab" ng-click="loadClientDetails(client.id)" class="client-link">{{client.name}}</a></td>
                                                     <td class="contact-type"><i class="fa fa-envelope"> </i></td>
                                                     <td> {{client.emailAddress}}</td>
                                                     <td class="client-status"><span ng-class="getStatusClass(client.status)">{{client.status}}</span></td>
+                                                    <td class="project-actions">
+                                                        <a ng-click="loadClientDetails(client.id)" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                                        <a ng-href="/Clients/Edit/{{client.id}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                                                        <a ng-click="deleteClient(client, $index)" class="btn btn-white btn-sm"><i class="fa fa-trash-o"></i> Delete </a>
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -63,7 +72,7 @@
                                 <div class="full-height-scroll">
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover">
-                                            <tbody ng-repeat="client in clients | filter: { type: 'Company' }">
+                                            <tbody ng-repeat="client in clients | filter: { type: 'Company' } | filter: searchText">
                                                 <tr>
                                                     <td><a data-toggle="tab" ng-click="loadClientDetails(client.id)" class="client-link">{{client.code}}</a></td>
                                                     <td><a class="client-link" ng-click="loadClientDetails(client.id)">{{client.name}}</a></td>
@@ -73,6 +82,11 @@
                                                     </td>
                                                     <td> {{client.emailAddress}}</td>
                                                     <td class="client-status"><span ng-class="getStatusClass(client.status)">{{client.status}}</span></td>
+                                                    <td class="project-actions">
+                                                        <a ng-click="loadClientDetails(client.id)" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                                        <a ng-href="/Clients/Edit/{{client.id}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                                                        <a ng-click="deleteClient(client, $index)" class="btn btn-white btn-sm"><i class="fa fa-trash-o"></i> Delete </a>
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
