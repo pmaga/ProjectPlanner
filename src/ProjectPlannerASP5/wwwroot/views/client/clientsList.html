@@ -90,9 +90,17 @@
                     <div class="tab-content">
                         <div id="clientInfoBox" class="tab-pane active">
                             <div class="m-b-lg">
-                                <h2><strong>{{selectedClient.code}}</strong></h2>
-                                <p>{{selectedClient.name}}</p>
-
+                                <div ng-show="selectedClient.type === 'Individual'">
+                                    <h2>
+                                        <strong>{{selectedClient.name}}</strong>
+                                    </h2>
+                                </div>
+                                <div ng-show="selectedClient.type === 'Company'">
+                                    <h2>
+                                        <strong>{{selectedClient.code}}</strong>
+                                    </h2>
+                                    <p>{{selectedClient.name}}</p>
+                                </div>
                                 <div class="m-b-sm">
                                     <img alt="image" class="img-circle" src="/img/individual.png"
                                          style="width: 62px">
@@ -114,7 +122,7 @@
                                         <strong>Last update:</strong>
                                         <p>{{selectedClient.lastUpdateTimeStamp | date:'dd-MM-yyyy hh-mm'}}</p>
                                     </div>
-                                    <strong>Description</strong>
+                                    <strong>Description:</strong>
                                     <p>
                                         {{selectedClient.description}}
                                     </p>

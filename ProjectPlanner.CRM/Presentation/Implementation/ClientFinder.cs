@@ -65,6 +65,7 @@ namespace ProjectPlanner.CRM.Presentation.Implementation
                     Phone = client.Phone,
                     EmailAddress = client.EmailAddress,
                     Description = client.Description,
+                    Type = client.Type,
                     Status = client.Status,
                     CreateTimeStamp = client.CreateTimeStamp,
                     LastUpdateTimeStamp = client.LastUpdateTimeStamp

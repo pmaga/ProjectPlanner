@@ -67,12 +67,10 @@ namespace ProjectPlannerASP5.Controllers.Api
 
             if (client == null)
             {
-                //Response.StatusCode = (int)HttpStatusCode.NoContent;
+                Response.StatusCode = (int)HttpStatusCode.NoContent;
                 return Json(null);
             }
 
-            client.Name = "hahahaha";
-            client.Description = "test Description";
             return Json(client);
         }
 
